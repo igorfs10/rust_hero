@@ -2,3 +2,5 @@
 name    = "rust_hero"
 version = "0.0.1"
 authors = ["igorfs10 <igorfs10@gmail.com>"]
+[dependencies]
+custom_error = "1.7.1"
