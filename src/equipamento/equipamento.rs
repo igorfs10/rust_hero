@@ -1,8 +1,8 @@
 pub struct Equipamento<'a> {
-    pub id: u8,
+    pub id: usize,
     pub nome: &'a str,
     pub ataque: u8,
-    pub defesa: u8,
+    pub defesa: u8
 }
 
 pub const EQUIPAMENTOS: [Equipamento; 4] = [

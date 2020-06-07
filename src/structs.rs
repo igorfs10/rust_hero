@@ -1,6 +1,6 @@
 pub struct Jogador {
     pub nome: String,
-    pub equipamento: u8,
+    pub equipamento: usize,
     pub vida_total: u8,
     pub vida_atual: u8,
     pub ataque: u8,

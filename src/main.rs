@@ -1,9 +1,13 @@
 mod equipamento;
+mod item;
+mod inimigo;
 mod structs;
 mod erros;
 
 use std::io;
-use equipamento::equipamento::{EQUIPAMENTOS};
+use equipamento::equipamento::EQUIPAMENTOS;
+use inimigo::inimigo::INIMIGOS;
+use item::dados::ITENS;
 use structs::Jogador;
 
 fn main(){
@@ -33,11 +37,16 @@ fn main(){
                             println!("-------------------");
                             println!("Status:");
                             println!("Nome: {}", jogador.nome);
-                            println!("Equipamento: {}", EQUIPAMENTOS[jogador.equipamento as usize].nome);
+                            println!("Equipamento: {}", EQUIPAMENTOS[jogador.equipamento].nome);
                             println!("Vida: {}/{}", jogador.vida_atual, jogador.vida_total);
                             println!("Ataque: {}", jogador.ataque);
                             println!("Defesa: {}", jogador.defesa);
                             println!("Experiência: {}", jogador.experiencia);
+                            println!("-------------------");
+                            println!("Inimigo: {}", INIMIGOS[numero].nome);
+                            println!("-------------------");
+                            let ola: fn() = ITENS[0].efeito;
+                            ola();
                             println!("-------------------");
                         }
                         Err(error) => {
