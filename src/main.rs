@@ -5,7 +5,7 @@ mod structs;
 mod erros;
 
 use std::io;
-use equipamento::equipamento::EQUIPAMENTOS;
+use equipamento::dados::EQUIPAMENTOS;
 use inimigo::dados::INIMIGOS;
 use item::dados::ITENS;
 use structs::{Jogador, Oponente};
