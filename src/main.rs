@@ -35,6 +35,8 @@ fn main(){
     println!("Inimigo: {}", oponente.nome);
     let ola: fn() = ITENS[0].efeito;
     ola();
+    // Testar e Arrumar
+    (ITENS[0].efeito)();
 }
 
 fn escolher_equipamento() -> usize {
