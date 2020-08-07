@@ -18,7 +18,7 @@ fn main(){
     set_flag(&mut flags_jogo, FLAGS::UpgradePocao);
     set_flag(&mut flags_jogo, FLAGS::UpgradeAtaque);
     clear_flag(&mut flags_jogo, FLAGS::UpgradePocao);
-    println!("Flag pocao: {}\nFlag_ataque: {}", flags_jogo[0], flags_jogo[1]);
+    println!("Flag pocao: {}\nFlag_ataque: {}", check_flag(&flags_jogo, FLAGS::UpgradePocao), check_flag(&flags_jogo, FLAGS::UpgradeAtaque));
     let mut jogador:Jogador = Jogador {
         nome: "Teste".to_string(),
         equipamento: 0,
