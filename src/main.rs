@@ -3,14 +3,22 @@ mod item;
 mod inimigo;
 mod structs;
 mod erros;
+mod flags;
 
 use std::io;
 use equipamento::dados::EQUIPAMENTOS;
 use inimigo::dados::INIMIGOS;
 use item::dados::ITENS;
 use structs::{Jogador, Oponente};
+use flags::*;
 
 fn main(){
+    println!("{}, {}", FLAGS::UpgradePocao as usize, FLAGS::UpgradeAtaque as usize);
+    let mut flags_jogo:[bool; 5] = [false;5];
+    set_flag(&mut flags_jogo, FLAGS::UpgradePocao);
+    set_flag(&mut flags_jogo, FLAGS::UpgradeAtaque);
+    clear_flag(&mut flags_jogo, FLAGS::UpgradePocao);
+    println!("Flag pocao: {}\nFlag_ataque: {}", flags_jogo[0], flags_jogo[1]);
     let mut jogador:Jogador = Jogador {
         nome: "Teste".to_string(),
         equipamento: 0,
@@ -37,6 +45,11 @@ fn main(){
     ola();
     // Testar e Arrumar
     (ITENS[0].efeito)();
+    let test = &escolher_equipamento;
+    let nume_teste = test();
+    println!("fdff");
+    println!("Pointer: {:p}\nVar: {:p}", &escolher_equipamento, test);
+    println!("{}", nume_teste);
 }
 
 fn escolher_equipamento() -> usize {
