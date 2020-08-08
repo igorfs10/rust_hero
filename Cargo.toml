@@ -7,4 +7,4 @@ repository = "https://github.com/igorfs10/rust_hero"
 license = "gpl-v3"
 
 [dependencies]
-console = "0.11.3"
+console = "^0.11.3"
