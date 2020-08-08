@@ -6,21 +6,25 @@ mod erros;
 mod flags;
 
 use std::io;
-use equipamento::dados::EQUIPAMENTOS;
-use inimigo::dados::INIMIGOS;
-use item::dados::ITENS;
+use console::Term;
+
+use equipamento::EQUIPAMENTOS;
+use inimigo::INIMIGOS;
+use item::ITENS;
 use structs::{Jogador, Oponente};
+use erros::*;
 use flags::*;
 
 fn main(){
-    println!("{}, {}", FLAGS::UpgradePocao as usize, FLAGS::UpgradeAtaque as usize);
+    limpar_terminal();
     let mut flags_jogo:[bool; 5] = [false;5];
     set_flag(&mut flags_jogo, FLAGS::UpgradePocao);
     set_flag(&mut flags_jogo, FLAGS::UpgradeAtaque);
     clear_flag(&mut flags_jogo, FLAGS::UpgradePocao);
     println!("Flag pocao: {}\nFlag_ataque: {}", check_flag(&flags_jogo, FLAGS::UpgradePocao), check_flag(&flags_jogo, FLAGS::UpgradeAtaque));
+    
     let mut jogador:Jogador = Jogador {
-        nome: "Teste".to_string(),
+        nome: String::from("Teste"),
         equipamento: 0,
         vida_total: 20,
         vida_atual: 20,
@@ -28,37 +32,32 @@ fn main(){
         defesa: 0,
         experiencia: 0
     };
+
     let oponente:Oponente;
     oponente = escolher_inimigo();
-    println!("Digite o número para escolher o equipamento:");
-    println!("");
-    for equipamento in &EQUIPAMENTOS {
-        println!("{}: {} ", equipamento.id, equipamento.nome);
-    }
     jogador.equipamento = escolher_equipamento();
     jogador.ataque = EQUIPAMENTOS[jogador.equipamento].ataque;
     jogador.defesa = EQUIPAMENTOS[jogador.equipamento].defesa;
 
     println!("Jogador: {}", jogador.nome);
     println!("Inimigo: {}", oponente.nome);
-    let ola: fn() = ITENS[0].efeito;
-    ola();
-    // Testar e Arrumar
-    (ITENS[0].efeito)();
-    let test = &escolher_equipamento;
-    let nume_teste = test();
-    println!("fdff");
-    println!("Pointer: {:p}\nVar: {:p}", &escolher_equipamento, test);
-    println!("{}", nume_teste);
+
+    println!("{}", ITENS[0].nome);
 }
 
 fn escolher_equipamento() -> usize {
+    #[cfg(not(debug_assertions))]
+    limpar_terminal();
+    println!("Digite um número para escolher o equipamento (0-{}):\n", EQUIPAMENTOS.len() - 1);
+    for equipamento in &EQUIPAMENTOS {
+        println!("{}: {} ", equipamento.id, equipamento.nome);
+    }
     let mut input = String::new();
     match io::stdin().read_line(&mut input) {
         Ok(_) => {
             match input.trim().parse::<usize>() {
                 Ok(numero) => {
-                    match erros::item_nao_existe(numero, EQUIPAMENTOS.len()){
+                    match item_nao_existe(numero, EQUIPAMENTOS.len()){
                         Ok(_) => {
                             return numero;
                         }
@@ -92,4 +91,9 @@ fn escolher_inimigo() -> Oponente{
         item: INIMIGOS[1].item
     };
     return oponente;
+}
+
+fn limpar_terminal(){
+    let term = Term::stdout();
+    let _ = term.clear_screen();
 }

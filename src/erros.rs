@@ -1,12 +1,7 @@
-extern crate custom_error;
-use self::custom_error::custom_error;
-
-custom_error!{pub ItemNaoExiste{numero_usado: usize, total_elementos: usize} = "You tried to use element {numero_usado} but the array goes from 0 to {total_elementos}."}
-
-pub fn item_nao_existe(numero_item: usize, total_itens_array: usize) -> Result<(), ItemNaoExiste> {
+pub fn item_nao_existe(numero_item: usize, total_itens_array: usize) -> Result<(), String> {
     if numero_item < total_itens_array {
-        Ok(())
+        return Ok(());
     } else {
-        Err(ItemNaoExiste{numero_usado: numero_item, total_elementos: total_itens_array - 1})
+        return Err(format!("You tried to use element {} but the array goes from 0 to {}.", numero_item, total_itens_array - 1));
     }
 }

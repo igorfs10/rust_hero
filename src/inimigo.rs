@@ -1,5 +1,14 @@
-use inimigo::inimigo::Inimigo;
-use item::dados::{ITEM_NENHUM, ITEM_POCAO, ITEM_ATAQUE, ITEM_DEFESA, ITEM_EXPERIENCIA};
+use crate::item::{ITEM_ATAQUE, ITEM_DEFESA, ITEM_EXPERIENCIA, ITEM_NENHUM, ITEM_POCAO};
+
+pub struct Inimigo<'a> {
+    pub id: usize,
+    pub nome: &'a str,
+    pub vida: u8,
+    pub ataque: u8,
+    pub defesa: u8,
+    pub experiencia: u16,
+    pub item: usize
+}
 
 pub const INIMIGO_NENHUM:   usize = 0;
 pub const INIMIGO_RATO:     usize = 1;
