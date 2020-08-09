@@ -17,11 +17,11 @@ use flags::*;
 
 fn main(){
     limpar_terminal();
-    let mut flags_jogo:[bool; 5] = [false;5];
-    set_flag(&mut flags_jogo, FLAGS::UpgradePocao);
-    set_flag(&mut flags_jogo, FLAGS::UpgradeAtaque);
-    clear_flag(&mut flags_jogo, FLAGS::UpgradePocao);
-    println!("Flag pocao: {}\nFlag_ataque: {}", check_flag(&flags_jogo, FLAGS::UpgradePocao), check_flag(&flags_jogo, FLAGS::UpgradeAtaque));
+    let mut flags_jogo:Flags = Flags::new();
+    flags_jogo.set_flag(FlagName::UpgradePocao);
+    flags_jogo.set_flag(FlagName::UpgradeAtaque);
+    flags_jogo.clear_flag(FlagName::UpgradePocao);
+    println!("Flag pocao: {}\nFlag ataque: {}", flags_jogo.check_flag(FlagName::UpgradePocao), flags_jogo.check_flag(FlagName::UpgradeAtaque));
     
     let mut jogador:Jogador = Jogador {
         nome: String::from("Teste"),
