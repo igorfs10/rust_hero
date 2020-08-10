@@ -15,5 +15,4 @@ pub struct Oponente {
     pub ataque: u8,
     pub defesa: u8,
     pub experiencia: u16,
-    pub item: usize
 }

@@ -42,7 +42,26 @@ fn main(){
     println!("Jogador: {}", jogador.nome);
     println!("Inimigo: {}", oponente.nome);
 
-    println!("{}", ITENS[0].nome);
+    println!("-----INIMIGOS-----");
+    for inimigo in INIMIGOS.iter(){
+        println!("{}\n", inimigo.nome);
+        println!("Vida: {}", inimigo.vida);
+        println!("Ataque: {}", inimigo.ataque);
+        println!("Defesa: {}\n\n", inimigo.defesa);
+    }
+
+    println!("-----EQUIPAMENTOS-----");
+    for equipamento in EQUIPAMENTOS.iter(){
+        println!("{}\n", equipamento.nome);
+        println!("Ataque: {}", equipamento.ataque);
+        println!("Defesa: {}\n\n", equipamento.defesa);
+    }
+
+    println!("-----ITENS-----");
+    for item in ITENS.iter(){
+        println!("{}\n", item.nome);
+        println!("Descrição: {}\n\n", item.descricao);
+    }
 }
 
 fn escolher_equipamento() -> usize {
@@ -80,15 +99,14 @@ fn escolher_equipamento() -> usize {
     }
 }
 
-fn escolher_inimigo() -> Oponente{
-    let oponente: Oponente = Oponente{
+fn escolher_inimigo() -> Oponente {
+    let oponente: Oponente = Oponente {
         nome: INIMIGOS[1].nome.to_string(),
         vida_total: INIMIGOS[1].vida,
         vida_atual: INIMIGOS[1].vida,
         ataque: INIMIGOS[1].ataque,
         defesa: INIMIGOS[1].defesa,
         experiencia: INIMIGOS[1].experiencia,
-        item: INIMIGOS[1].item
     };
     return oponente;
 }

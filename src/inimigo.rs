@@ -1,4 +1,4 @@
-use crate::item::{ITEM_ATAQUE, ITEM_DEFESA, ITEM_EXPERIENCIA, ITEM_NENHUM, ITEM_POCAO};
+use crate::item::Itens;
 
 pub struct Inimigo<'a> {
     pub id: usize,
@@ -7,7 +7,7 @@ pub struct Inimigo<'a> {
     pub ataque: u8,
     pub defesa: u8,
     pub experiencia: u16,
-    pub item: usize
+    pub item: Itens
 }
 
 pub const INIMIGO_NENHUM:   usize = 0;
@@ -24,7 +24,7 @@ pub const INIMIGOS: [Inimigo; 5] = [
         ataque: 1,
         defesa: 1,
         experiencia: 0,
-        item: ITEM_NENHUM
+        item: Itens::ItemNenhum
     },
     Inimigo {
         id: INIMIGO_RATO,
@@ -33,7 +33,7 @@ pub const INIMIGOS: [Inimigo; 5] = [
         ataque: 1,
         defesa: 1,
         experiencia: 2,
-        item: ITEM_DEFESA
+        item: Itens::ItemDefesa
     },
     Inimigo {
         id: INIMIGO_COELHO,
@@ -42,7 +42,7 @@ pub const INIMIGOS: [Inimigo; 5] = [
         ataque: 2,
         defesa: 1,
         experiencia: 4,
-        item: ITEM_ATAQUE
+        item: Itens::ItemAtaque
     },
     Inimigo {
         id: INIMIGO_COBRA,
@@ -51,7 +51,7 @@ pub const INIMIGOS: [Inimigo; 5] = [
         ataque: 2,
         defesa: 3,
         experiencia: 8,
-        item: ITEM_POCAO
+        item: Itens::ItemPocao
     },
     Inimigo {
         id: INIMIGO_LOBO,
@@ -60,6 +60,6 @@ pub const INIMIGOS: [Inimigo; 5] = [
         ataque: 3,
         defesa: 2,
         experiencia: 8,
-        item: ITEM_EXPERIENCIA
+        item: Itens::ItemExperiencia
     }
 ];
