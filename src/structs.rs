@@ -1,3 +1,5 @@
+// Structs que serão usadas no meio do jogo para receber valores
+
 pub struct Jogador {
     pub nome: String,
     pub equipamento: usize,

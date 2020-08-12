@@ -1,9 +1,9 @@
 pub enum Itens {
-    ItemNenhum,
-    ItemPocao,
-    ItemAtaque,
-    ItemDefesa,
-    ItemExperiencia
+    Nenhum,
+    Pocao,
+    Ataque,
+    Defesa,
+    Experiencia
 }
 
 pub struct Item<'a> {
@@ -15,31 +15,31 @@ pub struct Item<'a> {
 
 pub const ITENS: [Item; 5] = [
     Item {
-        id: Itens::ItemNenhum as usize,
+        id: Itens::Nenhum as usize,
         nome: "Nenhum",
         descricao: "",
         efeito: 0
     },
     Item {
-        id: Itens::ItemPocao as usize,
+        id: Itens::Pocao as usize,
         nome: "Poção",
         descricao: "Recupera 30% da vida.",
         efeito: 0
     },
     Item {
-        id: Itens::ItemAtaque as usize,
+        id: Itens::Ataque as usize,
         nome: "Mais Ataque",
         descricao: "Aumenta o ataque por 1 minuto.",
         efeito: 0
     },
     Item {
-        id: Itens::ItemDefesa as usize,
+        id: Itens::Defesa as usize,
         nome: "Mais Defesa",
         descricao: "Aumenta a defesa por 1 minuto.",
         efeito: 0
     },
     Item {
-        id: Itens::ItemExperiencia as usize,
+        id: Itens::Experiencia as usize,
         nome: "Mais Experiência",
         descricao: "Dobra a experiência ganha por 1 minuto.",
         efeito: 0

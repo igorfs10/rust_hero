@@ -1,5 +1,13 @@
 use crate::item::Itens;
 
+pub enum Inimigos {
+    Nenhum,
+    Rato,
+    Coelho,
+    Cobra,
+    Lobo
+}
+
 pub struct Inimigo<'a> {
     pub id: usize,
     pub nome: &'a str,
@@ -10,56 +18,50 @@ pub struct Inimigo<'a> {
     pub item: Itens
 }
 
-pub const INIMIGO_NENHUM:   usize = 0;
-pub const INIMIGO_RATO:     usize = 1;
-pub const INIMIGO_COELHO:   usize = 2;
-pub const INIMIGO_COBRA:    usize = 3;
-pub const INIMIGO_LOBO:     usize = 4;
-
 pub const INIMIGOS: [Inimigo; 5] = [
     Inimigo {
-        id: INIMIGO_NENHUM,
+        id: Inimigos::Nenhum as usize,
         nome: "Nenhum",
         vida: 1,
         ataque: 1,
         defesa: 1,
         experiencia: 0,
-        item: Itens::ItemNenhum
+        item: Itens::Nenhum
     },
     Inimigo {
-        id: INIMIGO_RATO,
+        id: Inimigos::Rato as usize,
         nome: "Rato",
         vida: 5,
         ataque: 1,
         defesa: 1,
         experiencia: 2,
-        item: Itens::ItemDefesa
+        item: Itens::Defesa
     },
     Inimigo {
-        id: INIMIGO_COELHO,
+        id: Inimigos::Coelho as usize,
         nome: "Coelho",
         vida: 8,
         ataque: 2,
         defesa: 1,
         experiencia: 4,
-        item: Itens::ItemAtaque
+        item: Itens::Ataque
     },
     Inimigo {
-        id: INIMIGO_COBRA,
+        id: Inimigos::Cobra as usize,
         nome: "Cobra",
         vida: 12,
         ataque: 2,
         defesa: 3,
         experiencia: 8,
-        item: Itens::ItemPocao
+        item: Itens::Pocao
     },
     Inimigo {
-        id: INIMIGO_LOBO,
+        id: Inimigos::Lobo as usize,
         nome: "Lobo",
         vida: 12,
         ataque: 3,
         defesa: 2,
         experiencia: 8,
-        item: Itens::ItemExperiencia
+        item: Itens::Experiencia
     }
 ];
