@@ -19,6 +19,9 @@ use erros::*;
 use flags::*;
 use consts::*;
 
+// UI
+use fltk::{app::*, window::*};
+
 fn main(){
     limpar_terminal();
 
@@ -91,6 +94,12 @@ fn main(){
         println!("{}\n", item.nome);
         println!("Descrição: {}\n\n", item.descricao);
     }
+
+    let app = App::default();
+    let mut wind = Window::new(100, 100, 400, 300, "Hello from rust");
+    wind.end();
+    wind.show();
+    app.run().unwrap();
 }
 
 fn escolher_equipamento() -> usize {
