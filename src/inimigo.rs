@@ -21,10 +21,10 @@ pub struct Inimigo<'a> {
 pub const INIMIGOS: [Inimigo; 5] = [
     Inimigo {
         id: Inimigos::Nenhum as usize,
-        nome: "Nenhum",
-        vida: 1,
-        ataque: 1,
-        defesa: 1,
+        nome: "",
+        vida: 0,
+        ataque: 0,
+        defesa: 0,
         experiencia: 0,
         item: Itens::Nenhum
     },

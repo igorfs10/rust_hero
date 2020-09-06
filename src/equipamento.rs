@@ -1,3 +1,10 @@
+pub enum Equipamentos {
+    Nenhum,
+    Espada,
+    Escudo,
+    Bastao
+}
+
 pub struct Equipamento<'a> {
     pub id: usize,
     pub nome: &'a str,
@@ -7,25 +14,25 @@ pub struct Equipamento<'a> {
 
 pub const EQUIPAMENTOS: [Equipamento; 4] = [
     Equipamento {
-        id: 0,
-        nome: "Nenhum",
+        id: Equipamentos::Nenhum as usize,
+        nome: "",
         ataque: 1,
         defesa: 1
     },
     Equipamento {
-        id: 1,
+        id: Equipamentos::Espada as usize,
         nome: "Espada",
         ataque: 3,
         defesa: 1
     },
     Equipamento {
-        id: 2,
+        id: Equipamentos::Escudo as usize,
         nome: "Escudo",
         ataque: 1,
         defesa: 3
     },
     Equipamento {
-        id: 3,
+        id: Equipamentos::Bastao as usize,
         nome: "Bastão",
         ataque: 2,
         defesa: 2

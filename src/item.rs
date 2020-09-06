@@ -16,7 +16,7 @@ pub struct Item<'a> {
 pub const ITENS: [Item; 5] = [
     Item {
         id: Itens::Nenhum as usize,
-        nome: "Nenhum",
+        nome: "",
         descricao: "",
         efeito: 0
     },

@@ -1,5 +1,6 @@
 #![windows_subsystem = "windows"]
 
+mod local;
 mod equipamento;
 mod item;
 mod inimigo;
@@ -16,6 +17,7 @@ use rand::{ Rng, SeedableRng };
 use equipamento::EQUIPAMENTOS;
 use inimigo::INIMIGOS;
 use item::ITENS;
+use local::LOCAIS;
 use structs::{ Jogador, Oponente };
 use erros::*;
 use flags::*;
@@ -79,8 +81,13 @@ fn main(){
         println!("Jogador: {}", jogador.nome);
         println!("Inimigo: {}", oponente.nome);
 
+        println!("-----LOCAIS-----");
+        for local in LOCAIS.iter() {
+            println!("Nome: {}\n\n", local.nome);
+        }
+
         println!("-----INIMIGOS-----");
-        for inimigo in INIMIGOS.iter(){
+        for inimigo in INIMIGOS.iter() {
             println!("{}\n", inimigo.nome);
             println!("Vida: {}", inimigo.vida);
             println!("Ataque: {}", inimigo.ataque);
@@ -88,7 +95,7 @@ fn main(){
         }
 
         println!("-----EQUIPAMENTOS-----");
-        for equipamento in EQUIPAMENTOS.iter(){
+        for equipamento in EQUIPAMENTOS.iter() {
             println!("{}\n", equipamento.nome);
             println!("Ataque: {}", equipamento.ataque);
             println!("Ataque crítico: {}", equipamento.ataque * MULTIPLICADOR_CRITICO);
@@ -116,9 +123,11 @@ fn escolher_equipamento() -> usize {
     #[cfg(not(debug_assertions))]
     limpar_terminal();
     println!("Digite um número para escolher o equipamento (0-{}):\n", EQUIPAMENTOS.len() - 1);
+    
     for equipamento in &EQUIPAMENTOS {
         println!("{}: {} ", equipamento.id, equipamento.nome);
     }
+
     let mut input = String::new();
     match io::stdin().read_line(&mut input) {
         Ok(_) => {
@@ -162,4 +171,14 @@ fn escolher_inimigo() -> Oponente {
 fn limpar_terminal(){
     let term = Term::stdout();
     let _ = term.clear_screen();
+}
+
+#[cfg(test)]
+mod test {
+
+    #[test]
+    fn tes() {
+        assert_eq!(2 + 2, 4);
+    }
+    
 }
