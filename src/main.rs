@@ -8,11 +8,13 @@ mod structs;
 mod erros;
 mod flags;
 mod consts;
+mod save;
 
 use std::io;
 use console::Term;
 use rand::prelude::*;
 use rand::{ Rng, SeedableRng };
+use chrono::prelude::*;
 
 use equipamento::EQUIPAMENTOS;
 use inimigo::INIMIGOS;
@@ -22,6 +24,7 @@ use structs::{ Jogador, Oponente };
 use erros::*;
 use flags::*;
 use consts::*;
+use save::*;
 
 // UI
 use fltk::{app::*, button::*, frame::*, window::*};
@@ -30,8 +33,11 @@ use fltk::{app::*, button::*, frame::*, window::*};
 const COMMAND_LINE_INTERFACE:bool = false;
 
 fn main(){
+    let save = Save::default();
+    let utc: DateTime<Utc> = Utc::now();
     if COMMAND_LINE_INTERFACE {
         limpar_terminal();
+        println!("{}", utc.second());
 
         // Aleatório com seed definido
         let mut nops: StdRng = SeedableRng::seed_from_u64(5);
@@ -107,6 +113,9 @@ fn main(){
             println!("{}\n", item.nome);
             println!("Descrição: {}\n\n", item.descricao);
         }
+
+        println!("{}", save.jogador.nome);
+
     } else {
         let app = App::default().with_scheme(AppScheme::Gtk);
         let mut wind = Window::new(100, 100, 400, 300, "Hello from rust");

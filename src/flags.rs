@@ -24,3 +24,11 @@ impl Flags {
         self.flags[flag_name as usize] = false;
     }
 }
+
+impl Default for Flags {
+    fn default() -> Self {
+        Flags {
+            flags: [false; 2]
+        }
+    }
+}
