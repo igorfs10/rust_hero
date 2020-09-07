@@ -8,6 +8,7 @@ pub enum Inimigos {
     Lobo
 }
 
+// Deixe a string com o tempo de vida da struct
 pub struct Inimigo<'a> {
     pub id: usize,
     pub nome: &'a str,

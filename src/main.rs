@@ -62,7 +62,7 @@ fn main(){
         nums.shuffle(&mut rng);
         println!("I shuffled my {:?}", nums);
 
-        let mut flags_jogo:Flags = Flags::new();
+        let mut flags_jogo:Flags = Flags::default();
         flags_jogo.set_flag(FlagName::UpgradePocao);
         flags_jogo.set_flag(FlagName::UpgradeAtaque);
         flags_jogo.clear_flag(FlagName::UpgradePocao);
