@@ -9,6 +9,8 @@ mod erros;
 mod flags;
 mod consts;
 mod save;
+mod login_form;
+mod traits;
 
 use std::io;
 use console::Term;
@@ -25,9 +27,10 @@ use erros::*;
 use flags::*;
 use consts::*;
 use save::*;
+use login_form::*;
 
 // UI
-use fltk::{app::*, button::*, frame::*, window::*};
+use orbtk::prelude::*;
 
 
 const COMMAND_LINE_INTERFACE:bool = false;
@@ -117,14 +120,17 @@ fn main(){
         println!("{}", save.jogador.nome);
 
     } else {
-        let app = App::default().with_scheme(AppScheme::Gtk);
-        let mut wind = Window::new(100, 100, 400, 300, "Hello from rust");
-        let mut frame = Frame::new(0, 0, 400, 200, "");
-        let mut but = Button::new(160, 210, 80, 40, "Click me!");
-        wind.end();
-        wind.show();
-        but.set_callback(Box::new(move || frame.set_label("Hello World!")));
-        app.run().unwrap();
+        Application::new()
+        .window(|ctx| {
+            Window::new()
+                .title(INIMIGOS[1].nome)
+                .position((125.0, 125.0))
+                .size(300.0, 300.0)
+                .resizeable(false)
+                .child(LoginForm::new().build(ctx))
+                .build(ctx)
+        })
+        .run();
     }
 }
 

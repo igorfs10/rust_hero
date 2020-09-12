@@ -1,5 +1,15 @@
 use crate::item::Itens;
 
+pub struct Inimigo {
+    pub id: usize,
+    pub nome: &'static str,
+    pub vida: u8,
+    pub ataque: u8,
+    pub defesa: u8,
+    pub experiencia: u16,
+    pub item: usize
+}
+
 pub enum Inimigos {
     Nenhum,
     Rato,
@@ -8,61 +18,103 @@ pub enum Inimigos {
     Lobo
 }
 
-// Deixe a string com o tempo de vida da struct
-pub struct Inimigo<'a> {
-    pub id: usize,
-    pub nome: &'a str,
-    pub vida: u8,
-    pub ataque: u8,
-    pub defesa: u8,
-    pub experiencia: u16,
-    pub item: Itens
+// Usar const trait quando lançar na versão estável
+impl Inimigos {
+    // Id dos inimigos
+    pub const fn get_id(&self) -> usize {
+        match self {
+            Inimigos::Nenhum => 0,
+            Inimigos::Rato => 1,
+            Inimigos::Coelho => 2,
+            Inimigos::Cobra => 3,
+            Inimigos::Lobo => 4
+        }
+    }
+
+    // Nome dos inimigos
+    const fn get_nome(&self) -> &'static str {
+        match self {
+            Inimigos::Nenhum => "",
+            Inimigos::Rato => "Rato",
+            Inimigos::Coelho => "Coelho",
+            Inimigos::Cobra => "Cobra",
+            Inimigos::Lobo => "Lobo"
+        }
+    }
+
+    // Vida dos inimigos
+    const fn get_vida(&self) -> u8 {
+        match self {
+            Inimigos::Nenhum => 0,
+            Inimigos::Rato => 5,
+            Inimigos::Coelho => 8,
+            Inimigos::Cobra => 12,
+            Inimigos::Lobo => 12
+        }
+    }
+
+    // Ataque dos inimigos
+    const fn get_ataque(&self) -> u8 {
+        match self {
+            Inimigos::Nenhum => 0,
+            Inimigos::Rato => 1,
+            Inimigos::Coelho => 2,
+            Inimigos::Cobra => 3,
+            Inimigos::Lobo => 4
+        }
+    }
+
+    // Defesa dos inimigos
+    const fn get_defesa(&self) -> u8 {
+        match self {
+            Inimigos::Nenhum => 0,
+            Inimigos::Rato => 1,
+            Inimigos::Coelho => 2,
+            Inimigos::Cobra => 4,
+            Inimigos::Lobo => 3
+        }
+    }
+
+    // Experiência dos inimigos
+    const fn get_experiencia(&self) -> u16 {
+        match self {
+            Inimigos::Nenhum => 0,
+            Inimigos::Rato => 2,
+            Inimigos::Coelho => 4,
+            Inimigos::Cobra => 8,
+            Inimigos::Lobo => 8
+        }
+    }
+
+    // Item dos inimigos
+    const fn get_item(&self) -> usize {
+        match self {
+            Inimigos::Nenhum => Itens::Nenhum.get_id(),
+            Inimigos::Rato => Itens::Defesa.get_id(),
+            Inimigos::Coelho => Itens::Ataque.get_id(),
+            Inimigos::Cobra => Itens::Pocao.get_id(),
+            Inimigos::Lobo => Itens::Experiencia.get_id()
+        }
+    }
+
+    //Monta o inimigo
+    const fn make(&self) -> Inimigo {
+        Inimigo {
+            id: self.get_id(),
+            nome: self.get_nome(),
+            vida: self.get_vida(),
+            ataque: self.get_ataque(),
+            defesa: self.get_defesa(),
+            experiencia: self.get_experiencia(),
+            item: self.get_item()
+        }
+    }
 }
 
 pub const INIMIGOS: [Inimigo; 5] = [
-    Inimigo {
-        id: Inimigos::Nenhum as usize,
-        nome: "",
-        vida: 0,
-        ataque: 0,
-        defesa: 0,
-        experiencia: 0,
-        item: Itens::Nenhum
-    },
-    Inimigo {
-        id: Inimigos::Rato as usize,
-        nome: "Rato",
-        vida: 5,
-        ataque: 1,
-        defesa: 1,
-        experiencia: 2,
-        item: Itens::Defesa
-    },
-    Inimigo {
-        id: Inimigos::Coelho as usize,
-        nome: "Coelho",
-        vida: 8,
-        ataque: 2,
-        defesa: 1,
-        experiencia: 4,
-        item: Itens::Ataque
-    },
-    Inimigo {
-        id: Inimigos::Cobra as usize,
-        nome: "Cobra",
-        vida: 12,
-        ataque: 2,
-        defesa: 3,
-        experiencia: 8,
-        item: Itens::Pocao
-    },
-    Inimigo {
-        id: Inimigos::Lobo as usize,
-        nome: "Lobo",
-        vida: 12,
-        ataque: 3,
-        defesa: 2,
-        experiencia: 8,
-        item: Itens::Experiencia
-    }
+    Inimigos::Nenhum.make(),
+    Inimigos::Rato.make(),
+    Inimigos::Coelho.make(),
+    Inimigos::Cobra.make(),
+    Inimigos::Lobo.make(),
 ];

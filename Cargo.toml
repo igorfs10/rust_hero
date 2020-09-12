@@ -9,5 +9,5 @@ license = "gpl-v3"
 [dependencies]
 console = "^0.11.3"
 rand = "^0.7.3"
-fltk = { version = "^0.8", features = ["fltk-bundled"] }
 chrono = "^0.4"
+orbtk = "0.3.1-alpha3"
