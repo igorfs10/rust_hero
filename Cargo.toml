@@ -9,5 +9,11 @@ license = "gpl-v3"
 [dependencies]
 console = "^0.12.0"
 rand = "^0.7.3"
-chrono = "^0.4.18"
+chrono = "^0.4.19"
 orbtk = "0.3.1-alpha3"
+
+[profile.release]
+lto = true
+
+[profile.release.build-override]
+opt-level = 3
