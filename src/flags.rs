@@ -15,7 +15,7 @@ pub trait FlagsMethods {
 
 impl FlagsMethods for Flags {
     fn check_flag(&self, flag_name: FlagName) -> bool {
-        return self.flags[flag_name as usize];
+        self.flags[flag_name as usize]
     }
 
     fn set_flag(&mut self, flag_name: FlagName) {

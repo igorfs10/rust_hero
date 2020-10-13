@@ -159,35 +159,34 @@ fn escolher_equipamento() -> usize {
         Ok(_) => match input.trim().parse::<usize>() {
             Ok(numero) => match item_nao_existe(numero, EQUIPAMENTOS.len()) {
                 Ok(_) => {
-                    return numero;
+                    numero
                 }
                 Err(error) => {
                     println!("error: {}", error);
-                    return escolher_equipamento();
+                    escolher_equipamento()
                 }
             },
             Err(error) => {
                 println!("error: {}", error);
-                return escolher_equipamento();
+                escolher_equipamento()
             }
         },
         Err(error) => {
             println!("error: {}", error);
-            return escolher_equipamento();
+            escolher_equipamento()
         }
     }
 }
 
 fn escolher_inimigo() -> Oponente {
-    let oponente: Oponente = Oponente {
+    Oponente {
         nome: INIMIGOS[1].nome.to_string(),
         vida_total: INIMIGOS[1].vida,
         vida_atual: INIMIGOS[1].vida,
         ataque: INIMIGOS[1].ataque,
         defesa: INIMIGOS[1].defesa,
         experiencia: INIMIGOS[1].experiencia,
-    };
-    return oponente;
+    }
 }
 
 fn limpar_terminal() {
