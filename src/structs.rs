@@ -7,7 +7,7 @@ pub struct Jogador {
     pub vida_atual: u8,
     pub ataque: u8,
     pub defesa: u8,
-    pub experiencia: u16
+    pub experiencia: u16,
 }
 
 pub struct Oponente {
@@ -28,7 +28,7 @@ impl Default for Jogador {
             vida_atual: 10,
             ataque: 0,
             defesa: 0,
-            experiencia: 0
+            experiencia: 0,
         }
     }
 }

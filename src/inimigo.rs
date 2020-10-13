@@ -7,7 +7,7 @@ pub struct Inimigo {
     pub ataque: u8,
     pub defesa: u8,
     pub experiencia: u16,
-    pub item: usize
+    pub item: usize,
 }
 
 pub enum Inimigos {
@@ -15,7 +15,7 @@ pub enum Inimigos {
     Rato,
     Coelho,
     Cobra,
-    Lobo
+    Lobo,
 }
 
 // Usar const trait quando lançar na versão estável
@@ -27,7 +27,7 @@ impl Inimigos {
             Inimigos::Rato => 1,
             Inimigos::Coelho => 2,
             Inimigos::Cobra => 3,
-            Inimigos::Lobo => 4
+            Inimigos::Lobo => 4,
         }
     }
 
@@ -38,7 +38,7 @@ impl Inimigos {
             Inimigos::Rato => "Rato",
             Inimigos::Coelho => "Coelho",
             Inimigos::Cobra => "Cobra",
-            Inimigos::Lobo => "Lobo"
+            Inimigos::Lobo => "Lobo",
         }
     }
 
@@ -49,7 +49,7 @@ impl Inimigos {
             Inimigos::Rato => 5,
             Inimigos::Coelho => 8,
             Inimigos::Cobra => 12,
-            Inimigos::Lobo => 12
+            Inimigos::Lobo => 12,
         }
     }
 
@@ -60,7 +60,7 @@ impl Inimigos {
             Inimigos::Rato => 1,
             Inimigos::Coelho => 2,
             Inimigos::Cobra => 3,
-            Inimigos::Lobo => 4
+            Inimigos::Lobo => 4,
         }
     }
 
@@ -71,7 +71,7 @@ impl Inimigos {
             Inimigos::Rato => 1,
             Inimigos::Coelho => 2,
             Inimigos::Cobra => 4,
-            Inimigos::Lobo => 3
+            Inimigos::Lobo => 3,
         }
     }
 
@@ -82,7 +82,7 @@ impl Inimigos {
             Inimigos::Rato => 2,
             Inimigos::Coelho => 4,
             Inimigos::Cobra => 8,
-            Inimigos::Lobo => 8
+            Inimigos::Lobo => 8,
         }
     }
 
@@ -93,7 +93,7 @@ impl Inimigos {
             Inimigos::Rato => Itens::Defesa.get_id(),
             Inimigos::Coelho => Itens::Ataque.get_id(),
             Inimigos::Cobra => Itens::Pocao.get_id(),
-            Inimigos::Lobo => Itens::Experiencia.get_id()
+            Inimigos::Lobo => Itens::Experiencia.get_id(),
         }
     }
 
@@ -106,7 +106,7 @@ impl Inimigos {
             ataque: self.get_ataque(),
             defesa: self.get_defesa(),
             experiencia: self.get_experiencia(),
-            item: self.get_item()
+            item: self.get_item(),
         }
     }
 }

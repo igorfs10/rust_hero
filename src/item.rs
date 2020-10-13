@@ -2,7 +2,7 @@ pub struct Item {
     pub id: usize,
     pub nome: &'static str,
     pub descricao: &'static str,
-    pub efeito: u8
+    pub efeito: u8,
 }
 
 pub enum Itens {
@@ -10,7 +10,7 @@ pub enum Itens {
     Pocao,
     Ataque,
     Defesa,
-    Experiencia
+    Experiencia,
 }
 
 // Usar const trait quando lançar na versão estável
@@ -22,7 +22,7 @@ impl Itens {
             Itens::Pocao => 1,
             Itens::Ataque => 2,
             Itens::Defesa => 3,
-            Itens::Experiencia => 4
+            Itens::Experiencia => 4,
         }
     }
 
@@ -33,7 +33,7 @@ impl Itens {
             Itens::Pocao => "Poção",
             Itens::Ataque => "Mais Ataque",
             Itens::Defesa => "Mais Defesa",
-            Itens::Experiencia => "Mais Experiência"
+            Itens::Experiencia => "Mais Experiência",
         }
     }
 
@@ -44,7 +44,7 @@ impl Itens {
             Itens::Pocao => "Recupera 30% da vida.",
             Itens::Ataque => "Aumenta o ataque por 1 minuto.",
             Itens::Defesa => "Aumenta a defesa por 1 minuto.",
-            Itens::Experiencia => "Dobra a experiência ganha por 1 minuto."
+            Itens::Experiencia => "Dobra a experiência ganha por 1 minuto.",
         }
     }
 
@@ -54,7 +54,7 @@ impl Itens {
             id: self.get_id(),
             nome: self.get_nome(),
             descricao: self.get_descricao(),
-            efeito: 0
+            efeito: 0,
         }
     }
 }
@@ -64,5 +64,5 @@ pub const ITENS: [Item; 5] = [
     Itens::Pocao.make(),
     Itens::Ataque.make(),
     Itens::Defesa.make(),
-    Itens::Experiencia.make()
+    Itens::Experiencia.make(),
 ];

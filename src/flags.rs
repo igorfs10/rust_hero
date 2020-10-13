@@ -1,10 +1,10 @@
 pub enum FlagName {
     UpgradePocao,
-    UpgradeAtaque
+    UpgradeAtaque,
 }
 
 pub struct Flags {
-    flags: [bool; 2]
+    flags: [bool; 2],
 }
 
 pub trait FlagsMethods {
@@ -29,8 +29,6 @@ impl FlagsMethods for Flags {
 
 impl Default for Flags {
     fn default() -> Self {
-        Flags {
-            flags: [false; 2]
-        }
+        Flags { flags: [false; 2] }
     }
 }
