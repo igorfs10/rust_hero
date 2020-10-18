@@ -16,53 +16,51 @@ pub enum Itens {
 // Usar const trait quando lançar na versão estável
 impl Itens {
     // Id dos itens
-    pub const fn get_id(&self) -> usize {
-        match self {
-            Itens::Nenhum => 0,
-            Itens::Pocao => 1,
-            Itens::Ataque => 2,
-            Itens::Defesa => 3,
-            Itens::Experiencia => 4,
-        }
+    pub const fn get_id(self) -> usize {
+        self as usize
     }
 
-    // Nome dos itens
-    const fn get_nome(&self) -> &'static str {
+    // Monta o item
+    const fn get_item(self) -> Item {
         match self {
-            Itens::Nenhum => "",
-            Itens::Pocao => "Poção",
-            Itens::Ataque => "Mais Ataque",
-            Itens::Defesa => "Mais Defesa",
-            Itens::Experiencia => "Mais Experiência",
-        }
-    }
-
-    //Descrições dos itens
-    const fn get_descricao(&self) -> &'static str {
-        match self {
-            Itens::Nenhum => "",
-            Itens::Pocao => "Recupera 30% da vida.",
-            Itens::Ataque => "Aumenta o ataque por 1 minuto.",
-            Itens::Defesa => "Aumenta a defesa por 1 minuto.",
-            Itens::Experiencia => "Dobra a experiência ganha por 1 minuto.",
-        }
-    }
-
-    //Monta o item
-    const fn make(&self) -> Item {
-        Item {
-            id: self.get_id(),
-            nome: self.get_nome(),
-            descricao: self.get_descricao(),
-            efeito: 0,
+            Itens::Nenhum => Item {
+                id: self.get_id(),
+                nome: "",
+                descricao: "",
+                efeito: 0,
+            },
+            Itens::Pocao => Item {
+                id: self.get_id(),
+                nome: "Poção",
+                descricao: "Recupera 30% da vida.",
+                efeito: 0,
+            },
+            Itens::Ataque => Item {
+                id: self.get_id(),
+                nome: "Mais Ataque",
+                descricao: "Aumenta o ataque por 1 minuto.",
+                efeito: 0,
+            },
+            Itens::Defesa => Item {
+                id: self.get_id(),
+                nome: "Mais Defesa",
+                descricao: "Aumenta a defesa por 1 minuto.",
+                efeito: 0,
+            },
+            Itens::Experiencia => Item {
+                id: self.get_id(),
+                nome: "Mais Experiência",
+                descricao: "Dobra a experiência ganha por 1 minuto.",
+                efeito: 0,
+            },
         }
     }
 }
 
 pub const ITENS: [Item; 5] = [
-    Itens::Nenhum.make(),
-    Itens::Pocao.make(),
-    Itens::Ataque.make(),
-    Itens::Defesa.make(),
-    Itens::Experiencia.make(),
+    Itens::Nenhum.get_item(),
+    Itens::Pocao.get_item(),
+    Itens::Ataque.get_item(),
+    Itens::Defesa.get_item(),
+    Itens::Experiencia.get_item(),
 ];

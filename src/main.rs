@@ -7,7 +7,6 @@ mod flags;
 mod inimigo;
 mod item;
 mod local;
-mod login_form;
 mod save;
 mod structs;
 mod traits;
@@ -25,12 +24,11 @@ use flags::*;
 use inimigo::INIMIGOS;
 use item::ITENS;
 use local::LOCAIS;
-use login_form::*;
 use save::*;
 use structs::{Jogador, Oponente};
 
 // UI
-use orbtk::prelude::*;
+use fltk::{app::*, window::*};
 
 const COMMAND_LINE_INTERFACE: bool = false;
 
@@ -128,17 +126,11 @@ fn main() {
 
         println!("{}", save.jogador.nome);
     } else {
-        Application::new()
-            .window(|ctx| {
-                Window::new()
-                    .title(INIMIGOS[1].nome)
-                    .position((125.0, 125.0))
-                    .size(300.0, 300.0)
-                    .resizeable(false)
-                    .child(LoginForm::new().build(ctx))
-                    .build(ctx)
-            })
-            .run();
+        let app = App::default();
+        let mut wind = Window::new(100, 100, 400, 300, "Hello from rust");
+        wind.end();
+        wind.show();
+        app.run().unwrap();
     }
 }
 
@@ -158,9 +150,7 @@ fn escolher_equipamento() -> usize {
     match io::stdin().read_line(&mut input) {
         Ok(_) => match input.trim().parse::<usize>() {
             Ok(numero) => match item_nao_existe(numero, EQUIPAMENTOS.len()) {
-                Ok(_) => {
-                    numero
-                }
+                Ok(_) => numero,
                 Err(error) => {
                     println!("error: {}", error);
                     escolher_equipamento()

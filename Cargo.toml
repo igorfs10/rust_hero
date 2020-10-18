@@ -7,10 +7,10 @@ repository = "https://github.com/igorfs10/rust_hero"
 license = "gpl-v3"
 
 [dependencies]
-console = "^0.12.0"
-rand = "^0.7.3"
-chrono = "^0.4.19"
-orbtk = "0.3.1-alpha3"
+console = "^0.12"
+rand = "^0.7"
+chrono = "^0.4"
+fltk = { version = "^0.9", features = ["fltk-bundled"] }
 
 [profile.release]
 lto = true
