@@ -50,7 +50,7 @@ impl Equipamentos {
     }
 }
 
-pub const EQUIPAMENTOS: [Equipamento; 4] = [
+pub const EQUIPAMENTOS: &[Equipamento] = &[
     Equipamentos::Nenhum.get_equipamento(),
     Equipamentos::Espada.get_equipamento(),
     Equipamentos::Escudo.get_equipamento(),

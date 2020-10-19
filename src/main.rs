@@ -1,4 +1,4 @@
-#![windows_subsystem = "windows"]
+// #![windows_subsystem = "windows"]
 
 mod consts;
 mod equipamento;
@@ -30,7 +30,7 @@ use structs::{Jogador, Oponente};
 // UI
 use fltk::{app::*, window::*};
 
-const COMMAND_LINE_INTERFACE: bool = false;
+const COMMAND_LINE_INTERFACE: bool = true;
 
 fn main() {
     let save = Save::default();
@@ -80,16 +80,16 @@ fn main() {
             equipamento: 0,
             vida_total: 20,
             vida_atual: 20,
-            ataque: 0,
-            defesa: 0,
+            ataque: 1,
+            defesa: 1,
             experiencia: 0,
         };
 
         let oponente: Oponente;
         oponente = escolher_inimigo();
         jogador.equipamento = escolher_equipamento();
-        jogador.ataque = EQUIPAMENTOS[jogador.equipamento].ataque;
-        jogador.defesa = EQUIPAMENTOS[jogador.equipamento].defesa;
+        jogador.ataque += EQUIPAMENTOS[jogador.equipamento].ataque;
+        jogador.defesa += EQUIPAMENTOS[jogador.equipamento].defesa;
 
         println!("Jogador: {}", jogador.nome);
         println!("Inimigo: {}", oponente.nome);
@@ -142,7 +142,7 @@ fn escolher_equipamento() -> usize {
         EQUIPAMENTOS.len() - 1
     );
 
-    for equipamento in &EQUIPAMENTOS {
+    for equipamento in EQUIPAMENTOS {
         println!("{}: {} ", equipamento.id, equipamento.nome);
     }
 

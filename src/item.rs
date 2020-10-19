@@ -57,7 +57,7 @@ impl Itens {
     }
 }
 
-pub const ITENS: [Item; 5] = [
+pub const ITENS: &[Item] = &[
     Itens::Nenhum.get_item(),
     Itens::Pocao.get_item(),
     Itens::Ataque.get_item(),

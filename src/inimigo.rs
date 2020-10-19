@@ -77,7 +77,7 @@ impl Inimigos {
     }
 }
 
-pub const INIMIGOS: [Inimigo; 5] = [
+pub const INIMIGOS: &[Inimigo] = &[
     Inimigos::Nenhum.get_inimigo(),
     Inimigos::Rato.get_inimigo(),
     Inimigos::Coelho.get_inimigo(),

@@ -34,7 +34,7 @@ impl Locais {
     }
 }
 
-pub const LOCAIS: [Local; 3] = [
+pub const LOCAIS: &[Local] = &[
     Locais::Nenhum.get_local(),
     Locais::Cidade.get_local(),
     Locais::Floresta.get_local(),
