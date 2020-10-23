@@ -28,9 +28,9 @@ use save::*;
 use structs::{Jogador, Oponente};
 
 // UI
-use fltk::{app::*, window::*};
+use fltk::{app::*, button::*, frame::*, window::*, menu::*};
 
-const COMMAND_LINE_INTERFACE: bool = true;
+const COMMAND_LINE_INTERFACE: bool = false;
 
 fn main() {
     let save = Save::default();
@@ -126,16 +126,51 @@ fn main() {
 
         println!("{}", save.jogador.nome);
     } else {
-        let app = App::default();
-        let mut wind = Window::new(100, 100, 400, 300, "Hello from rust");
-        wind.end();
-        wind.show();
+        let app = App::default().with_scheme(AppScheme::Gtk);
+        let mut janela = Window::default()
+            .with_size(300, 500)
+            .center_screen()
+            .with_label("Rust Hero");
+
+        let mut frame = Frame::default()
+            .with_size(300, 50)
+            .with_label("Rust Hero");
+
+        frame.set_color(Color::from_u32(0xaaaaaa));
+        frame.set_label_size(30);
+        frame.set_frame(FrameType::DownBox);
+
+        let mut botao = Button::default()
+            .with_size(100, 50)
+            .below_of(&frame, 0)
+            .with_label("Novo jogo");
+
+        botao.set_color(Color::from_u32(0x2e7d32));
+
+        let mut botao_salvar = Button::default()
+            .size_of(&botao)
+            .right_of(&botao, 0)
+            .with_label("Carregar");
+
+        botao_salvar.set_color(Color::from_u32(0x1565c032));
+
+        botao.set_callback(Box::new(|| {
+            let v = vec!["1st val", "2nd val", "3rd val"];
+            let mut x = MenuItem::new(&v);
+            match x.popup(100, 100) {
+                None => println!("No value was chosen!"),
+                Some(val) => println!("{}", val.label().unwrap()),
+            }
+        }));
+
+        janela.make_resizable(false);
+        janela.end();
+        janela.show();
         app.run().unwrap();
     }
 }
 
 fn escolher_equipamento() -> usize {
-    #[cfg(not(debug_assertions))]
     limpar_terminal();
     println!(
         "Digite um número para escolher o equipamento (0-{}):\n",
@@ -186,7 +221,6 @@ fn limpar_terminal() {
 
 #[cfg(test)]
 mod test {
-
     #[test]
     fn tes() {
         assert_eq!(2 + 2, 4);
