@@ -29,8 +29,10 @@ use structs::{jogador::Jogador, oponente::Oponente};
 use fltk::{app::*, button::*, frame::*, menu::*, window::*};
 
 const COMMAND_LINE_INTERFACE: bool = true;
+const TESTE: &str = include_str!("conteudo/teste.txt");
 
 fn main() {
+    println!("{}", TESTE);
     let save = Save::default();
     let utc: DateTime<Utc> = Utc::now();
     if COMMAND_LINE_INTERFACE {
@@ -74,7 +76,7 @@ fn main() {
         );
 
         let mut jogador: Jogador = Jogador {
-            nome: String::from("Teste"),
+            nome: String::from(TESTE),
             equipamento: 0,
             vida_total: 20,
             vida_atual: 20,
