@@ -2,7 +2,7 @@ use crate::flags;
 use crate::structs;
 
 use flags::Flags;
-use structs::Jogador;
+use structs::jogador::Jogador;
 
 // Arquivo para criação do sistema de save
 pub struct Save {

@@ -1,14 +1,5 @@
-use crate::item::Itens;
-
-pub struct Inimigo {
-    pub id: usize,
-    pub nome: &'static str,
-    pub vida: u8,
-    pub ataque: u8,
-    pub defesa: u8,
-    pub experiencia: u16,
-    pub item: usize,
-}
+use super::itens::Itens;
+use crate::structs::inimigo::Inimigo;
 
 pub enum Inimigos {
     Nenhum,
@@ -35,7 +26,7 @@ impl Inimigos {
                 ataque: 0,
                 defesa: 0,
                 experiencia: 0,
-                item: Itens::Nenhum.get_id(),
+                item: Itens::Nenhum,
             },
             Inimigos::Rato => Inimigo {
                 id: self.get_id(),
@@ -44,7 +35,7 @@ impl Inimigos {
                 ataque: 1,
                 defesa: 1,
                 experiencia: 2,
-                item: Itens::Defesa.get_id(),
+                item: Itens::Defesa,
             },
             Inimigos::Coelho => Inimigo {
                 id: self.get_id(),
@@ -53,7 +44,7 @@ impl Inimigos {
                 ataque: 2,
                 defesa: 2,
                 experiencia: 4,
-                item: Itens::Ataque.get_id(),
+                item: Itens::Ataque,
             },
             Inimigos::Cobra => Inimigo {
                 id: self.get_id(),
@@ -62,7 +53,7 @@ impl Inimigos {
                 ataque: 3,
                 defesa: 4,
                 experiencia: 8,
-                item: Itens::Pocao.get_id(),
+                item: Itens::Pocao,
             },
             Inimigos::Lobo => Inimigo {
                 id: self.get_id(),
@@ -71,7 +62,7 @@ impl Inimigos {
                 ataque: 4,
                 defesa: 3,
                 experiencia: 8,
-                item: Itens::Experiencia.get_id(),
+                item: Itens::Experiencia,
             },
         }
     }

@@ -1,7 +1,4 @@
-pub struct Local {
-    pub id: usize,
-    pub nome: &'static str,
-}
+use crate::structs::local::Local;
 
 pub enum Locais {
     Nenhum,

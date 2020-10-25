@@ -1,12 +1,10 @@
+//Remove tela de linha de comando
 // #![windows_subsystem = "windows"]
 
 mod consts;
-mod equipamento;
+mod dados;
 mod erros;
 mod flags;
-mod inimigo;
-mod item;
-mod local;
 mod save;
 mod structs;
 mod traits;
@@ -18,19 +16,19 @@ use rand::{Rng, SeedableRng};
 use std::io;
 
 use consts::*;
-use equipamento::EQUIPAMENTOS;
+use dados::equipamentos::EQUIPAMENTOS;
+use dados::inimigos::INIMIGOS;
+use dados::itens::ITENS;
+use dados::locais::LOCAIS;
 use erros::*;
 use flags::*;
-use inimigo::INIMIGOS;
-use item::ITENS;
-use local::LOCAIS;
 use save::*;
-use structs::{Jogador, Oponente};
+use structs::{jogador::Jogador, oponente::Oponente};
 
 // UI
-use fltk::{app::*, button::*, frame::*, window::*, menu::*};
+use fltk::{app::*, button::*, frame::*, menu::*, window::*};
 
-const COMMAND_LINE_INTERFACE: bool = false;
+const COMMAND_LINE_INTERFACE: bool = true;
 
 fn main() {
     let save = Save::default();
@@ -104,7 +102,8 @@ fn main() {
             println!("{}\n", inimigo.nome);
             println!("Vida: {}", inimigo.vida);
             println!("Ataque: {}", inimigo.ataque);
-            println!("Defesa: {}\n\n", inimigo.defesa);
+            println!("Defesa: {}", inimigo.defesa);
+            println!("Item: {}\n\n", ITENS[inimigo.item.get_id()].nome);
         }
 
         println!("-----EQUIPAMENTOS-----");
@@ -126,15 +125,13 @@ fn main() {
 
         println!("{}", save.jogador.nome);
     } else {
-        let app = App::default().with_scheme(AppScheme::Gtk);
+        let app = App::default().with_scheme(AppScheme::Plastic);
         let mut janela = Window::default()
             .with_size(300, 500)
             .center_screen()
             .with_label("Rust Hero");
 
-        let mut frame = Frame::default()
-            .with_size(300, 50)
-            .with_label("Rust Hero");
+        let mut frame = Frame::default().with_size(300, 50).with_label("Rust Hero");
 
         frame.set_color(Color::from_u32(0xaaaaaa));
         frame.set_label_size(30);

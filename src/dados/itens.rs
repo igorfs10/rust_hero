@@ -1,10 +1,6 @@
-pub struct Item {
-    pub id: usize,
-    pub nome: &'static str,
-    pub descricao: &'static str,
-    pub efeito: u8,
-}
+use crate::structs::item::Item;
 
+#[derive(Copy, Clone)]
 pub enum Itens {
     Nenhum,
     Pocao,

@@ -1,9 +1,4 @@
-pub struct Equipamento {
-    pub id: usize,
-    pub nome: &'static str,
-    pub ataque: u8,
-    pub defesa: u8,
-}
+use crate::structs::equipamento::Equipamento;
 
 pub enum Equipamentos {
     Nenhum,
