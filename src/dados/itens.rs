@@ -1,6 +1,6 @@
 use crate::structs::item::Item;
 
-#[derive(Copy, Clone)]
+#[derive(Clone)]
 pub enum Itens {
     Nenhum,
     Pocao,

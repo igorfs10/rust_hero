@@ -105,7 +105,7 @@ fn main() {
             println!("Vida: {}", inimigo.vida);
             println!("Ataque: {}", inimigo.ataque);
             println!("Defesa: {}", inimigo.defesa);
-            println!("Item: {}\n\n", ITENS[inimigo.item.get_id()].nome);
+            println!("Item: {}\n\n", ITENS[inimigo.item.clone().get_id()].nome);
         }
 
         println!("-----EQUIPAMENTOS-----");
