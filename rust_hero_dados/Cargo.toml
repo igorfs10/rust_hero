@@ -7,5 +7,5 @@ repository = "https://github.com/igorfs10/rust_hero"
 license-file = "LICENSE"
 readme = "README.md"
 
-[lib]
-crate-type = ["cdylib", "rlib"]
+# [lib]
+# crate-type = ["cdylib", "rlib"]

@@ -75,7 +75,7 @@ fn main() {
         );
 
         let mut jogador: Jogador = Jogador {
-            nome: String::from(TESTE),
+            nome: String::from(TESTE.lines().nth(0).unwrap()),
             equipamento: 0,
             vida_total: 20,
             vida_atual: 20,
