@@ -1,29 +1,26 @@
 //Remove tela de linha de comando
 // #![windows_subsystem = "windows"]
 
-mod consts;
-mod dados;
-mod erros;
-mod flags;
-mod save;
-mod structs;
-mod traits;
+mod cl_ui;
 
-use chrono::prelude::*;
-use console::Term;
-use rand::prelude::*;
-use rand::{Rng, SeedableRng};
 use std::io;
 
-use consts::*;
-use dados::equipamentos::EQUIPAMENTOS;
-use dados::inimigos::INIMIGOS;
-use dados::itens::ITENS;
-use dados::locais::LOCAIS;
-use erros::*;
-use flags::*;
-use save::*;
-use structs::{jogador::Jogador, oponente::Oponente};
+use chrono::prelude::*;
+use rand::prelude::*;
+use rand::{Rng, SeedableRng};
+
+use crate::cl_ui::limpar_terminal;
+use rust_hero_dados::consts::*;
+use rust_hero_dados::dados::equipamentos::EQUIPAMENTOS;
+use rust_hero_dados::dados::flags::Flags;
+use rust_hero_dados::dados::inimigos::INIMIGOS;
+use rust_hero_dados::dados::itens::ITENS;
+use rust_hero_dados::dados::locais::LOCAIS;
+use rust_hero_dados::erros::*;
+use rust_hero_dados::save::*;
+use rust_hero_dados::structs::flag::*;
+use rust_hero_dados::structs::{jogador::Jogador, oponente::Oponente};
+use rust_hero_dados::traits::flags_trait::FlagsTrait;
 
 // UI
 use fltk::{app::*, button::*, frame::*, menu::*, window::*};
@@ -32,11 +29,13 @@ const COMMAND_LINE_INTERFACE: bool = true;
 const TESTE: &str = include_str!("conteudo/teste.txt");
 
 fn main() {
+    let ve = TESTE.lines().nth(1).unwrap();
     println!("{}", TESTE);
     let save = Save::default();
     let utc: DateTime<Utc> = Utc::now();
     if COMMAND_LINE_INTERFACE {
         limpar_terminal();
+        println!("{}", ve);
         println!("{}", utc.second());
 
         // Aleatório com seed definido
@@ -65,14 +64,14 @@ fn main() {
         nums.shuffle(&mut rng);
         println!("I shuffled my {:?}", nums);
 
-        let mut flags_jogo: Flags = Flags::default();
-        flags_jogo.set_flag(FlagName::UpgradePocao);
-        flags_jogo.set_flag(FlagName::UpgradeAtaque);
-        flags_jogo.clear_flag(FlagName::UpgradePocao);
+        let mut flags_jogo: Flag = Flag::default();
+        flags_jogo.set_flag(Flags::UpgradePocao);
+        flags_jogo.set_flag(Flags::UpgradeAtaque);
+        flags_jogo.clear_flag(Flags::UpgradePocao);
         println!(
             "Flag pocao: {}\nFlag ataque: {}",
-            flags_jogo.check_flag(FlagName::UpgradePocao),
-            flags_jogo.check_flag(FlagName::UpgradeAtaque)
+            flags_jogo.check_flag(Flags::UpgradePocao),
+            flags_jogo.check_flag(Flags::UpgradeAtaque)
         );
 
         let mut jogador: Jogador = Jogador {
@@ -211,11 +210,6 @@ fn escolher_inimigo() -> Oponente {
         defesa: INIMIGOS[1].defesa,
         experiencia: INIMIGOS[1].experiencia,
     }
-}
-
-fn limpar_terminal() {
-    let term = Term::stdout();
-    let _ = term.clear_screen();
 }
 
 #[cfg(test)]

@@ -1,6 +1,7 @@
 use super::itens::Itens;
 use crate::structs::inimigo::Inimigo;
 
+#[derive(Clone)]
 pub enum Inimigos {
     Nenhum,
     Rato,

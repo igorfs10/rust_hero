@@ -1,7 +1,6 @@
-use crate::flags;
 use crate::structs;
 
-use flags::Flags;
+use structs::flag::Flag;
 use structs::jogador::Jogador;
 
 // Arquivo para criação do sistema de save
@@ -11,7 +10,7 @@ pub struct Save {
     pub item_ataque: u8,
     pub item_defesa: u8,
     pub item_experiencia: u8,
-    pub flags: Flags,
+    pub flags: Flag,
 }
 
 impl Default for Save {
@@ -22,7 +21,7 @@ impl Default for Save {
             item_ataque: 5,
             item_defesa: 5,
             item_experiencia: 5,
-            flags: Flags::default(),
+            flags: Flag::default(),
         }
     }
 }
