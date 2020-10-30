@@ -1,5 +1,6 @@
 use crate::structs::equipamento::Equipamento;
 
+#[derive(Copy, Clone)]
 pub enum Equipamentos {
     Nenhum,
     Espada,
@@ -45,9 +46,9 @@ impl Equipamentos {
     }
 }
 
-pub const EQUIPAMENTOS: &[Equipamento] = &[
-    Equipamentos::Nenhum.get_equipamento(),
-    Equipamentos::Espada.get_equipamento(),
-    Equipamentos::Escudo.get_equipamento(),
-    Equipamentos::Bastao.get_equipamento(),
+pub const EQUIPAMENTOS: &[Equipamentos] = &[
+    Equipamentos::Nenhum,
+    Equipamentos::Espada,
+    Equipamentos::Escudo,
+    Equipamentos::Bastao,
 ];

@@ -1,6 +1,7 @@
 use super::inimigos::Inimigos;
 use crate::structs::local::Local;
 
+#[derive(Copy, Clone)]
 pub enum Locais {
     Nenhum,
     Cidade,
@@ -14,7 +15,7 @@ impl Locais {
     }
 
     // Monta o Local
-    const fn get_local(self) -> Local {
+    pub const fn get_local(self) -> Local {
         match self {
             Locais::Nenhum => Local {
                 id: self.get_id(),
@@ -50,8 +51,8 @@ impl Locais {
     }
 }
 
-pub const LOCAIS: &[Local] = &[
-    Locais::Nenhum.get_local(),
-    Locais::Cidade.get_local(),
-    Locais::Floresta.get_local(),
+pub const LOCAIS: &[Locais] = &[
+    Locais::Nenhum,
+    Locais::Cidade,
+    Locais::Floresta,
 ];

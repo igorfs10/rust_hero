@@ -1,5 +1,6 @@
-// Implementar quando lançarem traits constantes
-pub trait Dados {
-    fn get_id(self) -> usize;
-    fn get_nome(&self) -> &str;
+pub trait DadosTrait {
+    fn mostrar_dados(&self) -> String;
+    
+    // Implementar quando lançarem traits constantes
+    // fn get_id(&self) -> usize;
 }

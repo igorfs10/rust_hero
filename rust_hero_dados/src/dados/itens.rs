@@ -1,6 +1,6 @@
 use crate::structs::item::Item;
 
-#[derive(Clone)]
+#[derive(Copy, Clone)]
 pub enum Itens {
     Nenhum,
     Pocao,
@@ -17,7 +17,7 @@ impl Itens {
     }
 
     // Monta o item
-    const fn get_item(self) -> Item {
+    pub const fn get_item(self) -> Item {
         match self {
             Itens::Nenhum => Item {
                 id: self.get_id(),
@@ -53,10 +53,10 @@ impl Itens {
     }
 }
 
-pub const ITENS: &[Item] = &[
-    Itens::Nenhum.get_item(),
-    Itens::Pocao.get_item(),
-    Itens::Ataque.get_item(),
-    Itens::Defesa.get_item(),
-    Itens::Experiencia.get_item(),
+pub const ITENS: &[Itens] = &[
+    Itens::Nenhum,
+    Itens::Pocao,
+    Itens::Ataque,
+    Itens::Defesa,
+    Itens::Experiencia,
 ];

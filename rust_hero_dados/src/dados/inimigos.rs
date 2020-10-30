@@ -1,7 +1,7 @@
 use super::itens::Itens;
 use crate::structs::inimigo::Inimigo;
 
-#[derive(Clone)]
+#[derive(Copy, Clone)]
 pub enum Inimigos {
     Nenhum,
     Rato,
@@ -18,7 +18,7 @@ impl Inimigos {
     }
 
     // Monta o inimigo
-    const fn get_inimigo(self) -> Inimigo {
+    pub const fn get_inimigo(self) -> Inimigo {
         match self {
             Inimigos::Nenhum => Inimigo {
                 id: self.get_id(),
@@ -69,10 +69,10 @@ impl Inimigos {
     }
 }
 
-pub const INIMIGOS: &[Inimigo] = &[
-    Inimigos::Nenhum.get_inimigo(),
-    Inimigos::Rato.get_inimigo(),
-    Inimigos::Coelho.get_inimigo(),
-    Inimigos::Cobra.get_inimigo(),
-    Inimigos::Lobo.get_inimigo(),
+pub const INIMIGOS: &[Inimigos] = &[
+    Inimigos::Nenhum,
+    Inimigos::Rato,
+    Inimigos::Coelho,
+    Inimigos::Cobra,
+    Inimigos::Lobo,
 ];

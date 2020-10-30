@@ -21,6 +21,7 @@ use rust_hero_dados::save::*;
 use rust_hero_dados::structs::flag::*;
 use rust_hero_dados::structs::{jogador::Jogador, oponente::Oponente};
 use rust_hero_dados::traits::flags_trait::FlagsTrait;
+use rust_hero_dados::traits::dados_trait::DadosTrait;
 
 // UI
 use fltk::{app::*, button::*, frame::*, menu::*, window::*};
@@ -29,12 +30,12 @@ const COMMAND_LINE_INTERFACE: bool = true;
 const TESTE: &str = include_str!("conteudo/teste.txt");
 
 fn main() {
+    limpar_terminal();
     let ve = TESTE.lines().nth(1).unwrap();
     println!("{}", TESTE);
     let save = Save::default();
     let utc: DateTime<Utc> = Utc::now();
     if COMMAND_LINE_INTERFACE {
-        limpar_terminal();
         println!("{}", ve);
         println!("{}", utc.second());
 
@@ -87,41 +88,32 @@ fn main() {
         let oponente: Oponente;
         oponente = escolher_inimigo();
         jogador.equipamento = escolher_equipamento();
-        jogador.ataque += EQUIPAMENTOS[jogador.equipamento].ataque;
-        jogador.defesa += EQUIPAMENTOS[jogador.equipamento].defesa;
+        jogador.ataque += EQUIPAMENTOS[jogador.equipamento].get_equipamento().ataque;
+        jogador.defesa += EQUIPAMENTOS[jogador.equipamento].get_equipamento().defesa;
 
         println!("Jogador: {}", jogador.nome);
         println!("Inimigo: {}", oponente.nome);
 
         println!("-----LOCAIS-----");
         for local in LOCAIS.iter() {
-            println!("Nome: {}\n\n", local.nome);
+            println!("{}\n", local.get_local().mostrar_dados());
         }
 
         println!("-----INIMIGOS-----");
         for inimigo in INIMIGOS.iter() {
-            println!("{}\n", inimigo.nome);
-            println!("Vida: {}", inimigo.vida);
-            println!("Ataque: {}", inimigo.ataque);
-            println!("Defesa: {}", inimigo.defesa);
-            println!("Item: {}\n\n", ITENS[inimigo.item.clone().get_id()].nome);
+            println!("{}\n", inimigo.get_inimigo().mostrar_dados());
         }
+
+        println!("Ataque critico: {}\n\n", MULTIPLICADOR_CRITICO);
 
         println!("-----EQUIPAMENTOS-----");
         for equipamento in EQUIPAMENTOS.iter() {
-            println!("{}\n", equipamento.nome);
-            println!("Ataque: {}", equipamento.ataque);
-            println!(
-                "Ataque crítico: {}",
-                equipamento.ataque * MULTIPLICADOR_CRITICO
-            );
-            println!("Defesa: {}\n\n", equipamento.defesa);
+            println!("{}\n", equipamento.get_equipamento().mostrar_dados());
         }
 
         println!("-----ITENS-----");
         for item in ITENS.iter() {
-            println!("{}\n", item.nome);
-            println!("Descrição: {}\n\n", item.descricao);
+            println!("{}\n", item.get_item().mostrar_dados());
         }
 
         println!("{}", save.jogador.nome);
@@ -176,7 +168,7 @@ fn escolher_equipamento() -> usize {
     );
 
     for equipamento in EQUIPAMENTOS {
-        println!("{}: {} ", equipamento.id, equipamento.nome);
+        println!("{}: {} ", equipamento.get_equipamento().id, equipamento.get_equipamento().nome);
     }
 
     let mut input = String::new();
@@ -203,12 +195,12 @@ fn escolher_equipamento() -> usize {
 
 fn escolher_inimigo() -> Oponente {
     Oponente {
-        nome: INIMIGOS[1].nome.to_string(),
-        vida_total: INIMIGOS[1].vida,
-        vida_atual: INIMIGOS[1].vida,
-        ataque: INIMIGOS[1].ataque,
-        defesa: INIMIGOS[1].defesa,
-        experiencia: INIMIGOS[1].experiencia,
+        nome: INIMIGOS[1].get_inimigo().nome.to_string(),
+        vida_total: INIMIGOS[1].get_inimigo().vida,
+        vida_atual: INIMIGOS[1].get_inimigo().vida,
+        ataque: INIMIGOS[1].get_inimigo().ataque,
+        defesa: INIMIGOS[1].get_inimigo().defesa,
+        experiencia: INIMIGOS[1].get_inimigo().experiencia,
     }
 }
 
