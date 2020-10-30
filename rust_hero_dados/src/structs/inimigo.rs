@@ -13,7 +13,8 @@ pub struct Inimigo {
 
 impl DadosTrait for Inimigo {
     fn mostrar_dados(&self) -> String {
-        format!("{}\nID: {}\nVida: {}\nAtaque: {}\nDefesa: {}\nExperiência: {}\nItem: {}",
+        format!(
+            "{}\nID: {}\nVida: {}\nAtaque: {}\nDefesa: {}\nExperiência: {}\nItem: {}",
             self.nome,
             self.id,
             self.vida,

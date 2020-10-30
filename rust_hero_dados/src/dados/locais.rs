@@ -51,8 +51,4 @@ impl Locais {
     }
 }
 
-pub const LOCAIS: &[Locais] = &[
-    Locais::Nenhum,
-    Locais::Cidade,
-    Locais::Floresta,
-];
+pub const LOCAIS: &[Locais] = &[Locais::Nenhum, Locais::Cidade, Locais::Floresta];

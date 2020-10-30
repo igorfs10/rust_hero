@@ -6,8 +6,11 @@ pub struct Equipamento {
     pub defesa: u8,
 }
 
-impl DadosTrait for Equipamento{
+impl DadosTrait for Equipamento {
     fn mostrar_dados(&self) -> String {
-        format!("{}\nID: {}\nAtaque: {}\nDefesa: {}", self.nome, self.id, self.ataque, self.defesa)
+        format!(
+            "{}\nID: {}\nAtaque: {}\nDefesa: {}",
+            self.nome, self.id, self.ataque, self.defesa
+        )
     }
 }

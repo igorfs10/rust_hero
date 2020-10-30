@@ -1,2 +1,2 @@
-pub mod flags_trait;
 pub mod dados_trait;
+pub mod flags_trait;

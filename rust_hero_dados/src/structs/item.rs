@@ -7,8 +7,11 @@ pub struct Item {
     pub efeito: u8,
 }
 
-impl DadosTrait for Item{
+impl DadosTrait for Item {
     fn mostrar_dados(&self) -> String {
-        format!("{}\nId: {}\nDescrição: {}\n", self.nome, self.id, self.descricao)
+        format!(
+            "{}\nId: {}\nDescrição: {}\n",
+            self.nome, self.id, self.descricao
+        )
     }
 }

@@ -7,13 +7,15 @@ pub struct Local {
     pub inimigos: [Inimigos; 4],
 }
 
-impl DadosTrait for Local{
+impl DadosTrait for Local {
     fn mostrar_dados(&self) -> String {
         let mut nome_inimigos = String::from("");
         for inimigo in self.inimigos.iter() {
             match inimigo {
                 Inimigos::Nenhum => {}
-                _ =>{ nome_inimigos.push_str(&format!("\n{}", inimigo.get_inimigo().nome)); }
+                _ => {
+                    nome_inimigos.push_str(&format!("\n{}", inimigo.get_inimigo().nome));
+                }
             }
         }
         format!("{}\nID: {}\nInimigos:{}", self.nome, self.id, nome_inimigos)

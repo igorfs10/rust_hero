@@ -20,8 +20,8 @@ use rust_hero_dados::erros::*;
 use rust_hero_dados::save::*;
 use rust_hero_dados::structs::flag::*;
 use rust_hero_dados::structs::{jogador::Jogador, oponente::Oponente};
-use rust_hero_dados::traits::flags_trait::FlagsTrait;
 use rust_hero_dados::traits::dados_trait::DadosTrait;
+use rust_hero_dados::traits::flags_trait::FlagsTrait;
 
 // UI
 use fltk::{app::*, button::*, frame::*, menu::*, window::*};
@@ -76,7 +76,7 @@ fn main() {
         );
 
         let mut jogador: Jogador = Jogador {
-            nome: String::from(TESTE.lines().nth(0).unwrap()),
+            nome: String::from(TESTE.lines().nth(1).unwrap()),
             equipamento: 0,
             vida_total: 20,
             vida_atual: 20,
@@ -168,7 +168,11 @@ fn escolher_equipamento() -> usize {
     );
 
     for equipamento in EQUIPAMENTOS {
-        println!("{}: {} ", equipamento.get_equipamento().id, equipamento.get_equipamento().nome);
+        println!(
+            "{}: {} ",
+            equipamento.get_equipamento().id,
+            equipamento.get_equipamento().nome
+        );
     }
 
     let mut input = String::new();
