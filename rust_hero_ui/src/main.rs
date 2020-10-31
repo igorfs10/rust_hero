@@ -9,7 +9,7 @@ use chrono::prelude::*;
 use rand::prelude::*;
 use rand::{Rng, SeedableRng};
 
-use crate::cl_ui::limpar_terminal;
+use crate::cl_ui::{limpar_terminal, mostrar_dados};
 use rust_hero_dados::consts::*;
 use rust_hero_dados::dados::equipamentos::EQUIPAMENTOS;
 use rust_hero_dados::dados::flags::Flags;
@@ -20,7 +20,6 @@ use rust_hero_dados::erros::*;
 use rust_hero_dados::save::*;
 use rust_hero_dados::structs::flag::*;
 use rust_hero_dados::structs::{jogador::Jogador, oponente::Oponente};
-use rust_hero_dados::traits::dados_trait::DadosTrait;
 use rust_hero_dados::traits::flags_trait::FlagsTrait;
 
 // UI
@@ -96,24 +95,24 @@ fn main() {
 
         println!("-----LOCAIS-----");
         for local in LOCAIS.iter() {
-            println!("{}\n", local.get_local().mostrar_dados());
+            mostrar_dados(local.get_local());
         }
 
         println!("-----INIMIGOS-----");
         for inimigo in INIMIGOS.iter() {
-            println!("{}\n", inimigo.get_inimigo().mostrar_dados());
+            mostrar_dados(inimigo.get_inimigo());
         }
 
         println!("Ataque critico: {}\n\n", MULTIPLICADOR_CRITICO);
 
         println!("-----EQUIPAMENTOS-----");
         for equipamento in EQUIPAMENTOS.iter() {
-            println!("{}\n", equipamento.get_equipamento().mostrar_dados());
+            mostrar_dados(equipamento.get_equipamento());
         }
 
         println!("-----ITENS-----");
         for item in ITENS.iter() {
-            println!("{}\n", item.get_item().mostrar_dados());
+            mostrar_dados(item.get_item());
         }
 
         println!("{}", save.jogador.nome);

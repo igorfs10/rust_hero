@@ -8,7 +8,7 @@ pub struct Local {
 }
 
 impl DadosTrait for Local {
-    fn mostrar_dados(&self) -> String {
+    fn get_dados(&self) -> String {
         let mut nome_inimigos = String::from("");
         for inimigo in self.inimigos.iter() {
             match inimigo {

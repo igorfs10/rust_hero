@@ -8,9 +8,9 @@ pub struct Item {
 }
 
 impl DadosTrait for Item {
-    fn mostrar_dados(&self) -> String {
+    fn get_dados(&self) -> String {
         format!(
-            "{}\nId: {}\nDescrição: {}\n",
+            "{}\nId: {}\nDescrição: {}",
             self.nome, self.id, self.descricao
         )
     }
