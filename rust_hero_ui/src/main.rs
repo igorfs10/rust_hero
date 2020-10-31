@@ -207,11 +207,3 @@ fn escolher_inimigo() -> Oponente {
         experiencia: INIMIGOS[1].get_inimigo().experiencia,
     }
 }
-
-#[cfg(test)]
-mod test {
-    #[test]
-    fn tes() {
-        assert_eq!(2 + 2, 4);
-    }
-}
