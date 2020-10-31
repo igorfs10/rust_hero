@@ -29,7 +29,7 @@ mod test {
     }
 
     #[test]
-    fn ataque_menor_defesa(){
+    fn ataque_menor_defesa() {
         let ataque = 1;
         let defesa = 3;
         let mut vida = 10;
@@ -38,7 +38,7 @@ mod test {
     }
 
     #[test]
-    fn ataque_menor_defesa_critico(){
+    fn ataque_menor_defesa_critico() {
         let ataque = 1;
         let defesa = 3;
         let mut vida = 10;
@@ -47,7 +47,7 @@ mod test {
     }
 
     #[test]
-    fn ataque_maior_defesa(){
+    fn ataque_maior_defesa() {
         let ataque = 3;
         let defesa = 1;
         let mut vida = 10;
@@ -56,7 +56,7 @@ mod test {
     }
 
     #[test]
-    fn ataque_maior_defesa_critico(){
+    fn ataque_maior_defesa_critico() {
         let ataque = 3;
         let defesa = 1;
         let mut vida = 10;
