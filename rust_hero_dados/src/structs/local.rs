@@ -4,20 +4,22 @@ use crate::traits::dados_trait::DadosTrait;
 pub struct Local {
     pub id: usize,
     pub nome: &'static str,
-    pub inimigos: [Inimigos; 4],
+    pub inimigos: Option<[Inimigos; 4]>,
 }
 
 impl DadosTrait for Local {
     fn get_dados(&self) -> String {
-        let mut nome_inimigos = String::from("");
-        for inimigo in self.inimigos.iter() {
-            match inimigo {
-                Inimigos::Nenhum => {}
-                _ => {
+        let mut dados = format!("{}\nID: {}", self.nome, self.id);
+        match self.inimigos {
+            Some(inimigos) => {
+                let mut nome_inimigos = String::from("\nInimigos:");
+                for inimigo in inimigos.iter() {
                     nome_inimigos.push_str(&format!("\n{}", inimigo.get_inimigo().nome));
                 }
+                dados.push_str(&nome_inimigos);
+                dados
             }
+            None => dados,
         }
-        format!("{}\nID: {}\nInimigos:{}", self.nome, self.id, nome_inimigos)
     }
 }

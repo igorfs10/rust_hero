@@ -22,12 +22,12 @@ impl Inimigos {
         match self {
             Inimigos::Nenhum => Inimigo {
                 id: self.get_id(),
-                nome: "",
+                nome: "???",
                 vida: 0,
                 ataque: 0,
                 defesa: 0,
                 experiencia: 0,
-                item: Itens::Nenhum,
+                item: None,
             },
             Inimigos::Rato => Inimigo {
                 id: self.get_id(),
@@ -36,7 +36,7 @@ impl Inimigos {
                 ataque: 1,
                 defesa: 1,
                 experiencia: 2,
-                item: Itens::Defesa,
+                item: Some(Itens::Defesa),
             },
             Inimigos::Coelho => Inimigo {
                 id: self.get_id(),
@@ -45,7 +45,7 @@ impl Inimigos {
                 ataque: 2,
                 defesa: 2,
                 experiencia: 4,
-                item: Itens::Ataque,
+                item: Some(Itens::Ataque),
             },
             Inimigos::Cobra => Inimigo {
                 id: self.get_id(),
@@ -54,7 +54,7 @@ impl Inimigos {
                 ataque: 3,
                 defesa: 4,
                 experiencia: 8,
-                item: Itens::Pocao,
+                item: Some(Itens::Pocao),
             },
             Inimigos::Lobo => Inimigo {
                 id: self.get_id(),
@@ -63,7 +63,7 @@ impl Inimigos {
                 ataque: 4,
                 defesa: 3,
                 experiencia: 8,
-                item: Itens::Experiencia,
+                item: Some(Itens::Experiencia),
             },
         }
     }

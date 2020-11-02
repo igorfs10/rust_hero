@@ -11,15 +11,16 @@ use rand::{Rng, SeedableRng};
 
 use crate::cl_ui::{limpar_terminal, mostrar_dados};
 use rust_hero_dados::consts::*;
-use rust_hero_dados::dados::equipamentos::EQUIPAMENTOS;
+use rust_hero_dados::dados::equipamentos::{Equipamentos, EQUIPAMENTOS};
 use rust_hero_dados::dados::flags::Flags;
 use rust_hero_dados::dados::inimigos::INIMIGOS;
 use rust_hero_dados::dados::itens::ITENS;
 use rust_hero_dados::dados::locais::LOCAIS;
 use rust_hero_dados::erros::*;
+use rust_hero_dados::jogo::match_equipamento;
 use rust_hero_dados::save::*;
 use rust_hero_dados::structs::flag::*;
-use rust_hero_dados::structs::{jogador::Jogador, oponente::Oponente};
+use rust_hero_dados::structs::personagem::Personagem;
 use rust_hero_dados::traits::flags_trait::FlagsTrait;
 
 // UI
@@ -32,7 +33,7 @@ fn main() {
     limpar_terminal();
     let ve = TESTE.lines().nth(1).unwrap();
     println!("{}", TESTE);
-    let save = Save::default();
+    let mut save = Save::default();
     let utc: DateTime<Utc> = Utc::now();
     if COMMAND_LINE_INTERFACE {
         println!("{}", ve);
@@ -74,9 +75,8 @@ fn main() {
             flags_jogo.check_flag(Flags::UpgradeAtaque)
         );
 
-        let mut jogador: Jogador = Jogador {
+        let mut jogador: Personagem = Personagem {
             nome: String::from(TESTE.lines().nth(1).unwrap()),
-            equipamento: 0,
             vida_total: 20,
             vida_atual: 20,
             ataque: 1,
@@ -84,11 +84,13 @@ fn main() {
             experiencia: 0,
         };
 
-        let oponente: Oponente;
+        let oponente: Personagem;
         oponente = escolher_inimigo();
-        jogador.equipamento = escolher_equipamento();
-        jogador.ataque += EQUIPAMENTOS[jogador.equipamento].get_equipamento().ataque;
-        jogador.defesa += EQUIPAMENTOS[jogador.equipamento].get_equipamento().defesa;
+        save.equipamento = escolher_equipamento();
+        jogador.ataque += EQUIPAMENTOS[save.equipamento.get_id()]
+            .get_equipamento()
+            .ataque;
+        jogador.defesa += save.equipamento.get_equipamento().defesa;
 
         println!("Jogador: {}", jogador.nome);
         println!("Inimigo: {}", oponente.nome);
@@ -159,7 +161,7 @@ fn main() {
     }
 }
 
-fn escolher_equipamento() -> usize {
+fn escolher_equipamento() -> Equipamentos {
     limpar_terminal();
     println!(
         "Digite um número para escolher o equipamento (0-{}):\n",
@@ -178,7 +180,7 @@ fn escolher_equipamento() -> usize {
     match io::stdin().read_line(&mut input) {
         Ok(_) => match input.trim().parse::<usize>() {
             Ok(numero) => match item_nao_existe(numero, EQUIPAMENTOS.len()) {
-                Ok(_) => numero,
+                Ok(_) => match_equipamento(numero),
                 Err(error) => {
                     println!("error: {}", error);
                     escolher_equipamento()
@@ -196,8 +198,8 @@ fn escolher_equipamento() -> usize {
     }
 }
 
-fn escolher_inimigo() -> Oponente {
-    Oponente {
+fn escolher_inimigo() -> Personagem {
+    Personagem {
         nome: INIMIGOS[1].get_inimigo().nome.to_string(),
         vida_total: INIMIGOS[1].get_inimigo().vida,
         vida_atual: INIMIGOS[1].get_inimigo().vida,

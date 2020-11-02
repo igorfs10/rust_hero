@@ -8,20 +8,21 @@ pub struct Inimigo {
     pub ataque: u8,
     pub defesa: u8,
     pub experiencia: u16,
-    pub item: Itens,
+    pub item: Option<Itens>,
 }
 
 impl DadosTrait for Inimigo {
     fn get_dados(&self) -> String {
-        format!(
-            "{}\nID: {}\nVida: {}\nAtaque: {}\nDefesa: {}\nExperiência: {}\nItem: {}",
-            self.nome,
-            self.id,
-            self.vida,
-            self.ataque,
-            self.defesa,
-            self.experiencia,
-            self.item.get_item().nome
-        )
+        let mut dados = format!(
+            "{}\nID: {}\nVida: {}\nAtaque: {}\nDefesa: {}\nExperiência: {}",
+            self.nome, self.id, self.vida, self.ataque, self.defesa, self.experiencia,
+        );
+        match self.item {
+            Some(item) => {
+                dados.push_str(&format!("\nItem: {}", item.get_item().nome));
+                dados
+            }
+            None => dados,
+        }
     }
 }

@@ -19,33 +19,23 @@ impl Locais {
         match self {
             Locais::Nenhum => Local {
                 id: self.get_id(),
-                nome: "",
-                inimigos: [
-                    Inimigos::Nenhum,
-                    Inimigos::Nenhum,
-                    Inimigos::Nenhum,
-                    Inimigos::Nenhum,
-                ],
+                nome: "???",
+                inimigos: None,
             },
             Locais::Cidade => Local {
                 id: self.get_id(),
                 nome: "Cidade",
-                inimigos: [
-                    Inimigos::Nenhum,
-                    Inimigos::Nenhum,
-                    Inimigos::Nenhum,
-                    Inimigos::Nenhum,
-                ],
+                inimigos: None,
             },
             Locais::Floresta => Local {
                 id: self.get_id(),
                 nome: "Floresta",
-                inimigos: [
+                inimigos: Some([
                     Inimigos::Rato,
                     Inimigos::Coelho,
                     Inimigos::Cobra,
                     Inimigos::Lobo,
-                ],
+                ]),
             },
         }
     }

@@ -21,8 +21,8 @@ impl Itens {
         match self {
             Itens::Nenhum => Item {
                 id: self.get_id(),
-                nome: "",
-                descricao: "",
+                nome: "???",
+                descricao: "???",
                 efeito: 0,
             },
             Itens::Pocao => Item {
