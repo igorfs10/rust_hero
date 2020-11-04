@@ -30,11 +30,11 @@ const COMMAND_LINE_INTERFACE: bool = true;
 const TESTE: &str = include_str!("conteudo/teste.txt");
 
 fn main() {
+    let utc: DateTime<Utc> = Utc::now();
     limpar_terminal();
     let ve = TESTE.lines().nth(1).unwrap();
     println!("{}", TESTE);
     let mut save = Save::default();
-    let utc: DateTime<Utc> = Utc::now();
     if COMMAND_LINE_INTERFACE {
         println!("{}", ve);
         println!("{}", utc.second());
@@ -118,6 +118,13 @@ fn main() {
         }
 
         println!("{}", save.jogador.nome);
+        let new_utc = Utc::now();
+        let duracao = new_utc.signed_duration_since(utc);
+        println!(
+            "{:?} milisegundos\n{:?}",
+            duracao.num_milliseconds(),
+            duracao.num_nanoseconds().unwrap()
+        );
     } else {
         let app = App::default().with_scheme(AppScheme::Plastic);
         let mut janela = Window::default()

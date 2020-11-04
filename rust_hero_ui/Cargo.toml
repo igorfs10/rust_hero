@@ -8,8 +8,8 @@ license-file = "LICENSE"
 readme = "README.md"
 
 [dependencies]
-console = "^0.12"
-rand = "^0.7"
-chrono = "^0.4"
-fltk = { version = "^0.9.7", features = ["fltk-bundled"] }
+console = "0.13.0"
+rand = "0.7.3"
+chrono = "0.4.19"
+fltk = { version = "0.10.3", features = ["fltk-bundled"] }
 rust_hero_dados = { path = "../rust_hero_dados" }
