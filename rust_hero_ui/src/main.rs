@@ -16,7 +16,6 @@ use rust_hero_dados::dados::flags::Flags;
 use rust_hero_dados::dados::inimigos::{Inimigos, INIMIGOS};
 use rust_hero_dados::dados::itens::ITENS;
 use rust_hero_dados::dados::locais::LOCAIS;
-use rust_hero_dados::erros::*;
 use rust_hero_dados::jogo::*;
 use rust_hero_dados::save::*;
 use rust_hero_dados::structs::flag::*;
@@ -187,13 +186,7 @@ fn escolher_equipamento() -> Option<Equipamentos> {
     let mut input = String::new();
     match io::stdin().read_line(&mut input) {
         Ok(_) => match input.trim().parse::<usize>() {
-            Ok(numero) => match item_nao_existe(numero, EQUIPAMENTOS.len()) {
-                Ok(_) => match_equipamento(numero),
-                Err(error) => {
-                    println!("error: {}", error);
-                    escolher_equipamento()
-                }
-            },
+            Ok(numero) => match_equipamento(numero),
             Err(error) => {
                 println!("error: {}", error);
                 escolher_equipamento()
