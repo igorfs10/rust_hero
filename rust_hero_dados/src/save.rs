@@ -12,7 +12,7 @@ pub struct Save {
     pub item_ataque: u8,
     pub item_defesa: u8,
     pub item_experiencia: u8,
-    pub equipamento: Equipamentos,
+    pub equipamento: Option<Equipamentos>,
     pub flags: Flag,
 }
 
@@ -24,7 +24,7 @@ impl Default for Save {
             item_ataque: 5,
             item_defesa: 5,
             item_experiencia: 5,
-            equipamento: Equipamentos::Nenhum,
+            equipamento: None,
             flags: Flag::default(),
         }
     }

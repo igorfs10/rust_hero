@@ -3,7 +3,6 @@ use crate::structs::local::Local;
 
 #[derive(Copy, Clone)]
 pub enum Locais {
-    Nenhum,
     Cidade,
     Floresta,
 }
@@ -17,11 +16,6 @@ impl Locais {
     // Monta o Local
     pub const fn get_local(self) -> Local {
         match self {
-            Locais::Nenhum => Local {
-                id: self.get_id(),
-                nome: "???",
-                inimigos: None,
-            },
             Locais::Cidade => Local {
                 id: self.get_id(),
                 nome: "Cidade",
@@ -41,4 +35,4 @@ impl Locais {
     }
 }
 
-pub const LOCAIS: &[Locais] = &[Locais::Nenhum, Locais::Cidade, Locais::Floresta];
+pub const LOCAIS: &[Locais] = &[Locais::Cidade, Locais::Floresta];

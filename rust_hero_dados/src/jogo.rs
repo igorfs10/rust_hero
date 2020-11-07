@@ -2,12 +2,12 @@ use crate::dados::equipamentos::Equipamentos;
 use crate::dados::inimigos::Inimigos;
 use crate::structs::personagem::Personagem;
 
-pub fn match_equipamento(id_equipamento: usize) -> Equipamentos {
+pub fn match_equipamento(id_equipamento: usize) -> Option<Equipamentos> {
     match id_equipamento {
-        1 => Equipamentos::Espada,
-        2 => Equipamentos::Escudo,
-        3 => Equipamentos::Bastao,
-        _ => Equipamentos::Nenhum,
+        0 => Some(Equipamentos::Espada),
+        1 => Some(Equipamentos::Escudo),
+        2 => Some(Equipamentos::Bastao),
+        _ => None,
     }
 }
 

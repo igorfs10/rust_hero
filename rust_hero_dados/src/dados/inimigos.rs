@@ -3,7 +3,6 @@ use crate::structs::inimigo::Inimigo;
 
 #[derive(Copy, Clone)]
 pub enum Inimigos {
-    Nenhum,
     Rato,
     Coelho,
     Cobra,
@@ -20,15 +19,6 @@ impl Inimigos {
     // Monta o inimigo
     pub const fn get_inimigo(self) -> Inimigo {
         match self {
-            Inimigos::Nenhum => Inimigo {
-                id: self.get_id(),
-                nome: "???",
-                vida: 0,
-                ataque: 0,
-                defesa: 0,
-                experiencia: 0,
-                item: None,
-            },
             Inimigos::Rato => Inimigo {
                 id: self.get_id(),
                 nome: "Rato",
@@ -70,7 +60,6 @@ impl Inimigos {
 }
 
 pub const INIMIGOS: &[Inimigos] = &[
-    Inimigos::Nenhum,
     Inimigos::Rato,
     Inimigos::Coelho,
     Inimigos::Cobra,

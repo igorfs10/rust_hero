@@ -13,11 +13,11 @@ use crate::cl_ui::{limpar_terminal, mostrar_dados};
 use rust_hero_dados::consts::*;
 use rust_hero_dados::dados::equipamentos::{Equipamentos, EQUIPAMENTOS};
 use rust_hero_dados::dados::flags::Flags;
-use rust_hero_dados::dados::inimigos::INIMIGOS;
+use rust_hero_dados::dados::inimigos::{Inimigos, INIMIGOS};
 use rust_hero_dados::dados::itens::ITENS;
 use rust_hero_dados::dados::locais::LOCAIS;
 use rust_hero_dados::erros::*;
-use rust_hero_dados::jogo::match_equipamento;
+use rust_hero_dados::jogo::*;
 use rust_hero_dados::save::*;
 use rust_hero_dados::structs::flag::*;
 use rust_hero_dados::structs::personagem::Personagem;
@@ -85,12 +85,12 @@ fn main() {
         };
 
         let oponente: Personagem;
-        oponente = escolher_inimigo();
+        oponente = escolher_inimigo(&Inimigos::Lobo);
         save.equipamento = escolher_equipamento();
-        jogador.ataque += EQUIPAMENTOS[save.equipamento.get_id()]
-            .get_equipamento()
-            .ataque;
-        jogador.defesa += save.equipamento.get_equipamento().defesa;
+        if let Some(equip) = save.equipamento {
+            jogador.ataque += equip.get_equipamento().ataque;
+            jogador.defesa += equip.get_equipamento().defesa;
+        }
 
         println!("Jogador: {}", jogador.nome);
         println!("Inimigo: {}", oponente.nome);
@@ -168,7 +168,7 @@ fn main() {
     }
 }
 
-fn escolher_equipamento() -> Equipamentos {
+fn escolher_equipamento() -> Option<Equipamentos> {
     limpar_terminal();
     println!(
         "Digite um número para escolher o equipamento (0-{}):\n",
@@ -182,6 +182,7 @@ fn escolher_equipamento() -> Equipamentos {
             equipamento.get_equipamento().nome
         );
     }
+    println!("{} ou mais: Nenhum", EQUIPAMENTOS.len());
 
     let mut input = String::new();
     match io::stdin().read_line(&mut input) {
@@ -202,16 +203,5 @@ fn escolher_equipamento() -> Equipamentos {
             println!("error: {}", error);
             escolher_equipamento()
         }
-    }
-}
-
-fn escolher_inimigo() -> Personagem {
-    Personagem {
-        nome: INIMIGOS[1].get_inimigo().nome.to_string(),
-        vida_total: INIMIGOS[1].get_inimigo().vida,
-        vida_atual: INIMIGOS[1].get_inimigo().vida,
-        ataque: INIMIGOS[1].get_inimigo().ataque,
-        defesa: INIMIGOS[1].get_inimigo().defesa,
-        experiencia: INIMIGOS[1].get_inimigo().experiencia,
     }
 }
