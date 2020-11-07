@@ -28,9 +28,13 @@ use fltk::{app::*, button::*, frame::*, menu::*, window::*};
 const COMMAND_LINE_INTERFACE: bool = true;
 const TESTE: &str = include_str!("conteudo/teste.txt");
 
+const VERSION: &str = env!("CARGO_PKG_VERSION");
+
 fn main() {
     let utc: DateTime<Utc> = Utc::now();
     limpar_terminal();
+    println!("{}", VERSION);
+
     let ve = TESTE.lines().nth(1).unwrap();
     println!("{}", TESTE);
     let mut save = Save::default();
