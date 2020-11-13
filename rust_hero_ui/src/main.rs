@@ -2,6 +2,7 @@
 // #![windows_subsystem = "windows"]
 
 mod cl_ui;
+mod gr_ui;
 
 use std::io;
 
@@ -10,6 +11,8 @@ use rand::prelude::*;
 use rand::{Rng, SeedableRng};
 
 use crate::cl_ui::{limpar_terminal, mostrar_dados};
+use crate::gr_ui::MainView;
+
 use rust_hero_dados::consts::*;
 use rust_hero_dados::dados::equipamentos::{Equipamentos, EQUIPAMENTOS};
 use rust_hero_dados::dados::flags::Flags;
@@ -23,9 +26,9 @@ use rust_hero_dados::structs::personagem::Personagem;
 use rust_hero_dados::traits::flags_trait::FlagsTrait;
 
 // UI
-use fltk::{app::*, button::*, frame::*, menu::*, window::*};
+use orbtk::prelude::*;
 
-const COMMAND_LINE_INTERFACE: bool = true;
+const COMMAND_LINE_INTERFACE: bool = false;
 const TESTE: &str = include_str!("conteudo/teste.txt");
 
 const VERSION: &str = env!("CARGO_PKG_VERSION");
@@ -129,45 +132,16 @@ fn main() {
             duracao.num_nanoseconds().unwrap()
         );
     } else {
-        let app = App::default().with_scheme(AppScheme::Plastic);
-        let mut janela = Window::default()
-            .with_size(300, 500)
-            .center_screen()
-            .with_label("Rust Hero");
-
-        let mut frame = Frame::default().with_size(300, 50).with_label("Rust Hero");
-
-        frame.set_color(Color::from_u32(0xaaaaaa));
-        frame.set_label_size(30);
-        frame.set_frame(FrameType::DownBox);
-
-        let mut botao = Button::default()
-            .with_size(100, 50)
-            .below_of(&frame, 0)
-            .with_label("Novo jogo");
-
-        botao.set_color(Color::from_u32(0x2e7d32));
-
-        let mut botao_salvar = Button::default()
-            .size_of(&botao)
-            .right_of(&botao, 0)
-            .with_label("Carregar");
-
-        botao_salvar.set_color(Color::from_u32(0x1565c032));
-
-        botao.set_callback(Box::new(|| {
-            let v = vec!["1st val", "2nd val", "3rd val"];
-            let mut x = MenuItem::new(&v);
-            match x.popup(100, 100) {
-                None => println!("No value was chosen!"),
-                Some(val) => println!("{}", val.label().unwrap()),
-            }
-        }));
-
-        janela.make_resizable(false);
-        janela.end();
-        janela.show();
-        app.run().unwrap();
+        Application::new()
+            .window(|ctx| {
+                Window::new()
+                    .title("OrbTk - Calculator example")
+                    .position((100, 100))
+                    .size(212.0, 336)
+                    .child(MainView::new().build(ctx))
+                    .build(ctx)
+            })
+            .run();
     }
 }
 

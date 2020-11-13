@@ -11,5 +11,5 @@ readme = "README.md"
 console = "0.13.0"
 rand = "0.7.3"
 chrono = "0.4.19"
-fltk = { version = "0.10.3", features = ["fltk-bundled"] }
+orbtk = "0.3.1-alpha3"
 rust_hero_dados = { path = "../rust_hero_dados" }
