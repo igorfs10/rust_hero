@@ -135,9 +135,9 @@ fn main() {
         Application::new()
             .window(|ctx| {
                 Window::new()
-                    .title("OrbTk - Calculator example")
+                    .title("Rust Hero")
                     .position((100, 100))
-                    .size(212.0, 336)
+                    .size(520, 520)
                     .child(MainView::new().build(ctx))
                     .build(ctx)
             })
