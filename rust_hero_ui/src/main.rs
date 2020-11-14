@@ -16,13 +16,13 @@ use crate::gr_ui::MainView;
 use rust_hero_dados::consts::*;
 use rust_hero_dados::dados::equipamentos::{Equipamentos, EQUIPAMENTOS};
 use rust_hero_dados::dados::flags::Flags;
-use rust_hero_dados::dados::inimigos::{Inimigos, INIMIGOS};
+use rust_hero_dados::dados::inimigos::INIMIGOS;
 use rust_hero_dados::dados::itens::ITENS;
-use rust_hero_dados::dados::locais::LOCAIS;
+use rust_hero_dados::dados::lugares::LUGARES;
 use rust_hero_dados::jogo::*;
-use rust_hero_dados::save::*;
 use rust_hero_dados::structs::flag::*;
 use rust_hero_dados::structs::personagem::Personagem;
+use rust_hero_dados::structs::save::Save;
 use rust_hero_dados::traits::flags_trait::FlagsTrait;
 
 // UI
@@ -90,8 +90,6 @@ fn main() {
             experiencia: 0,
         };
 
-        let oponente: Personagem;
-        oponente = escolher_inimigo(&Inimigos::Lobo);
         save.equipamento = escolher_equipamento();
         if let Some(equip) = save.equipamento {
             jogador.ataque += equip.get_equipamento().ataque;
@@ -99,11 +97,10 @@ fn main() {
         }
 
         println!("Jogador: {}", jogador.nome);
-        println!("Inimigo: {}", oponente.nome);
 
         println!("-----LOCAIS-----");
-        for local in LOCAIS.iter() {
-            mostrar_dados(local.get_local());
+        for lugar in LUGARES.iter() {
+            mostrar_dados(lugar.get_local());
         }
 
         println!("-----INIMIGOS-----");
