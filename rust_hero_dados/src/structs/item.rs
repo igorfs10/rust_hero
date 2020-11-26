@@ -8,6 +8,10 @@ pub struct Item {
 }
 
 impl DadosTrait for Item {
+    fn get_id(&self) -> usize {
+        self.id    
+    }
+    
     fn get_dados(&self) -> String {
         format!(
             "{}\nId: {}\nDescrição: {}",

@@ -23,12 +23,15 @@ use rust_hero_dados::jogo::*;
 use rust_hero_dados::structs::flag::*;
 use rust_hero_dados::structs::personagem::Personagem;
 use rust_hero_dados::structs::save::Save;
+use rust_hero_dados::structs::inimigo::Inimigo;
 use rust_hero_dados::traits::flags_trait::FlagsTrait;
+use rust_hero_dados::traits::dados_trait::Repo;
+use rust_hero_dados::traits::dados_trait::BaseRepo;
 
 // UI
 use orbtk::prelude::*;
 
-const COMMAND_LINE_INTERFACE: bool = false;
+const COMMAND_LINE_INTERFACE: bool = true;
 const TESTE: &str = include_str!("conteudo/teste.txt");
 
 const VERSION: &str = env!("CARGO_PKG_VERSION");
@@ -37,7 +40,11 @@ fn main() {
     let utc: DateTime<Utc> = Utc::now();
     limpar_terminal();
     println!("{}", VERSION);
-
+    let mut vetor = vec![Inimigo::default(), Inimigo::default()];
+    vetor[0].id = 1;
+    vetor[0].nome = "EEE";
+    let oi = Repo::<Inimigo>::get_by_id(vetor, 1);
+    println!("{} TTTTT", oi.unwrap().nome);
     let ve = TESTE.lines().nth(1).unwrap();
     println!("{}", TESTE);
     let mut save = Save::default();

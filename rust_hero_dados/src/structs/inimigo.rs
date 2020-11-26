@@ -1,6 +1,7 @@
 use crate::dados::itens::Itens;
 use crate::traits::dados_trait::DadosTrait;
 
+#[derive(Default, Debug, Clone)]
 pub struct Inimigo {
     pub id: usize,
     pub nome: &'static str,
@@ -12,6 +13,10 @@ pub struct Inimigo {
 }
 
 impl DadosTrait for Inimigo {
+    fn get_id(&self) -> usize {
+        self.id    
+    }
+    
     fn get_dados(&self) -> String {
         let mut dados = format!(
             "{}\nID: {}\nVida: {}\nAtaque: {}\nDefesa: {}\nExperiência: {}",

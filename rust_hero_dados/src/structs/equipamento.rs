@@ -7,6 +7,10 @@ pub struct Equipamento {
 }
 
 impl DadosTrait for Equipamento {
+    fn get_id(&self) -> usize {
+        self.id    
+    }
+
     fn get_dados(&self) -> String {
         format!(
             "{}\nID: {}\nAtaque: {}\nDefesa: {}",
