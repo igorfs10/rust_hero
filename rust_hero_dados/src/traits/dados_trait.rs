@@ -9,10 +9,13 @@ pub trait DadosTrait {
 #[derive(Default, Debug)]
 pub struct Repo<T>(T);
 
-impl<T> BaseRepo<T> for Repo<T> where T:DadosTrait, T:Default, T:Clone{
+impl<T> BaseRepo<T> for Repo<T>
+where
+    T: DadosTrait + Default + Clone,
+{
     fn get_by_id(lista: Vec<T>, id: usize) -> Option<T> {
         let mut ret = None;
-        for item in lista.iter(){
+        for item in lista.iter() {
             if item.get_id() == id {
                 ret = Some(item.clone());
                 break;

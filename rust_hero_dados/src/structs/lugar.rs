@@ -9,7 +9,7 @@ pub struct Lugar {
 
 impl DadosTrait for Lugar {
     fn get_id(&self) -> usize {
-        self.id    
+        self.id
     }
     fn get_dados(&self) -> String {
         let mut dados = format!("{}\nID: {}", self.nome, self.id);

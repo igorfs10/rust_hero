@@ -21,12 +21,12 @@ use rust_hero_dados::dados::itens::ITENS;
 use rust_hero_dados::dados::lugares::LUGARES;
 use rust_hero_dados::jogo::*;
 use rust_hero_dados::structs::flag::*;
+use rust_hero_dados::structs::inimigo::Inimigo;
 use rust_hero_dados::structs::personagem::Personagem;
 use rust_hero_dados::structs::save::Save;
-use rust_hero_dados::structs::inimigo::Inimigo;
-use rust_hero_dados::traits::flags_trait::FlagsTrait;
-use rust_hero_dados::traits::dados_trait::Repo;
 use rust_hero_dados::traits::dados_trait::BaseRepo;
+use rust_hero_dados::traits::dados_trait::Repo;
+use rust_hero_dados::traits::flags_trait::FlagsTrait;
 
 // UI
 use orbtk::prelude::*;

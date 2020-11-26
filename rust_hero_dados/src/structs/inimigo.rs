@@ -14,9 +14,9 @@ pub struct Inimigo {
 
 impl DadosTrait for Inimigo {
     fn get_id(&self) -> usize {
-        self.id    
+        self.id
     }
-    
+
     fn get_dados(&self) -> String {
         let mut dados = format!(
             "{}\nID: {}\nVida: {}\nAtaque: {}\nDefesa: {}\nExperiência: {}",
