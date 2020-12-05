@@ -7,8 +7,7 @@ mod gr_ui;
 use std::io;
 
 use chrono::prelude::*;
-use rand::prelude::*;
-use rand::{Rng, SeedableRng};
+use nanorand::{WyRand, RNG};
 
 use crate::cl_ui::{limpar_terminal, mostrar_dados};
 use crate::gr_ui::MainView;
@@ -53,30 +52,24 @@ fn main() {
         println!("{}", utc.second());
 
         // Aleatório com seed definido
-        let mut nops: StdRng = SeedableRng::seed_from_u64(5);
+        let mut nops = WyRand::new_seed(5);
         // Retornar um numero com todo o range do u8
-        println!("{}", nops.gen::<u8>());
+        println!("{}", nops.generate::<u8>());
         // O seed é redefinido a cada uso do aleatório, então temos que definir novamente para gerar o mesmo resultado
-        nops = SeedableRng::seed_from_u64(5);
-        println!("{}", nops.gen_range(0, 255));
+        println!("{}", nops.generate_range::<u8>(0, 255));
 
         // Brincando com o rng
-        let mut rng = thread_rng();
+        let mut rng = WyRand::new();
         // O tipo não é obrigatório no loop. Se não for definido ele será i32. Usa "=" no ultimo elemento se quiser incluir ele.
         for x in 1..=10 as u8 {
             // Sorteia o número sem incluir o maior, no caso de 0, 10 ele sorteará de 0 à 9
-            let y: u8 = rng.gen_range(0, 10 + 1);
+            let y: u8 = rng.generate_range(0, 10 + 1);
             println!("{}: {}", x, y)
         }
         // We can also interact with iterators and slices:
-        let arrows_iter = "➡⬈⬆⬉⬅⬋⬇⬊".chars();
-        println!(
-            "Lets go in this direction: {}",
-            arrows_iter.choose(&mut rng).unwrap()
-        );
-        let mut nums = [1, 2, 3, 4, 5];
-        nums.shuffle(&mut rng);
-        println!("I shuffled my {:?}", nums);
+        let mut arrows_iter: Vec<char> = "➡⬈⬆⬉⬅⬋⬇⬊".chars().collect();
+        rng.shuffle(&mut arrows_iter);
+        println!("Lets go in this direction: {}", arrows_iter[0]);
 
         let mut flags_jogo: Flag = Flag::default();
         flags_jogo.set_flag(Flags::UpgradePocao);

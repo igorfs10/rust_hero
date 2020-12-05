@@ -1,5 +1,4 @@
-use rand::prelude::*;
-use rand::{Rng, SeedableRng};
+use nanorand::{WyRand, RNG};
 
 use crate::dados::equipamentos::Equipamentos;
 use crate::structs::inimigo::Inimigo;
@@ -15,10 +14,10 @@ pub fn match_equipamento(id_equipamento: usize) -> Option<Equipamentos> {
     }
 }
 
-pub fn sortear_inimigo_lugar(lugar: &Lugar, numero_rng: &u64) -> Option<Inimigo> {
+pub fn sortear_inimigo_lugar(lugar: &Lugar, seed: &u64) -> Option<Inimigo> {
     if let Some(inimigos) = lugar.inimigos {
-        let mut rng: StdRng = SeedableRng::seed_from_u64(*numero_rng);
-        let rng_inimigo = rng.gen_range(1, 11);
+        let mut rng = WyRand::new_seed(*seed);
+        let rng_inimigo = rng.generate_range::<u8>(1, 11);
 
         if rng_inimigo <= 4 {
             Some(inimigos[0].get_inimigo())

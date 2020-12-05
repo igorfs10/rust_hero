@@ -1,3 +1,4 @@
+#[derive(PartialEq)]
 pub struct Personagem {
     pub nome: String,
     pub vida_total: u8,
@@ -7,15 +8,28 @@ pub struct Personagem {
     pub experiencia: u16,
 }
 
+impl Personagem {
+    const fn new(
+        nome: String,
+        vida_total: u8,
+        vida_atual: u8,
+        ataque: u8,
+        defesa: u8,
+        experiencia: u16,
+    ) -> Self {
+        Personagem {
+            nome,
+            vida_total,
+            vida_atual,
+            ataque,
+            defesa,
+            experiencia,
+        }
+    }
+}
+
 impl Default for Personagem {
     fn default() -> Self {
-        Personagem {
-            nome: String::from(""),
-            vida_total: 10,
-            vida_atual: 10,
-            ataque: 1,
-            defesa: 1,
-            experiencia: 0,
-        }
+        Personagem::new(String::from(""), 10, 10, 1, 1, 0)
     }
 }
