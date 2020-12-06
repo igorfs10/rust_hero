@@ -2,16 +2,29 @@ use super::struct_test::*;
 use crate::sistema_batalha::atacar;
 use crate::structs::personagem::Personagem;
 
+fn soma((a, b): (u8, u8)) -> u8 {
+    return a + b;
+}
+
+#[test]
+pub fn soma_test() {
+    TestStruct::novo()
+        .espera(3)
+        .parametriza((1, 2))
+        .funcao(soma)
+        .testar();
+}
+
 #[test]
 pub fn ataque_nao_critico_novo() {
     let atacante = Personagem::default();
     let mut defensor = Personagem::default();
-    TestStruct::espera(false)
+    TestStruct::novo()
+        .espera(false)
         .parametriza((&atacante, &mut defensor, &1))
         .funcao(atacar)
         .testar();
 }
-
 // #[test]
 // pub fn ataque_nao_critico() {
 //     let atacante = Personagem::default();

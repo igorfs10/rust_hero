@@ -1,9 +1,8 @@
 use core::fmt;
 
 #[must_use]
-#[derive(PartialEq, Debug)]
 pub struct TestStruct<T, U> {
-    pub esperado: T,
+    pub esperado: Option<T>,
     pub parametros: Option<U>,
     pub funcao: Option<fn(U) -> T>,
 }
@@ -11,14 +10,18 @@ pub struct TestStruct<T, U> {
 impl<T, U> TestStruct<T, U>
 where
     T: PartialEq + fmt::Debug,
-    U: PartialEq,
 {
-    pub fn espera(esperado: T) -> Self {
+    pub fn novo() -> Self {
         TestStruct {
-            esperado,
+            esperado: None,
             parametros: None,
             funcao: None,
         }
+    }
+
+    pub fn espera(mut self, esperado: T) -> Self {
+        self.esperado = Some(esperado);
+        self
     }
 
     pub fn parametriza(mut self, parametros: U) -> Self {
@@ -33,7 +36,7 @@ where
 
     pub fn testar(self) {
         assert_eq!(
-            self.esperado,
+            self.esperado.unwrap(),
             self.funcao.unwrap()(self.parametros.unwrap())
         );
     }
