@@ -17,7 +17,7 @@ pub fn match_equipamento(id_equipamento: usize) -> Option<Equipamentos> {
 pub fn sortear_inimigo_lugar(lugar: &Lugar, seed: &u64) -> Option<Inimigo> {
     if let Some(inimigos) = lugar.inimigos {
         let mut rng = WyRand::new_seed(*seed);
-        let rng_inimigo = rng.generate_range::<u8>(1, 11);
+        let rng_inimigo = rng.generate_range::<u64>(1, 11);
 
         if rng_inimigo <= 4 {
             Some(inimigos[0].get_inimigo())
