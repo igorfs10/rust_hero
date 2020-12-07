@@ -1,4 +1,4 @@
-#[derive(Clone)]
+#[derive(Clone, PartialEq, Debug)]
 pub struct Personagem {
     pub nome: String,
     pub vida_total: u8,

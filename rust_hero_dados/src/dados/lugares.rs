@@ -14,7 +14,7 @@ impl Lugares {
     }
 
     // Monta o Lugar
-    pub const fn get_local(self) -> Lugar {
+    pub const fn get_lugar(self) -> Lugar {
         match self {
             Lugares::Cidade => Lugar {
                 id: self.get_id(),

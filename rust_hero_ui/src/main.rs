@@ -53,7 +53,7 @@ fn main() {
 
         // Aleatório com seed definido
         let mut nops = WyRand::new_seed(5);
-        // Retornar um numero com todo o range do u8
+        // Retorna um numero com todo o range do u8
         println!("{}", nops.generate::<u8>());
         // O seed é redefinido a cada uso do aleatório, então temos que definir novamente para gerar o mesmo resultado
         println!("{}", nops.generate_range::<u8>(0, 255));
@@ -100,7 +100,7 @@ fn main() {
 
         println!("-----LOCAIS-----");
         for lugar in LUGARES.iter() {
-            mostrar_dados(lugar.get_local());
+            mostrar_dados(lugar.get_lugar());
         }
 
         println!("-----INIMIGOS-----");
