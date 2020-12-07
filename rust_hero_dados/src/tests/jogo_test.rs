@@ -35,7 +35,7 @@ pub mod tests {
             self
         }
 
-        fn testar(self){
+        fn testar(self) {
             let mut oponente = Personagem::default();
             let inimigo_possivel = sortear_inimigo_lugar(&self.lugar.unwrap(), &0);
             if let Some(inimigo) = inimigo_possivel {
@@ -51,6 +51,10 @@ pub mod tests {
         //2 inimigo 2
         //1 inimigo 3
         //4 inimigo 4
-        SortearInimigo::novo().definir_lugar(LUGARES[0].get_lugar()).definir_seed(0).espera(Personagem::default()).testar();
+        SortearInimigo::novo()
+            .definir_lugar(LUGARES[0].get_lugar())
+            .definir_seed(0)
+            .espera(Personagem::default())
+            .testar();
     }
 }
