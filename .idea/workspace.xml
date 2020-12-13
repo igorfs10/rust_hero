@@ -11,13 +11,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b0d9b5d-9aeb-4906-b654-7ee49b43d849" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/rust_hero_gui/src/counter.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust_hero_ui/Cargo.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust_hero_ui/src/cl_ui.rs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust_hero_ui/src/conteudo/teste.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust_hero_ui/src/gr_ui.rs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust_hero_ui/src/main.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rust_hero_dados/src/structs/equipamento.rs" beforeDir="false" afterPath="$PROJECT_DIR$/rust_hero_dados/src/structs/equipamento.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rust_hero_dados/src/structs/inimigo.rs" beforeDir="false" afterPath="$PROJECT_DIR$/rust_hero_dados/src/structs/inimigo.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rust_hero_dados/src/structs/item.rs" beforeDir="false" afterPath="$PROJECT_DIR$/rust_hero_dados/src/structs/item.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rust_hero_dados/src/structs/save.rs" beforeDir="false" afterPath="$PROJECT_DIR$/rust_hero_dados/src/structs/save.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rust_hero_gui/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/rust_hero_gui/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rust_hero_tui/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/rust_hero_tui/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rust_hero_tui/src/cl_ui.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rust_hero_tui/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/rust_hero_tui/src/main.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,15 +64,9 @@
       <recent name="D:\Repos\Pessoal\rust_hero" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="RustProjectSettings">
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+    <option name="version" value="2" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -80,7 +76,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1607889249088</updated>
-      <workItem from="1607889252053" duration="6266000" />
+      <workItem from="1607889252053" duration="6828000" />
+      <workItem from="1607896383674" duration="2812000" />
+      <workItem from="1607899338766" duration="852000" />
     </task>
     <servers />
   </component>
@@ -97,5 +95,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

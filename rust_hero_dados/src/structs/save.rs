@@ -5,7 +5,7 @@ use dados::equipamentos::Equipamentos;
 use structs::flag::Flag;
 use structs::personagem::Personagem;
 
-// Arquivo para criação do sistema de save
+// Arquivo para criação do sistema de save com tempo em segundos
 pub struct Save {
     pub jogador: Personagem,
     pub item_pocao: u8,
@@ -14,6 +14,7 @@ pub struct Save {
     pub item_experiencia: u8,
     pub equipamento: Option<Equipamentos>,
     pub flags: Flag,
+    pub tempo: u64,
 }
 
 impl Default for Save {
@@ -26,6 +27,7 @@ impl Default for Save {
             item_experiencia: 5,
             equipamento: None,
             flags: Flag::default(),
+            tempo: 0,
         }
     }
 }

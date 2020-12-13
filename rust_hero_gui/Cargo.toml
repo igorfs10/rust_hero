@@ -9,6 +9,5 @@ readme = "README.md"
 
 [dependencies]
 nanorand = "0.5.0"
-chrono = "0.4.19"
 iced = "0.2.0"
 rust_hero_dados = { path = "../rust_hero_dados" }

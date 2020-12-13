@@ -19,7 +19,12 @@ impl DadosTrait for Inimigo {
 
     fn get_dados(&self) -> String {
         let mut dados = format!(
-            "{}\nID: {}\nVida: {}\nAtaque: {}\nDefesa: {}\nExperiência: {}",
+            "{}\
+            \nID: {}\
+            \nVida: {}\
+            \nAtaque: {}\
+            \nDefesa: {}\
+            \nExperiência: {}",
             self.nome, self.id, self.vida, self.ataque, self.defesa, self.experiencia,
         );
         match self.item {

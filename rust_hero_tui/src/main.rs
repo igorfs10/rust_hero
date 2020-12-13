@@ -1,11 +1,11 @@
-mod cl_ui;
+mod tl_ui;
 
 use std::io;
+use std::time::Instant;
 
-use chrono::prelude::*;
 use nanorand::{WyRand, RNG};
 
-use crate::cl_ui::{limpar_terminal, mostrar_dados};
+use tl_ui::{limpar_terminal, mostrar_dados};
 
 use rust_hero_dados::consts::*;
 use rust_hero_dados::dados::equipamentos::{Equipamentos, EQUIPAMENTOS};
@@ -27,7 +27,7 @@ const TESTE: &str = include_str!("conteudo/teste.txt");
 const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 fn main() {
-    let utc: DateTime<Utc> = Utc::now();
+    let agora = Instant::now();
     limpar_terminal();
     println!("{}", VERSION);
     let mut vetor = vec![Inimigo::default(), Inimigo::default()];
@@ -39,7 +39,6 @@ fn main() {
     println!("{}", TESTE);
     let mut save = Save::default();
     println!("{}", ve);
-    println!("{}", utc.second());
 
     // Aleatório com seed definido
     let mut nops = WyRand::new_seed(5);
@@ -111,13 +110,7 @@ fn main() {
     }
 
     println!("{}", save.jogador.nome);
-    let new_utc = Utc::now();
-    let duracao = new_utc.signed_duration_since(utc);
-    println!(
-        "{:?} milisegundos\n{:?}",
-        duracao.num_milliseconds(),
-        duracao.num_nanoseconds().unwrap()
-    );
+    println!("nanosegundos: {:?}", agora.elapsed().as_nanos());
 }
 
 fn escolher_equipamento() -> Option<Equipamentos> {

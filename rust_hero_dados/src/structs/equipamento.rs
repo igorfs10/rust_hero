@@ -13,7 +13,10 @@ impl DadosTrait for Equipamento {
 
     fn get_dados(&self) -> String {
         format!(
-            "{}\nID: {}\nAtaque: {}\nDefesa: {}",
+            "{}\
+            \nID: {}\
+            \nAtaque: {}\
+            \nDefesa: {}",
             self.nome, self.id, self.ataque, self.defesa
         )
     }

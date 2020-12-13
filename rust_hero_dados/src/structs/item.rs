@@ -14,7 +14,9 @@ impl DadosTrait for Item {
 
     fn get_dados(&self) -> String {
         format!(
-            "{}\nId: {}\nDescrição: {}",
+            "{}\
+            \nId: {}\
+            \nDescrição: {}",
             self.nome, self.id, self.descricao
         )
     }
