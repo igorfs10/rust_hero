@@ -1,5 +1,5 @@
 [package]
-name    = "rust_hero_ui"
+name    = "rust_hero_gui"
 version = "0.0.1"
 edition = "2018"
 authors = ["igorfs10 <igorfs10@gmail.com>"]
@@ -8,8 +8,7 @@ license-file = "LICENSE"
 readme = "README.md"
 
 [dependencies]
-console = "0.13.0"
 nanorand = "0.5.0"
 chrono = "0.4.19"
-orbtk = "0.3.1-alpha3"
+iced = "0.2.0"
 rust_hero_dados = { path = "../rust_hero_dados" }
