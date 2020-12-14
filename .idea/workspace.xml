@@ -12,14 +12,11 @@
   <component name="ChangeListManager">
     <list default="true" id="4b0d9b5d-9aeb-4906-b654-7ee49b43d849" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust_hero_dados/src/structs/equipamento.rs" beforeDir="false" afterPath="$PROJECT_DIR$/rust_hero_dados/src/structs/equipamento.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust_hero_dados/src/structs/inimigo.rs" beforeDir="false" afterPath="$PROJECT_DIR$/rust_hero_dados/src/structs/inimigo.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust_hero_dados/src/structs/item.rs" beforeDir="false" afterPath="$PROJECT_DIR$/rust_hero_dados/src/structs/item.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust_hero_dados/src/structs/save.rs" beforeDir="false" afterPath="$PROJECT_DIR$/rust_hero_dados/src/structs/save.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rust_hero_gui/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/rust_hero_gui/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust_hero_tui/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/rust_hero_tui/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust_hero_tui/src/cl_ui.rs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust_hero_tui/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/rust_hero_tui/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rust_hero_gui/src/conteudo/teste.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rust_hero_gui/src/counter.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rust_hero_gui/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/rust_hero_gui/src/main.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +76,12 @@
       <workItem from="1607889252053" duration="6828000" />
       <workItem from="1607896383674" duration="2812000" />
       <workItem from="1607899338766" duration="852000" />
+      <workItem from="1607900234059" duration="12000" />
+      <workItem from="1607955509505" duration="127000" />
+      <workItem from="1607955651505" duration="1714000" />
+      <workItem from="1607957623260" duration="1560000" />
+      <workItem from="1607959211011" duration="716000" />
+      <workItem from="1607960390294" duration="41000" />
     </task>
     <servers />
   </component>
