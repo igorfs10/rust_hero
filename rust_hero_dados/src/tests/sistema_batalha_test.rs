@@ -1,6 +1,5 @@
 #[cfg(test)]
 pub mod tests {
-    use crate::sistema_batalha::atacar;
     use crate::structs::personagem::Personagem;
 
     #[must_use]
@@ -52,7 +51,7 @@ pub mod tests {
         fn testar(mut self) {
             assert_eq!(
                 self.esperado,
-                atacar(&self.atacante, &mut self.defensor, &self.seed)
+                self.atacante.atacar(&mut self.defensor, &self.seed)
             );
         }
     }
