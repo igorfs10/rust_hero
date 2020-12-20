@@ -6,8 +6,8 @@ pub mod tests {
     #[test]
     pub fn nivel_2() {
         let mut personagem = Personagem::default();
-        personagem.experiencia = 40;
-        let nivel = 3;
+        personagem.experiencia = 39;
+        let nivel = 2;
         assert_eq!(pegar_nivel(&personagem), nivel);
     }
 
