@@ -21,8 +21,8 @@ impl Permissoes {
             Permissoes::SaveEditor => "Editor de Save",
             Permissoes::EquipamentosEnciclopedia => "Lista de Equipamentos",
             Permissoes::ItensEnciclopedia => "Lista de Itens",
-            Permissoes::LugaresEnciclopedia => "Lista de lugares",
-            Permissoes::InimigosEnciclopedia => "Lista de inimigos",
+            Permissoes::LugaresEnciclopedia => "Lista de Lugares",
+            Permissoes::InimigosEnciclopedia => "Lista de Inimigos",
         }
     }
 

@@ -111,6 +111,7 @@ fn main() {
     }
 
     Permissoes::InimigosEnciclopedia.adiciona_permissao(&mut save.permissoes);
+
     if let Some(perm) = Permissoes::InimigosEnciclopedia.possui_permissao(save.permissoes) {
         println!("Você tem acesso à {}.", perm.nome_permissao());
     }
