@@ -1,6 +1,6 @@
 [workspace]
 members = ["rust_hero_dados", "rust_hero_tui", "rust_hero_gui"]
-default-members = ["rust_hero_dados", "rust_hero_gui"]
+default-members = ["rust_hero_dados", "rust_hero_tui"]
 
 [profile.release]
 lto = true

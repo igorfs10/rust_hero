@@ -15,6 +15,7 @@ pub struct Save {
     pub equipamento: Option<Equipamentos>,
     pub flags: Flag,
     pub tempo: u64,
+    pub permissoes: u8,
 }
 
 impl Default for Save {
@@ -28,6 +29,7 @@ impl Default for Save {
             equipamento: None,
             flags: Flag::default(),
             tempo: 0,
+            permissoes: 0,
         }
     }
 }

@@ -2,7 +2,7 @@ use crate::dados::flags::Flags;
 use crate::traits::flags_trait::FlagsTrait;
 
 pub struct Flag {
-    flags: [bool; 2],
+    flags: [bool; 3],
 }
 
 impl FlagsTrait for Flag {
@@ -21,6 +21,6 @@ impl FlagsTrait for Flag {
 
 impl Default for Flag {
     fn default() -> Self {
-        Flag { flags: [false; 2] }
+        Flag { flags: [false; 3] }
     }
 }

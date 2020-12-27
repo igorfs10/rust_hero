@@ -4,3 +4,4 @@ pub mod inimigos;
 pub mod itens;
 pub mod lugares;
 pub mod niveis;
+pub mod permissoes;

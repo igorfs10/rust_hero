@@ -13,6 +13,7 @@ use rust_hero_dados::dados::flags::Flags;
 use rust_hero_dados::dados::inimigos::INIMIGOS;
 use rust_hero_dados::dados::itens::ITENS;
 use rust_hero_dados::dados::lugares::LUGARES;
+use rust_hero_dados::dados::permissoes::Permissoes;
 use rust_hero_dados::jogo::*;
 use rust_hero_dados::structs::flag::*;
 use rust_hero_dados::structs::inimigo::Inimigo;
@@ -107,6 +108,15 @@ fn main() {
     println!("-----ITENS-----");
     for item in ITENS.iter() {
         mostrar_dados(item.get_item());
+    }
+
+    Permissoes::InimigosEnciclopedia.adiciona_permissao(&mut save.permissoes);
+    if let Some(perm) = Permissoes::InimigosEnciclopedia.possui_permissao(save.permissoes) {
+        println!("Você tem acesso à {}.", perm.nome_permissao());
+    }
+
+    if let Some(perm) = Permissoes::ItensEnciclopedia.possui_permissao(save.permissoes) {
+        println!("Você tem acesso à {}.", perm.nome_permissao());
     }
 
     println!("{}", save.jogador.nome);
