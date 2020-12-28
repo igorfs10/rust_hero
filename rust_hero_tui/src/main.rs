@@ -139,6 +139,12 @@ fn main() {
         println!("Você tem acesso à {}.", perm.nome_permissao());
     }
 
+    println!("TESTE: {}", 0b11101 as u8);
+    println!("TESTE2: {}", des_criptografar(0b11101 as u8));
+
+    println!("TESTE3: {}", save.permissoes);
+    println!("TESTE4: {}", des_criptografar(save.permissoes));
+
     println!("{}", save.jogador.nome);
     println!("nanosegundos: {:?}", agora.elapsed().as_nanos());
 }

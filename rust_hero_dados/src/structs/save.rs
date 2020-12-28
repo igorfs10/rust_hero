@@ -1,4 +1,5 @@
 use crate::dados::equipamentos::Equipamentos;
+use crate::jogo::des_criptografar;
 use crate::jogo::TipoPermissao;
 use crate::structs::{flag::Flag, personagem::Personagem};
 
@@ -26,7 +27,7 @@ impl Default for Save {
             equipamento: None,
             flags: Flag::default(),
             tempo: 0,
-            permissoes: 0,
+            permissoes: des_criptografar(0),
         }
     }
 }
