@@ -1,9 +1,9 @@
 #[derive(Clone, Copy)]
 pub enum Permissoes {
-    SaveEditor = 0b00001,
-    EquipamentosEnciclopedia = 0b00010,
-    ItensEnciclopedia = 0b00100,
-    LugaresEnciclopedia = 0b01000,
+    SaveEditor = 0b1,
+    EquipamentosEnciclopedia = 0b10,
+    ItensEnciclopedia = 0b100,
+    LugaresEnciclopedia = 0b1000,
     InimigosEnciclopedia = 0b10000,
 }
 
@@ -26,7 +26,11 @@ impl Permissoes {
         }
     }
 
-    pub fn adiciona_permissao(self, permissoes: &mut u8) {
-        *permissoes += self as u8;
+    pub fn adicionar_permissao(self, permissoes: &mut u8) {
+        *permissoes |= self as u8;
+    }
+
+    pub fn remover_permissao(self, permissoes: &mut u8) {
+        *permissoes &= !(self as u8);
     }
 }

@@ -110,13 +110,33 @@ fn main() {
         mostrar_dados(item.get_item());
     }
 
-    Permissoes::InimigosEnciclopedia.adiciona_permissao(&mut save.permissoes);
+    Permissoes::SaveEditor.adicionar_permissao(&mut save.permissoes);
+    Permissoes::SaveEditor.adicionar_permissao(&mut save.permissoes);
+    Permissoes::InimigosEnciclopedia.adicionar_permissao(&mut save.permissoes);
+    Permissoes::ItensEnciclopedia.adicionar_permissao(&mut save.permissoes);
+    Permissoes::LugaresEnciclopedia.adicionar_permissao(&mut save.permissoes);
+    Permissoes::EquipamentosEnciclopedia.adicionar_permissao(&mut save.permissoes);
+
+    Permissoes::EquipamentosEnciclopedia.remover_permissao(&mut save.permissoes);
+    Permissoes::EquipamentosEnciclopedia.remover_permissao(&mut save.permissoes);
 
     if let Some(perm) = Permissoes::InimigosEnciclopedia.possui_permissao(save.permissoes) {
         println!("Você tem acesso à {}.", perm.nome_permissao());
     }
 
     if let Some(perm) = Permissoes::ItensEnciclopedia.possui_permissao(save.permissoes) {
+        println!("Você tem acesso à {}.", perm.nome_permissao());
+    }
+
+    if let Some(perm) = Permissoes::EquipamentosEnciclopedia.possui_permissao(save.permissoes) {
+        println!("Você tem acesso à {}.", perm.nome_permissao());
+    }
+
+    if let Some(perm) = Permissoes::LugaresEnciclopedia.possui_permissao(save.permissoes) {
+        println!("Você tem acesso à {}.", perm.nome_permissao());
+    }
+
+    if let Some(perm) = Permissoes::SaveEditor.possui_permissao(save.permissoes) {
         println!("Você tem acesso à {}.", perm.nome_permissao());
     }
 
