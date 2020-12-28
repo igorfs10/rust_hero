@@ -1,4 +1,3 @@
-pub mod consts;
 pub mod dados;
 pub mod erros;
 pub mod jogo;

@@ -1,3 +1,5 @@
+use crate::jogo::{des_criptografar, TipoPermissao};
+
 #[derive(Clone, Copy)]
 pub enum Permissoes {
     SaveEditor = 0b1,
@@ -8,8 +10,9 @@ pub enum Permissoes {
 }
 
 impl Permissoes {
-    pub fn possui_permissao(self, permissao_usuario: u8) -> Option<Self> {
-        if self as u8 & permissao_usuario == self as u8 {
+    pub fn possui_permissao(self, permissao_usuario: TipoPermissao) -> Option<Self> {
+        let permissao_descriptografada = des_criptografar(permissao_usuario);
+        if self as TipoPermissao & permissao_descriptografada == self as TipoPermissao {
             Some(self)
         } else {
             None
@@ -26,11 +29,15 @@ impl Permissoes {
         }
     }
 
-    pub fn adicionar_permissao(self, permissoes: &mut u8) {
-        *permissoes |= self as u8;
+    pub fn adicionar_permissao(self, permissoes: &mut TipoPermissao) {
+        let permissao_descriptografada = des_criptografar(*permissoes);
+        let permissao = self as TipoPermissao | permissao_descriptografada;
+        *permissoes = des_criptografar(permissao);
     }
 
-    pub fn remover_permissao(self, permissoes: &mut u8) {
-        *permissoes &= !(self as u8);
+    pub fn remover_permissao(self, permissoes: &mut TipoPermissao) {
+        let permissao_descriptografada = des_criptografar(*permissoes);
+        let permissao = !(self as TipoPermissao) & permissao_descriptografada;
+        *permissoes = des_criptografar(permissao);
     }
 }

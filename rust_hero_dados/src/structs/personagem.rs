@@ -1,6 +1,6 @@
 use nanorand::{WyRand, RNG};
 
-use crate::consts::MULTIPLICADOR_CRITICO;
+use crate::jogo::MULTIPLICADOR_CRITICO;
 
 #[derive(Clone, PartialEq, Debug)]
 pub struct Personagem {

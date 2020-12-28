@@ -7,7 +7,6 @@ use nanorand::{WyRand, RNG};
 
 use tl_ui::{limpar_terminal, mostrar_dados};
 
-use rust_hero_dados::consts::*;
 use rust_hero_dados::dados::equipamentos::{Equipamentos, EQUIPAMENTOS};
 use rust_hero_dados::dados::flags::Flags;
 use rust_hero_dados::dados::inimigos::INIMIGOS;

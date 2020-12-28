@@ -2,8 +2,7 @@
 pub mod tests {
     use crate::dados::lugares::LUGARES;
     use crate::jogo::*;
-    use crate::structs::lugar::Lugar;
-    use crate::structs::personagem::Personagem;
+    use crate::structs::{lugar::Lugar, personagem::Personagem};
 
     struct SortearInimigo {
         lugar: Option<Lugar>,

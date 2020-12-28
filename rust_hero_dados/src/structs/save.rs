@@ -1,9 +1,6 @@
-use crate::dados;
-use crate::structs;
-
-use dados::equipamentos::Equipamentos;
-use structs::flag::Flag;
-use structs::personagem::Personagem;
+use crate::dados::equipamentos::Equipamentos;
+use crate::jogo::TipoPermissao;
+use crate::structs::{flag::Flag, personagem::Personagem};
 
 // Arquivo para criação do sistema de save com tempo em segundos
 pub struct Save {
@@ -15,7 +12,7 @@ pub struct Save {
     pub equipamento: Option<Equipamentos>,
     pub flags: Flag,
     pub tempo: u64,
-    pub permissoes: u8,
+    pub permissoes: TipoPermissao,
 }
 
 impl Default for Save {
