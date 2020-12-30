@@ -3,13 +3,12 @@ use nanorand::{WyRand, RNG};
 use crate::dados::equipamentos::Equipamentos;
 use crate::structs::{inimigo::Inimigo, lugar::Lugar, personagem::Personagem};
 
-pub type TipoPermissao = u8;
+pub type TipoFlag = u32;
 
 pub const MULTIPLICADOR_CRITICO: u8 = 2;
-pub const CHAVE_CRIPTOGRAFIA: TipoPermissao = 0b10101011;
 
-pub fn des_criptografar(valor: TipoPermissao) -> TipoPermissao {
-    valor ^ CHAVE_CRIPTOGRAFIA
+pub fn des_criptografar(valor: &u32, chave: &u32) -> u32 {
+    *valor ^ *chave
 }
 
 pub fn match_equipamento(id_equipamento: usize) -> Option<Equipamentos> {

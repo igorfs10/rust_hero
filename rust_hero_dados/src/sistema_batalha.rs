@@ -1,10 +1,9 @@
-use crate::dados::{flags::*, lugares::Lugares};
+use crate::dados::lugares::Lugares;
 use crate::jogo::*;
-use crate::structs::{flag::Flag, personagem::Personagem};
-use crate::traits::flags_trait::FlagsTrait;
+use crate::structs::personagem::Personagem;
 
-fn _comecar_batalha(inimigo: &mut Personagem, flags: &mut Flag) {
-    flags.set_flag(Flags::EmBatalha);
+fn _comecar_batalha(inimigo: &mut Personagem, flag: &mut bool) {
+    *flag = true;
     definir_inimigo(
         inimigo,
         sortear_inimigo_lugar(&Lugares::Floresta.get_lugar(), &0).unwrap(),

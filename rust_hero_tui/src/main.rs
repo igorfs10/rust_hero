@@ -12,15 +12,12 @@ use rust_hero_dados::dados::flags::Flags;
 use rust_hero_dados::dados::inimigos::INIMIGOS;
 use rust_hero_dados::dados::itens::ITENS;
 use rust_hero_dados::dados::lugares::LUGARES;
-use rust_hero_dados::dados::permissoes::Permissoes;
 use rust_hero_dados::jogo::*;
-use rust_hero_dados::structs::flag::*;
 use rust_hero_dados::structs::inimigo::Inimigo;
 use rust_hero_dados::structs::personagem::Personagem;
 use rust_hero_dados::structs::save::Save;
 use rust_hero_dados::traits::dados_trait::BaseRepo;
 use rust_hero_dados::traits::dados_trait::Repo;
-use rust_hero_dados::traits::flags_trait::FlagsTrait;
 
 const TESTE: &str = include_str!("conteudo/teste.txt");
 
@@ -37,7 +34,7 @@ fn main() {
     println!("{} TTTTT", oi.unwrap().nome);
     let ve = TESTE.lines().nth(1).unwrap();
     println!("{}", TESTE);
-    let mut save = Save::default();
+    let mut save = Save::novo(&8520);
     println!("{}", ve);
 
     // Aleatório com seed definido
@@ -59,16 +56,6 @@ fn main() {
     let mut arrows_iter: Vec<char> = "➡⬈⬆⬉⬅⬋⬇⬊".chars().collect();
     rng.shuffle(&mut arrows_iter);
     println!("Lets go in this direction: {}", arrows_iter[0]);
-
-    let mut flags_jogo: Flag = Flag::default();
-    flags_jogo.set_flag(Flags::UpgradePocao);
-    flags_jogo.set_flag(Flags::UpgradeAtaque);
-    flags_jogo.clear_flag(Flags::UpgradePocao);
-    println!(
-        "Flag pocao: {}\nFlag ataque: {}",
-        flags_jogo.check_flag(Flags::UpgradePocao),
-        flags_jogo.check_flag(Flags::UpgradeAtaque)
-    );
 
     let mut jogador: Personagem = Personagem {
         nome: String::from(TESTE.lines().nth(1).unwrap()),
@@ -109,41 +96,62 @@ fn main() {
         mostrar_dados(item.get_item());
     }
 
-    Permissoes::SaveEditor.adicionar_permissao(&mut save.permissoes);
-    Permissoes::SaveEditor.adicionar_permissao(&mut save.permissoes);
-    Permissoes::InimigosEnciclopedia.adicionar_permissao(&mut save.permissoes);
-    Permissoes::ItensEnciclopedia.adicionar_permissao(&mut save.permissoes);
-    Permissoes::LugaresEnciclopedia.adicionar_permissao(&mut save.permissoes);
-    Permissoes::EquipamentosEnciclopedia.adicionar_permissao(&mut save.permissoes);
+    println!("{:b}", save.flags);
+    println!("{:b}", des_criptografar(&save.flags, &save.chave));
+    save.set_flag(Flags::EnciclopediaEquipamentos);
+    save.set_flag(Flags::EnciclopediaInimigos);
+    save.set_flag(Flags::EnciclopediaItens);
+    save.set_flag(Flags::EnciclopediaLugares);
+    save.set_flag(Flags::SaveEditor);
+    save.set_flag(Flags::UpgradeAtaque);
+    save.set_flag(Flags::UpgradeDefesa);
+    save.set_flag(Flags::UpgradeExperiencia);
+    save.set_flag(Flags::UpgradePocao);
 
-    Permissoes::EquipamentosEnciclopedia.remover_permissao(&mut save.permissoes);
-    Permissoes::EquipamentosEnciclopedia.remover_permissao(&mut save.permissoes);
+    save.clear_flag(Flags::EnciclopediaEquipamentos);
+    save.clear_flag(Flags::EnciclopediaLugares);
+    println!("{:b}", des_criptografar(&save.flags, &save.chave));
 
-    if let Some(perm) = Permissoes::InimigosEnciclopedia.possui_permissao(save.permissoes) {
-        println!("Você tem acesso à {}.", perm.nome_permissao());
+    save.set_flag(Flags::EnciclopediaEquipamentos);
+
+    println!("\n\n");
+    println!("{:b}", des_criptografar(&save.flags, &save.chave));
+    if save.check_flag(Flags::EnciclopediaEquipamentos) {
+        println!("Equipamentos");
+    }
+    if save.check_flag(Flags::EnciclopediaInimigos) {
+        println!("Inimigos");
+    }
+    if save.check_flag(Flags::EnciclopediaItens) {
+        println!("Itens");
+    }
+    if save.check_flag(Flags::EnciclopediaLugares) {
+        println!("Lugares");
     }
 
-    if let Some(perm) = Permissoes::ItensEnciclopedia.possui_permissao(save.permissoes) {
-        println!("Você tem acesso à {}.", perm.nome_permissao());
+    if save.check_flag(Flags::UpgradeAtaque) {
+        println!("Ataque");
     }
 
-    if let Some(perm) = Permissoes::EquipamentosEnciclopedia.possui_permissao(save.permissoes) {
-        println!("Você tem acesso à {}.", perm.nome_permissao());
+    if save.check_flag(Flags::UpgradeDefesa) {
+        println!("Defesa");
     }
 
-    if let Some(perm) = Permissoes::LugaresEnciclopedia.possui_permissao(save.permissoes) {
-        println!("Você tem acesso à {}.", perm.nome_permissao());
+    if save.check_flag(Flags::UpgradeExperiencia) {
+        println!("EXP");
     }
 
-    if let Some(perm) = Permissoes::SaveEditor.possui_permissao(save.permissoes) {
-        println!("Você tem acesso à {}.", perm.nome_permissao());
+    if save.check_flag(Flags::UpgradePocao) {
+        println!("Pocao");
     }
 
-    println!("TESTE: {}", 0b11101 as u8);
-    println!("TESTE2: {}", des_criptografar(0b11101 as u8));
+    if save.check_flag(Flags::SaveEditor) {
+        println!("Save");
+    }
 
-    println!("TESTE3: {}", save.permissoes);
-    println!("TESTE4: {}", des_criptografar(save.permissoes));
+    println!("\n\n");
+
+    println!("Chave: {}", save.chave);
 
     println!("{}", save.jogador.nome);
     println!("nanosegundos: {:?}", agora.elapsed().as_nanos());
