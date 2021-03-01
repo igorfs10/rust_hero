@@ -8,6 +8,6 @@ license-file = "LICENSE"
 readme = "README.md"
 
 [dependencies]
-nanorand = "0.5.0"
-fltk = { version = "0.11.6", features = ["fltk-bundled"] }
+nanorand = "0.5.2"
+fltk = { version = "0.15.5", features = ["fltk-bundled"] }
 rust_hero_dados = { path = "../rust_hero_dados" }
