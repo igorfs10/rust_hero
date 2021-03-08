@@ -1,6 +1,5 @@
-use nanorand::{WyRand, RNG};
-
 use crate::jogo::MULTIPLICADOR_CRITICO;
+use crate::utils::random::{RandomTrait, RandomValue};
 
 #[derive(Clone, PartialEq, Debug)]
 pub struct Personagem {
@@ -27,8 +26,7 @@ impl Personagem {
     pub fn atacar(&self, defensor: &mut Self, seed: &u64) -> (bool, u8, bool) {
         let mut dano;
         let derrotou;
-        let mut rng = WyRand::new_seed(*seed);
-        let critico = rng.generate_range::<u64>(1, 4) < 2;
+        let critico = RandomValue::<bool>::get_random_value(seed, 25);
 
         if self.ataque <= defensor.defesa {
             dano = 1;

@@ -1,5 +1,3 @@
-use nanorand::{WyRand, RNG};
-
 use crate::dados::{equipamentos::Equipamentos, flags::Flags};
 use crate::jogo::{des_criptografar, TipoFlag};
 use crate::structs::personagem::Personagem;

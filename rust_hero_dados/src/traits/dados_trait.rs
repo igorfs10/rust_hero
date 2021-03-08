@@ -1,3 +1,6 @@
+#[derive(Default)]
+pub struct Repo<T>(T);
+
 pub trait DadosTrait {
     fn get_id(&self) -> usize;
     fn get_dados(&self) -> String;
@@ -6,8 +9,9 @@ pub trait DadosTrait {
     // fn get_id(&self) -> usize;
 }
 
-#[derive(Default, Debug)]
-pub struct Repo<T>(T);
+pub trait BaseRepo<T> {
+    fn get_by_id(lista: Vec<T>, id: usize) -> Option<T>;
+}
 
 impl<T> BaseRepo<T> for Repo<T>
 where
@@ -23,12 +27,4 @@ where
         }
         ret
     }
-    // fn get_all()->Vec<T>{
-    //     return vec![43]
-    // }
-}
-
-pub trait BaseRepo<T> {
-    // fn get_all() -> Vec<T>;
-    fn get_by_id(lista: Vec<T>, id: usize) -> Option<T>;
 }

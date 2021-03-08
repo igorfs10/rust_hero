@@ -6,3 +6,4 @@ pub mod sistema_niveis;
 pub mod structs;
 pub mod tests;
 pub mod traits;
+pub mod utils;
