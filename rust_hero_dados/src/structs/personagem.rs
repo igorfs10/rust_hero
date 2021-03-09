@@ -26,7 +26,7 @@ impl Personagem {
     pub fn atacar(&self, defensor: &mut Self, seed: &u64) -> (bool, u8, bool) {
         let mut dano;
         let derrotou;
-        let critico = RandomValue::<bool>::get_random_value(seed, 25);
+        let critico = RandomValue::<bool>::get_random_value(seed, 25.0);
 
         if self.ataque <= defensor.defesa {
             dano = 1;

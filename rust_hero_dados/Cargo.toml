@@ -8,7 +8,8 @@ license-file = "LICENSE"
 readme = "README.md"
 
 [dependencies]
-nanorand = "0.5.2"
+rand = "0.8.3"
+rand_pcg = "0.3.0"
 
 # [lib]
 # crate-type = ["cdylib", "rlib"]

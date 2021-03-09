@@ -47,7 +47,7 @@ fn main() {
     // Brincando com o rng
     let mut rng = WyRand::new();
     // O tipo não é obrigatório no loop. Se não for definido ele será i32. Usa "=" no ultimo elemento se quiser incluir ele.
-    for x in 1..=10 as u8 {
+    for x in 1..=10_u8 {
         // Sorteia o número sem incluir o maior, no caso de 0, 10 ele sorteará de 0 à 9
         let y: u8 = rng.generate_range(0, 10 + 1);
         println!("{}: {}", x, y)

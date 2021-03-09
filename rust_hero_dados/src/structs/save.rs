@@ -1,6 +1,7 @@
 use crate::dados::{equipamentos::Equipamentos, flags::Flags};
 use crate::jogo::{des_criptografar, TipoFlag};
 use crate::structs::personagem::Personagem;
+use crate::utils::random::{RandomTrait, RandomValue};
 
 // Arquivo para criação do sistema de save com tempo em segundos
 pub struct Save {
@@ -17,9 +18,7 @@ pub struct Save {
 
 impl Save {
     pub fn novo(seed: &u64) -> Self {
-        let mut rng = WyRand::new_seed(*seed);
-        let chave: u64 = rng.generate();
-        let chave = chave as u32;
+        let chave = RandomValue::<u32>::get_random_value(seed, u32::MIN..=u32::MAX);
         Save {
             chave,
             jogador: Personagem::default(),
