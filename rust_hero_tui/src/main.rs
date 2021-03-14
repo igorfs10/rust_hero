@@ -115,16 +115,11 @@ fn main() {
         println!("Save");
     }
 
-    println!("\n\n");
-
-    println!("Chave: {}", save.chave);
-
     println!("{}", save.jogador.nome);
     println!("nanosegundos: {:?}", agora.elapsed().as_nanos());
 }
 
 fn escolher_equipamento() -> Option<Equipamentos> {
-    limpar_terminal();
     println!(
         "Digite um número para escolher o equipamento (0-{}):\n",
         EQUIPAMENTOS.len() - 1
