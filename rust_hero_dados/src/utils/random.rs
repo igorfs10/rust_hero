@@ -31,16 +31,14 @@ where
 }
 
 impl Random for bool {
-    type Input = f64;
+    type Input = u32;
     fn get_random(seed: &u64, input: Self::Input) -> Self {
         let mut rng = Pcg64Mcg::seed_from_u64(*seed);
         let mut input = input;
-        if input > 100.0 {
-            input = 100.0;
-        } else if input < 0.0 {
-            input = 0.0;
+        if input > 100 {
+            input = 100;
         }
-        rng.gen_bool(input)
+        rng.gen_ratio(input, 100)
     }
 }
 

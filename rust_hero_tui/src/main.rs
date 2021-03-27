@@ -28,8 +28,16 @@ fn main() {
     println!("{}", ve);
     let mut save = Save::novo(&8520);
 
+    let mut input = String::new();
+    match io::stdin().read_line(&mut input) {
+        Ok(_) => {}
+        Err(error) => {
+            println!("error: {}", error);
+        }
+    }
+
     let mut jogador: Personagem = Personagem {
-        nome: String::from(ve),
+        nome: &input,
         vida_total: 20,
         vida_atual: 20,
         ataque: 1,
@@ -44,6 +52,8 @@ fn main() {
     }
 
     println!("Jogador: {}", jogador.nome);
+
+    save.jogador = jogador;
 
     println!("-----LOCAIS-----");
     for lugar in LUGARES.iter() {
@@ -115,7 +125,7 @@ fn main() {
         println!("Save");
     }
 
-    println!("{}", save.jogador.nome);
+    println!("o nome do save é {}", save.jogador.nome);
     println!("nanosegundos: {:?}", agora.elapsed().as_nanos());
 }
 

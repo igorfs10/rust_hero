@@ -4,9 +4,9 @@ use crate::structs::personagem::Personagem;
 use crate::utils::random::{RandomTrait, RandomValue};
 
 // Arquivo para criação do sistema de save com tempo em segundos
-pub struct Save {
+pub struct Save<'a> {
     pub chave: u32,
-    pub jogador: Personagem,
+    pub jogador: Personagem<'a>,
     pub item_pocao: u8,
     pub item_ataque: u8,
     pub item_defesa: u8,
@@ -16,7 +16,7 @@ pub struct Save {
     pub tempo: u32,
 }
 
-impl Save {
+impl<'a> Save<'a> {
     pub fn novo(seed: &u64) -> Self {
         let chave = RandomValue::<u32>::get_random_value(seed, u32::MIN..=u32::MAX);
         Save {

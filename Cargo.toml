@@ -1,9 +1,9 @@
 [workspace]
 members = ["rust_hero_dados", "rust_hero_tui", "rust_hero_gui"]
-default-members = ["rust_hero_dados", "rust_hero_tui"]
+default-members = ["rust_hero_tui"]
+resolver = "2"
 
 [profile.release]
 lto = true
-
-[profile.release.build-override]
+codegen-units = 1
 opt-level = 3

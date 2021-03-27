@@ -40,7 +40,7 @@ pub fn sortear_inimigo_lugar(lugar: &Lugar, seed: &u64) -> Option<Inimigo> {
 }
 
 pub fn definir_inimigo(personagem: &mut Personagem, inimigo: Inimigo) {
-    personagem.nome = inimigo.nome.to_string();
+    personagem.nome = inimigo.nome;
     personagem.ataque = inimigo.ataque;
     personagem.defesa = inimigo.defesa;
     personagem.vida_total = inimigo.vida;

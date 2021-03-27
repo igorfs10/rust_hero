@@ -3,14 +3,14 @@ pub mod tests {
     use crate::structs::personagem::Personagem;
 
     #[must_use]
-    struct Atacar {
-        atacante: Personagem,
-        defensor: Personagem,
+    struct Atacar<'a> {
+        atacante: Personagem<'a>,
+        defensor: Personagem<'a>,
         seed: u64,
         esperado: (bool, u8, bool),
     }
 
-    impl Atacar {
+    impl<'a> Atacar<'a> {
         fn novo() -> Self {
             let personagem_padrao = Personagem::default();
             let seed: u64 = 0;
