@@ -5,14 +5,16 @@ use std::time::Instant;
 
 use tl_ui::{limpar_terminal, mostrar_dados};
 
-use rust_hero_dados::dados::equipamentos::{Equipamentos, EQUIPAMENTOS};
 use rust_hero_dados::dados::flags::Flags;
 use rust_hero_dados::dados::inimigos::INIMIGOS;
 use rust_hero_dados::dados::itens::ITENS;
 use rust_hero_dados::dados::lugares::LUGARES;
 use rust_hero_dados::jogo::*;
 use rust_hero_dados::structs::personagem::Personagem;
-use rust_hero_dados::structs::save::Save;
+use rust_hero_dados::{
+    dados::equipamentos::{Equipamentos, EQUIPAMENTOS},
+    utils::save_system::{get_save, save_game},
+};
 
 const TESTE: &str = include_str!("conteudo/teste.txt");
 
@@ -26,7 +28,9 @@ fn main() {
     println!("{}", TESTE);
     let ve = TESTE.lines().nth(1).unwrap();
     println!("{}", ve);
-    let mut save = Save::novo(&8520);
+    let mut save = get_save();
+
+    println!("Save 1:\n{:?}", save);
 
     let mut input = String::new();
     match io::stdin().read_line(&mut input) {
@@ -37,7 +41,7 @@ fn main() {
     }
 
     let mut jogador: Personagem = Personagem {
-        nome: &input,
+        nome: input,
         vida_total: 20,
         vida_atual: 20,
         ataque: 1,
@@ -54,6 +58,8 @@ fn main() {
     println!("Jogador: {}", jogador.nome);
 
     save.jogador = jogador;
+
+    println!("Save 2:\n{:?}", save);
 
     println!("-----LOCAIS-----");
     for lugar in LUGARES.iter() {
@@ -126,7 +132,10 @@ fn main() {
     }
 
     println!("o nome do save é {}", save.jogador.nome);
-    println!("nanosegundos: {:?}", agora.elapsed().as_nanos());
+    let tempo_jogado = agora.elapsed().as_secs();
+    println!("segundos: {:?}", tempo_jogado);
+    save.tempo += tempo_jogado;
+    save_game(&save);
 }
 
 fn escolher_equipamento() -> Option<Equipamentos> {

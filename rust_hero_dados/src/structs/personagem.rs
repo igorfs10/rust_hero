@@ -1,9 +1,10 @@
 use crate::jogo::MULTIPLICADOR_CRITICO;
 use crate::utils::random::{RandomTrait, RandomValue};
+use serde::{Deserialize, Serialize};
 
-#[derive(Clone, PartialEq, Debug)]
-pub struct Personagem<'a> {
-    pub nome: &'a str,
+#[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
+pub struct Personagem {
+    pub nome: String,
     pub vida_total: u8,
     pub vida_atual: u8,
     pub ataque: u8,
@@ -11,8 +12,8 @@ pub struct Personagem<'a> {
     pub experiencia: u16,
 }
 
-impl<'a> Personagem<'a> {
-    const fn new(nome: &'a str, vida: u8, ataque: u8, defesa: u8, experiencia: u16) -> Self {
+impl Personagem {
+    const fn new(nome: String, vida: u8, ataque: u8, defesa: u8, experiencia: u16) -> Self {
         Personagem {
             nome,
             vida_total: vida,
@@ -50,8 +51,8 @@ impl<'a> Personagem<'a> {
     }
 }
 
-impl<'a> Default for Personagem<'a> {
+impl Default for Personagem {
     fn default() -> Self {
-        Personagem::new("", 10, 1, 1, 0)
+        Personagem::new("".to_owned(), 10, 1, 1, 0)
     }
 }

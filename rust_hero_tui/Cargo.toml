@@ -8,5 +8,5 @@ license-file = "LICENSE"
 readme = "README.md"
 
 [dependencies]
-console = "0.14.0"
+console = "0.14.1"
 rust_hero_dados = { path = "../rust_hero_dados" }

@@ -2,21 +2,23 @@ use crate::dados::{equipamentos::Equipamentos, flags::Flags};
 use crate::jogo::{des_criptografar, TipoFlag};
 use crate::structs::personagem::Personagem;
 use crate::utils::random::{RandomTrait, RandomValue};
+use serde::{Deserialize, Serialize};
 
 // Arquivo para criação do sistema de save com tempo em segundos
-pub struct Save<'a> {
+#[derive(Serialize, Deserialize, PartialEq, Debug)]
+pub struct Save {
     pub chave: u32,
-    pub jogador: Personagem<'a>,
+    pub jogador: Personagem,
     pub item_pocao: u8,
     pub item_ataque: u8,
     pub item_defesa: u8,
     pub item_experiencia: u8,
     pub equipamento: Option<Equipamentos>,
     pub flags: TipoFlag,
-    pub tempo: u32,
+    pub tempo: u64,
 }
 
-impl<'a> Save<'a> {
+impl Save {
     pub fn novo(seed: &u64) -> Self {
         let chave = RandomValue::<u32>::get_random_value(seed, u32::MIN..=u32::MAX);
         Save {

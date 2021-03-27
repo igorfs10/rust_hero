@@ -40,7 +40,7 @@ pub fn main() {
 
     botao_novo.set_callback(Box::new(|| {
         let v = vec!["1st val", "2nd val", "3rd val"];
-        let mut x = MenuItem::new(&v);
+        let x = MenuItem::new(&v);
         match x.popup(100, 100) {
             None => println!("No value was chosen!"),
             Some(val) => println!("{}", val.label().unwrap()),

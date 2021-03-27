@@ -1,6 +1,7 @@
 use crate::structs::equipamento::Equipamento;
+use serde::{Deserialize, Serialize};
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, PartialEq, Debug, Serialize, Deserialize)]
 pub enum Equipamentos {
     Espada,
     Escudo,

@@ -4,13 +4,13 @@ pub mod tests {
     use crate::jogo::*;
     use crate::structs::{lugar::Lugar, personagem::Personagem};
 
-    struct SortearInimigo<'a> {
+    struct SortearInimigo {
         lugar: Option<Lugar>,
         seed: u64,
-        esperado: Option<Personagem<'a>>,
+        esperado: Option<Personagem>,
     }
 
-    impl<'a> SortearInimigo<'a> {
+    impl SortearInimigo {
         fn novo() -> Self {
             SortearInimigo {
                 lugar: None,
@@ -29,7 +29,7 @@ pub mod tests {
             self
         }
 
-        fn espera(mut self, esperado: Personagem<'a>) -> Self {
+        fn espera(mut self, esperado: Personagem) -> Self {
             self.esperado = Some(esperado);
             self
         }
