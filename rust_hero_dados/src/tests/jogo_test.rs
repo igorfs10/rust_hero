@@ -51,7 +51,7 @@ pub mod tests {
         //1 inimigo 3
         //4 inimigo 4
         SortearInimigo::novo()
-            .definir_lugar(LUGARES[0].get_lugar())
+            .definir_lugar(LUGARES[0].clone().get_lugar())
             .definir_seed(0)
             .espera(Personagem::default())
             .testar();

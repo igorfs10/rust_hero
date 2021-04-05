@@ -30,7 +30,7 @@ fn main() {
     println!("{}", ve);
     let mut save = get_save();
 
-    println!("Save 1:\n{:?}", save);
+    // println!("Save 1:\n{:?}", save);
 
     let mut input = String::new();
     match io::stdin().read_line(&mut input) {
@@ -50,20 +50,18 @@ fn main() {
     };
 
     save.equipamento = escolher_equipamento();
-    if let Some(equip) = save.equipamento {
-        jogador.ataque += equip.get_equipamento().ataque;
-        jogador.defesa += equip.get_equipamento().defesa;
-    }
+    jogador.ataque += save.equipamento.get_equipamento().ataque;
+    jogador.defesa += save.equipamento.get_equipamento().defesa;
 
     println!("Jogador: {}", jogador.nome);
 
     save.jogador = jogador;
 
-    println!("Save 2:\n{:?}", save);
+    // println!("Save 2:\n{:?}", save);
 
     println!("-----LOCAIS-----");
     for lugar in LUGARES.iter() {
-        mostrar_dados(lugar.get_lugar());
+        mostrar_dados(lugar.clone().get_lugar());
     }
 
     println!("-----INIMIGOS-----");
@@ -80,7 +78,7 @@ fn main() {
 
     println!("-----ITENS-----");
     for item in ITENS.iter() {
-        mostrar_dados(item.get_item());
+        mostrar_dados(item.clone().get_item());
     }
 
     save.set_flag(Flags::EnciclopediaEquipamentos);
@@ -138,17 +136,17 @@ fn main() {
     save_game(&save);
 }
 
-fn escolher_equipamento() -> Option<Equipamentos> {
+fn escolher_equipamento() -> Equipamentos {
     println!(
         "Digite um número para escolher o equipamento (0-{}):\n",
         EQUIPAMENTOS.len() - 1
     );
 
-    for equipamento in EQUIPAMENTOS {
+    for i in 0..EQUIPAMENTOS.len() {
         println!(
             "{}: {} ",
-            equipamento.get_equipamento().id,
-            equipamento.get_equipamento().nome
+            i,
+            EQUIPAMENTOS[i].get_equipamento().nome
         );
     }
     println!("{} ou mais: Nenhum", EQUIPAMENTOS.len());

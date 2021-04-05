@@ -1,4 +1,4 @@
-#[derive(Copy, Clone)]
+#[derive(Clone)]
 pub enum Flags {
     UpgradePocao = 0b1,
     UpgradeAtaque = 0b10,
