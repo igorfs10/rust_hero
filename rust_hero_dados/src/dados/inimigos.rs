@@ -1,5 +1,5 @@
-use super::itens::Itens;
-use crate::structs::inimigo::Inimigo;
+use super::itens::{Item, Itens};
+use crate::traits::dados_trait::DadosTrait;
 
 #[derive(Clone)]
 pub enum Inimigos {
@@ -9,11 +9,20 @@ pub enum Inimigos {
     Lobo,
 }
 
-// Usar const trait quando lançar na versão estável
-impl Inimigos {
+#[derive(Clone)]
+pub struct Inimigo {
+    pub nome: &'static str,
+    pub vida: u8,
+    pub ataque: u8,
+    pub defesa: u8,
+    pub experiencia: u16,
+    pub item: Itens,
+}
+
+impl Inimigo {
     // Monta o inimigo
-    pub const fn get_inimigo(&self) -> Inimigo {
-        match self {
+    pub const fn get_inimigo(inimigo: &Inimigos) -> Inimigo {
+        match inimigo {
             Inimigos::Rato => Inimigo {
                 nome: "Rato",
                 vida: 5,
@@ -47,6 +56,25 @@ impl Inimigos {
                 item: Itens::Experiencia,
             },
         }
+    }
+}
+
+impl DadosTrait for Inimigo {
+    fn get_dados(&self) -> String {
+        format!(
+            "{}\
+            \nVida: {}\
+            \nAtaque: {}\
+            \nDefesa: {}\
+            \nExperiência: {}\
+            \nItem: {}",
+            self.nome,
+            self.vida,
+            self.ataque,
+            self.defesa,
+            self.experiencia,
+            Item::get_item(&self.item).nome,
+        )
     }
 }
 

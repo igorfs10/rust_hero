@@ -1,8 +1,8 @@
 #[cfg(test)]
 pub mod tests {
-    use crate::dados::lugares::LUGARES;
+    use crate::dados::lugares::{Lugar, LUGARES};
     use crate::jogo::*;
-    use crate::structs::{lugar::Lugar, personagem::Personagem};
+    use crate::structs::personagem::Personagem;
 
     struct SortearInimigo {
         lugar: Option<Lugar>,
@@ -51,7 +51,7 @@ pub mod tests {
         //1 inimigo 3
         //4 inimigo 4
         SortearInimigo::novo()
-            .definir_lugar(LUGARES[0].clone().get_lugar())
+            .definir_lugar(Lugar::get_lugar(&LUGARES[0]))
             .definir_seed(0)
             .espera(Personagem::default())
             .testar();

@@ -1,4 +1,4 @@
-use crate::structs::equipamento::Equipamento;
+use crate::traits::dados_trait::DadosTrait;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Serialize, Deserialize)]
@@ -9,11 +9,15 @@ pub enum Equipamentos {
     Bastao,
 }
 
-// Usar const trait quando lançar na versão estável
-impl Equipamentos {
-    //Monta o equipamento
-    pub const fn get_equipamento(&self) -> Equipamento {
-        match self {
+pub struct Equipamento {
+    pub nome: &'static str,
+    pub ataque: u8,
+    pub defesa: u8,
+}
+
+impl Equipamento {
+    pub const fn get_equipamento(equipamento: &Equipamentos) -> Equipamento {
+        match equipamento {
             Equipamentos::Nenhum => Equipamento {
                 nome: "Nenhum",
                 ataque: 0,
@@ -35,6 +39,17 @@ impl Equipamentos {
                 defesa: 2,
             },
         }
+    }
+}
+
+impl DadosTrait for Equipamento {
+    fn get_dados(&self) -> String {
+        format!(
+            "{}\
+            \nAtaque: {}\
+            \nDefesa: {}",
+            self.nome, self.ataque, self.defesa
+        )
     }
 }
 

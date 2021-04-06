@@ -1,4 +1,4 @@
-use crate::structs::item::Item;
+use crate::traits::dados_trait::DadosTrait;
 
 #[derive(Clone)]
 pub enum Itens {
@@ -9,11 +9,16 @@ pub enum Itens {
     Experiencia,
 }
 
-// Usar const trait quando lançar na versão estável
-impl Itens {
+pub struct Item {
+    pub nome: &'static str,
+    pub descricao: &'static str,
+    pub efeito: u8,
+}
+
+impl Item {
     // Monta o item
-    pub const fn get_item(self) -> Item {
-        match self {
+    pub const fn get_item(item: &Itens) -> Item {
+        match item {
             Itens::Nenhum => Item {
                 nome: "Nenhum",
                 descricao: "Sem efeito",
@@ -40,6 +45,16 @@ impl Itens {
                 efeito: 0,
             },
         }
+    }
+}
+
+impl DadosTrait for Item {
+    fn get_dados(&self) -> String {
+        format!(
+            "{}\
+            \nDescrição: {}",
+            self.nome, self.descricao
+        )
     }
 }
 

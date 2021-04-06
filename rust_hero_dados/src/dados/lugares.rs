@@ -1,5 +1,5 @@
-use super::inimigos::Inimigos;
-use crate::structs::lugar::Lugar;
+use crate::dados::inimigos::{Inimigo, Inimigos};
+use crate::traits::dados_trait::DadosTrait;
 
 #[derive(Clone)]
 pub enum Lugares {
@@ -7,10 +7,15 @@ pub enum Lugares {
     Floresta,
 }
 
-impl Lugares {
+pub struct Lugar {
+    pub nome: &'static str,
+    pub inimigos: Option<[Inimigos; 4]>,
+}
+
+impl Lugar {
     // Monta o Lugar
-    pub const fn get_lugar(self) -> Lugar {
-        match self {
+    pub const fn get_lugar(lugar: &Lugares) -> Lugar {
+        match lugar {
             Lugares::Cidade => Lugar {
                 nome: "Cidade",
                 inimigos: None,
@@ -24,6 +29,23 @@ impl Lugares {
                     Inimigos::Lobo,
                 ]),
             },
+        }
+    }
+}
+
+impl DadosTrait for Lugar {
+    fn get_dados(&self) -> String {
+        let mut dados = self.nome.to_string();
+        match self.inimigos.clone() {
+            Some(inimigos) => {
+                let mut nome_inimigos = String::from("\nInimigos:");
+                for inimigo in inimigos.iter() {
+                    nome_inimigos.push_str(&format!("\n{}", Inimigo::get_inimigo(inimigo).nome));
+                }
+                dados.push_str(&nome_inimigos);
+                dados
+            }
+            None => dados,
         }
     }
 }

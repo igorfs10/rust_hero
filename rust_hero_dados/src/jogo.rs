@@ -1,7 +1,12 @@
-use crate::{dados::equipamentos::EQUIPAMENTOS, utils::random::{RandomTrait, RandomValue}};
+use crate::{
+    dados::equipamentos::EQUIPAMENTOS,
+    utils::random::{RandomTrait, RandomValue},
+};
 
 use crate::dados::equipamentos::Equipamentos;
-use crate::structs::{inimigo::Inimigo, lugar::Lugar, personagem::Personagem};
+use crate::dados::inimigos::Inimigo;
+use crate::dados::lugares::Lugar;
+use crate::structs::personagem::Personagem;
 
 pub type TipoFlag = u32;
 
@@ -12,9 +17,9 @@ pub fn des_criptografar(valor: &u32, chave: &u32) -> u32 {
 }
 
 pub fn match_equipamento(id_equipamento: usize) -> Equipamentos {
-    if id_equipamento >= EQUIPAMENTOS.len(){
+    if id_equipamento >= EQUIPAMENTOS.len() {
         EQUIPAMENTOS[0].clone()
-    }else{
+    } else {
         EQUIPAMENTOS[id_equipamento].clone()
     }
 }
@@ -25,13 +30,13 @@ pub fn sortear_inimigo_lugar(lugar: &Lugar, seed: &u64) -> Option<Inimigo> {
             let rng_inimigo = RandomValue::<u8>::get_random_value(seed, 1..=10);
 
             if rng_inimigo <= 4 {
-                Some(inimigos[0].get_inimigo())
+                Some(Inimigo::get_inimigo(&inimigos[0]))
             } else if rng_inimigo <= 7 {
-                Some(inimigos[1].get_inimigo())
+                Some(Inimigo::get_inimigo(&inimigos[1]))
             } else if rng_inimigo <= 9 {
-                Some(inimigos[2].get_inimigo())
+                Some(Inimigo::get_inimigo(&inimigos[2]))
             } else {
-                Some(inimigos[3].get_inimigo())
+                Some(Inimigo::get_inimigo(&inimigos[3]))
             }
         }
         None => None,

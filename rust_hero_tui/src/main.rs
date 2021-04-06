@@ -6,13 +6,13 @@ use std::time::Instant;
 use tl_ui::{limpar_terminal, mostrar_dados};
 
 use rust_hero_dados::dados::flags::Flags;
-use rust_hero_dados::dados::inimigos::INIMIGOS;
-use rust_hero_dados::dados::itens::ITENS;
-use rust_hero_dados::dados::lugares::LUGARES;
 use rust_hero_dados::jogo::*;
 use rust_hero_dados::structs::personagem::Personagem;
 use rust_hero_dados::{
-    dados::equipamentos::{Equipamentos, EQUIPAMENTOS},
+    dados::equipamentos::{Equipamento, Equipamentos, EQUIPAMENTOS},
+    dados::inimigos::{Inimigo, INIMIGOS},
+    dados::itens::{Item, ITENS},
+    dados::lugares::{Lugar, LUGARES},
     utils::save_system::{get_save, save_game},
 };
 
@@ -50,8 +50,9 @@ fn main() {
     };
 
     save.equipamento = escolher_equipamento();
-    jogador.ataque += save.equipamento.get_equipamento().ataque;
-    jogador.defesa += save.equipamento.get_equipamento().defesa;
+    let equip = Equipamento::get_equipamento(&save.equipamento);
+    jogador.ataque += equip.ataque;
+    jogador.defesa += equip.defesa;
 
     println!("Jogador: {}", jogador.nome);
 
@@ -61,24 +62,24 @@ fn main() {
 
     println!("-----LOCAIS-----");
     for lugar in LUGARES.iter() {
-        mostrar_dados(lugar.clone().get_lugar());
+        mostrar_dados(Lugar::get_lugar(lugar));
     }
 
     println!("-----INIMIGOS-----");
     for inimigo in INIMIGOS.iter() {
-        mostrar_dados(inimigo.get_inimigo());
+        mostrar_dados(Inimigo::get_inimigo(inimigo));
     }
 
     println!("Ataque critico: {}\n\n", MULTIPLICADOR_CRITICO);
 
     println!("-----EQUIPAMENTOS-----");
     for equipamento in EQUIPAMENTOS.iter() {
-        mostrar_dados(equipamento.get_equipamento());
+        mostrar_dados(Equipamento::get_equipamento(equipamento));
     }
 
     println!("-----ITENS-----");
     for item in ITENS.iter() {
-        mostrar_dados(item.clone().get_item());
+        mostrar_dados(Item::get_item(item));
     }
 
     save.set_flag(Flags::EnciclopediaEquipamentos);
@@ -142,11 +143,11 @@ fn escolher_equipamento() -> Equipamentos {
         EQUIPAMENTOS.len() - 1
     );
 
-    for i in 0..EQUIPAMENTOS.len() {
+    for (index, equipamento) in EQUIPAMENTOS.iter().enumerate() {
         println!(
             "{}: {} ",
-            i,
-            EQUIPAMENTOS[i].get_equipamento().nome
+            index,
+            Equipamento::get_equipamento(&equipamento).nome
         );
     }
     println!("{} ou mais: Nenhum", EQUIPAMENTOS.len());

@@ -36,7 +36,7 @@ impl Save {
 
     pub fn check_flag(&self, flag: Flags) -> bool {
         let permissao_descriptografada = des_criptografar(&self.flags, &self.chave);
-        flag.clone() as TipoFlag & permissao_descriptografada == flag.clone() as TipoFlag
+        flag.clone() as TipoFlag & permissao_descriptografada == flag as TipoFlag
     }
 
     pub fn set_flag(&mut self, flag: Flags) {
