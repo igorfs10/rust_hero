@@ -1,7 +1,6 @@
 use crate::dados::inimigos::{Inimigo, Inimigos};
 use crate::traits::dados_trait::DadosTrait;
 
-#[derive(Clone)]
 pub enum Lugares {
     Cidade,
     Floresta,
@@ -14,7 +13,7 @@ pub struct Lugar {
 
 impl Lugar {
     // Monta o Lugar
-    pub const fn get_lugar(lugar: &Lugares) -> Lugar {
+    pub const fn get_lugar(lugar: &Lugares) -> Self {
         match lugar {
             Lugares::Cidade => Lugar {
                 nome: "Cidade",
@@ -36,7 +35,7 @@ impl Lugar {
 impl DadosTrait for Lugar {
     fn get_dados(&self) -> String {
         let mut dados = self.nome.to_string();
-        match self.inimigos.clone() {
+        match &self.inimigos {
             Some(inimigos) => {
                 let mut nome_inimigos = String::from("\nInimigos:");
                 for inimigo in inimigos.iter() {

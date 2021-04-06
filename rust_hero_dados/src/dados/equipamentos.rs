@@ -16,7 +16,7 @@ pub struct Equipamento {
 }
 
 impl Equipamento {
-    pub const fn get_equipamento(equipamento: &Equipamentos) -> Equipamento {
+    pub const fn get_equipamento(equipamento: &Equipamentos) -> Self {
         match equipamento {
             Equipamentos::Nenhum => Equipamento {
                 nome: "Nenhum",

@@ -25,7 +25,7 @@ pub fn match_equipamento(id_equipamento: usize) -> Equipamentos {
 }
 
 pub fn sortear_inimigo_lugar(lugar: &Lugar, seed: &u64) -> Option<Inimigo> {
-    match lugar.inimigos.clone() {
+    match &lugar.inimigos {
         Some(inimigos) => {
             let rng_inimigo = RandomValue::<u8>::get_random_value(seed, 1..=10);
 

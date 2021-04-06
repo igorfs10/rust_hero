@@ -1,7 +1,6 @@
 use super::itens::{Item, Itens};
 use crate::traits::dados_trait::DadosTrait;
 
-#[derive(Clone)]
 pub enum Inimigos {
     Rato,
     Coelho,
@@ -9,7 +8,6 @@ pub enum Inimigos {
     Lobo,
 }
 
-#[derive(Clone)]
 pub struct Inimigo {
     pub nome: &'static str,
     pub vida: u8,
@@ -21,7 +19,7 @@ pub struct Inimigo {
 
 impl Inimigo {
     // Monta o inimigo
-    pub const fn get_inimigo(inimigo: &Inimigos) -> Inimigo {
+    pub const fn get_inimigo(inimigo: &Inimigos) -> Self {
         match inimigo {
             Inimigos::Rato => Inimigo {
                 nome: "Rato",

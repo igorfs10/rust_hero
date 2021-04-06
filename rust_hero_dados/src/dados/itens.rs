@@ -1,6 +1,5 @@
 use crate::traits::dados_trait::DadosTrait;
 
-#[derive(Clone)]
 pub enum Itens {
     Nenhum,
     Pocao,
@@ -17,7 +16,7 @@ pub struct Item {
 
 impl Item {
     // Monta o item
-    pub const fn get_item(item: &Itens) -> Item {
+    pub const fn get_item(item: &Itens) -> Self {
         match item {
             Itens::Nenhum => Item {
                 nome: "Nenhum",
