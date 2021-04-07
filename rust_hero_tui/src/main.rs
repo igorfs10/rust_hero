@@ -5,16 +5,16 @@ use std::time::Instant;
 
 use tl_ui::{limpar_terminal, mostrar_dados};
 
-use rust_hero_dados::dados::flags::Flags;
+use rust_hero_dados::dados::{
+    equipamentos::{Equipamento, Equipamentos, EQUIPAMENTOS},
+    flags::Flags,
+    inimigos::{Inimigo, INIMIGOS},
+    itens::{Item, ITENS},
+    lugares::{Lugar, LUGARES},
+};
 use rust_hero_dados::jogo::*;
 use rust_hero_dados::structs::personagem::Personagem;
-use rust_hero_dados::{
-    dados::equipamentos::{Equipamento, Equipamentos, EQUIPAMENTOS},
-    dados::inimigos::{Inimigo, INIMIGOS},
-    dados::itens::{Item, ITENS},
-    dados::lugares::{Lugar, LUGARES},
-    utils::save_system::{get_save, save_game},
-};
+use rust_hero_dados::utils::save_system::{get_save, save_game};
 
 const TESTE: &str = include_str!("conteudo/teste.txt");
 

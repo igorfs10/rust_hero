@@ -1,12 +1,8 @@
-use crate::{
-    dados::equipamentos::EQUIPAMENTOS,
-    utils::random::{RandomTrait, RandomValue},
-};
-
-use crate::dados::equipamentos::Equipamentos;
+use crate::dados::equipamentos::{Equipamentos, EQUIPAMENTOS};
 use crate::dados::inimigos::Inimigo;
 use crate::dados::lugares::Lugar;
 use crate::structs::personagem::Personagem;
+use crate::utils::random::{RandomTrait, RandomValue};
 
 pub type TipoFlag = u32;
 

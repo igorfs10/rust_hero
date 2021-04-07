@@ -7,14 +7,14 @@ use serde::{Deserialize, Serialize};
 // Arquivo para criação do sistema de save com tempo em segundos
 #[derive(Serialize, Deserialize)]
 pub struct Save {
-    pub chave: u32,
+    chave: u32,
     pub jogador: Personagem,
-    pub item_pocao: u8,
-    pub item_ataque: u8,
-    pub item_defesa: u8,
-    pub item_experiencia: u8,
+    item_pocao: u8,
+    item_ataque: u8,
+    item_defesa: u8,
+    item_experiencia: u8,
     pub equipamento: Equipamentos,
-    pub flags: TipoFlag,
+    flags: TipoFlag,
     pub tempo: u64,
 }
 
