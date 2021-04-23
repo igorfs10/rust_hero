@@ -2,7 +2,7 @@
 #![windows_subsystem = "windows"]
 
 // Biblioteca interface
-use fltk::{app::*, button::*, frame::*, menu::*, window::*};
+use fltk::{app::*, button::*, enums::{Color, FrameType}, frame::*, menu::*, prelude::{GroupExt, WidgetExt, WindowExt}, window::*};
 
 pub fn main() {
     let app = App::default().with_scheme(AppScheme::Gtk);
@@ -38,14 +38,14 @@ pub fn main() {
 
     botao_carregar.set_color(Color::from_u32(0x1565c032));
 
-    botao_novo.set_callback(Box::new(|| {
+    botao_novo.set_callback(|_| {
         let v = vec!["1st val", "2nd val", "3rd val"];
         let x = MenuItem::new(&v);
         match x.popup(100, 100) {
             None => println!("No value was chosen!"),
             Some(val) => println!("{}", val.label().unwrap()),
         }
-    }));
+    });
 
     janela.make_resizable(false);
     janela.end();

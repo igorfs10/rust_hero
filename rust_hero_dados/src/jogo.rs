@@ -1,3 +1,5 @@
+//! Jogo - Módulo que contém funções e dados para funcionamento do jogo.
+
 use crate::dados::equipamentos::{Equipamentos, EQUIPAMENTOS};
 use crate::dados::inimigos::Inimigo;
 use crate::dados::lugares::Lugar;

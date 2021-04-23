@@ -1,3 +1,5 @@
+//! Save - Struct usada para armazenar o save do jogo.
+
 use crate::dados::{equipamentos::Equipamentos, flags::Flags};
 use crate::jogo::{des_criptografar, TipoFlag};
 use crate::structs::personagem::Personagem;

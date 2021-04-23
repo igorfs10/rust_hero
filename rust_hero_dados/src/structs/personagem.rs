@@ -1,3 +1,5 @@
+//! Personagem - Struct usada para armazenar o personagem do jogador.
+
 use crate::jogo::MULTIPLICADOR_CRITICO;
 use crate::utils::random::{RandomTrait, RandomValue};
 use serde::{Deserialize, Serialize};

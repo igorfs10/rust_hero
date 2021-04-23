@@ -1,3 +1,5 @@
+//! Abstração das funções de aleatoriedade.
+
 use std::ops::RangeInclusive;
 
 use rand::{prelude::*, Rng};

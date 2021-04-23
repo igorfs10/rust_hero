@@ -1,3 +1,5 @@
+//! Níveis - Dados e funções relacionados à estrutura de níveis.
+
 const NIVEIS: &[u16] = &[0, 15, 40, 90, 170, 300, 480];
 
 pub struct Nivel;

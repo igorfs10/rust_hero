@@ -1,3 +1,5 @@
+//! Flags - Dados das flags usadas no jogo.
+
 #[derive(Clone)]
 pub enum Flags {
     UpgradePocao = 0b1,

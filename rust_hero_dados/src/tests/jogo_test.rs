@@ -1,3 +1,5 @@
+//! Teste das funções de jogo.
+
 #[cfg(test)]
 pub mod tests {
     use crate::dados::lugares::{Lugar, LUGARES};

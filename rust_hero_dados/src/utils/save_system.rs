@@ -1,3 +1,5 @@
+//! Funções para armazenamento do save.
+
 use std::{
     env,
     fs::{read, File, OpenOptions},

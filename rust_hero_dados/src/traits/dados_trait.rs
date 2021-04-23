@@ -1,3 +1,4 @@
+//! Trait que imprime dados de jogo.
 pub trait DadosTrait {
     // fn get_id(&self) -> usize;
     fn get_dados(&self) -> String;

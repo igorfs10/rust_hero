@@ -1,3 +1,5 @@
+//! Teste das funções do sistema de níveis.
+
 #[cfg(test)]
 pub mod tests {
     use crate::dados::niveis::Nivel;

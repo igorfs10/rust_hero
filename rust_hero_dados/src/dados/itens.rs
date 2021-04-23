@@ -1,3 +1,5 @@
+//! Itens - Dados e funções relacionados à estrutura de itens.
+
 use crate::traits::dados_trait::DadosTrait;
 
 pub enum Itens {

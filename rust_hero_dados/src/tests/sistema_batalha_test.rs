@@ -1,3 +1,5 @@
+//! Teste das funções de sistema de batalha.
+
 #[cfg(test)]
 pub mod tests {
     use crate::structs::personagem::Personagem;

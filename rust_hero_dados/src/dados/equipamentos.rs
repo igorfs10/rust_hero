@@ -1,6 +1,9 @@
+//! Equipamentos - Dados e funções relacionados à estrutura de equipamentos.
+
 use crate::traits::dados_trait::DadosTrait;
 use serde::{Deserialize, Serialize};
 
+#[doc(hidden)]
 #[derive(Clone, Serialize, Deserialize)]
 pub enum Equipamentos {
     Nenhum,
@@ -9,6 +12,12 @@ pub enum Equipamentos {
     Bastao,
 }
 
+/// Struct de equipamento, usado para armazenar dados de equipamento.
+/// 
+/// # Exemplo da criação de uma struct com um equipamento.
+/// ```
+/// let equipamento = Equipamento::get_equipamento(Equipamentos::Espada);
+/// ```
 pub struct Equipamento {
     pub nome: &'static str,
     pub ataque: u8,

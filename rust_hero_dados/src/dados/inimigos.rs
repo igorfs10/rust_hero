@@ -1,3 +1,5 @@
+//! Inimigos - Dados e funções relacionados à estrutura de inimigos.
+
 use super::itens::{Item, Itens};
 use crate::traits::dados_trait::DadosTrait;
 
