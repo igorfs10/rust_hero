@@ -10,9 +10,6 @@ pub struct RandomValue<T: Random>(T);
 pub trait RandomTrait<T> {
     type Input;
     fn get_random_value(seed: &u64, input: Self::Input) -> T;
-
-    // Implementar quando lançarem traits constantes
-    // fn get_id(&self) -> usize;
 }
 
 pub trait Random {
