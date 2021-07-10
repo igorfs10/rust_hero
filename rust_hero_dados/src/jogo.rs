@@ -1,6 +1,5 @@
 //! Jogo - Módulo que contém funções e dados para funcionamento do jogo.
 
-use crate::dados::equipamentos::{Equipamentos, EQUIPAMENTOS};
 use crate::dados::inimigos::Inimigo;
 use crate::dados::lugares::Lugar;
 use crate::structs::personagem::Personagem;
@@ -12,14 +11,6 @@ pub const MULTIPLICADOR_CRITICO: u8 = 2;
 
 pub fn des_criptografar(valor: &u32, chave: &u32) -> u32 {
     *valor ^ *chave
-}
-
-pub fn match_equipamento(id_equipamento: usize) -> Equipamentos {
-    if id_equipamento >= EQUIPAMENTOS.len() {
-        EQUIPAMENTOS[0].clone()
-    } else {
-        EQUIPAMENTOS[id_equipamento].clone()
-    }
 }
 
 pub fn sortear_inimigo_lugar(lugar: &Lugar, seed: &u64) -> Option<Inimigo> {

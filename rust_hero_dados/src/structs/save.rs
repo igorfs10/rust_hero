@@ -21,7 +21,7 @@ pub struct Save {
 }
 
 impl Save {
-    pub fn novo(seed: &u64) -> Self {
+    pub fn new(seed: &u64) -> Self {
         let chave = RandomValue::<u32>::get_random_value(seed, u32::MIN..=u32::MAX);
         Save {
             chave,

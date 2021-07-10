@@ -5,6 +5,15 @@ use std::ops::RangeInclusive;
 use rand::{prelude::*, Rng};
 use rand_pcg::Pcg64Mcg;
 
+pub struct Seed;
+
+impl Seed {
+    pub fn generate_seed() -> u64 {
+        let rng = &mut Pcg64Mcg::from_entropy();
+        Pcg64Mcg::gen_range(rng, u64::MIN..u64::MAX)
+    }
+}
+
 pub struct RandomValue<T: Random>(T);
 
 pub trait RandomTrait<T> {

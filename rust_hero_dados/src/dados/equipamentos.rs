@@ -13,7 +13,7 @@ pub enum Equipamentos {
 }
 
 /// Struct de equipamento, usado para armazenar dados de equipamento.
-/// 
+///
 /// # Exemplo da criação de uma struct com um equipamento.
 /// ```
 /// let equipamento = Equipamento::get_equipamento(Equipamentos::Espada);
@@ -62,9 +62,9 @@ impl DadosTrait for Equipamento {
     }
 }
 
-pub const EQUIPAMENTOS: &[Equipamentos] = &[
-    Equipamentos::Nenhum,
-    Equipamentos::Espada,
-    Equipamentos::Escudo,
-    Equipamentos::Bastao,
+pub const EQUIPAMENTOS: &[Equipamento] = &[
+    Equipamento::get_equipamento(&Equipamentos::Nenhum),
+    Equipamento::get_equipamento(&Equipamentos::Espada),
+    Equipamento::get_equipamento(&Equipamentos::Escudo),
+    Equipamento::get_equipamento(&Equipamentos::Bastao),
 ];
