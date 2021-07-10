@@ -1,2 +1,3 @@
 # Rust Hero
-Um jogo simples em rust. 
+
+A simple idle game, still at very early stage.
