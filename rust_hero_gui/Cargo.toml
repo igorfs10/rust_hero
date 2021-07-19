@@ -9,4 +9,4 @@ readme = "README.md"
 
 [dependencies]
 fltk = { version = "1.1", features = ["fltk-bundled"] }
-rust_hero_dados = { path = "../rust_hero_dados" }
+rust_hero_data = { path = "../rust_hero_data" }

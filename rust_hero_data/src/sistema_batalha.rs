@@ -1,6 +1,6 @@
 //! Sistema de batalha - Módulo que contém funções para realizar o sistema de batalha.
 
-use crate::dados::lugares::{Lugar, Lugares};
+use crate::data::lugares::{Lugar, Lugares};
 use crate::jogo::*;
 use crate::structs::personagem::Personagem;
 

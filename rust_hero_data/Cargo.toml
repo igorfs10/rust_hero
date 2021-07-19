@@ -1,5 +1,5 @@
 [package]
-name    = "rust_hero_dados"
+name    = "rust_hero_data"
 version = "0.0.1"
 edition = "2018"
 authors = ["igorfs10 <igorfs10@gmail.com>"]

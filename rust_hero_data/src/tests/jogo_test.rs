@@ -2,7 +2,7 @@
 
 #[cfg(test)]
 pub mod tests {
-    use crate::dados::lugares::{Lugar, LUGARES};
+    use crate::data::lugares::{Lugar, LUGARES};
     use crate::jogo::*;
     use crate::structs::personagem::Personagem;
 

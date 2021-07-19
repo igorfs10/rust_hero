@@ -1,6 +1,6 @@
 //! Lugares - Dados e funções relacionados à estrutura de lugares.
 
-use crate::dados::inimigos::{Inimigo, Inimigos};
+use crate::data::inimigos::{Inimigo, Inimigos};
 use crate::traits::dados_trait::DadosTrait;
 
 pub enum Lugares {

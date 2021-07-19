@@ -13,7 +13,7 @@ use fltk::{
     prelude::{GroupExt, WidgetExt, WindowExt},
     window::*,
 };
-use rust_hero_dados::dados::equipamentos::EQUIPAMENTOS;
+use rust_hero_data::data::weapons::WEAPONS;
 
 pub fn main() {
     // let mut seed = Seed::generate_seed();
@@ -53,10 +53,10 @@ pub fn main() {
 
     botao_novo.set_callback(|_| {
         let options = vec![
-            EQUIPAMENTOS[0].nome,
-            EQUIPAMENTOS[1].nome,
-            EQUIPAMENTOS[2].nome,
-            EQUIPAMENTOS[3].nome,
+            WEAPONS[0].name,
+            WEAPONS[1].name,
+            WEAPONS[2].name,
+            WEAPONS[3].name,
         ];
         let menu = MenuItem::new(&options);
         match menu.popup(100, 100) {

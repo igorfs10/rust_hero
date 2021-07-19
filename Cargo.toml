@@ -1,5 +1,5 @@
 [workspace]
-members = ["rust_hero_dados", "rust_hero_gui"]
+members = ["rust_hero_data", "rust_hero_gui"]
 default-members = ["rust_hero_gui"]
 resolver = "2"
 

@@ -1,6 +1,6 @@
 //! Save - Struct usada para armazenar o save do jogo.
 
-use crate::dados::{equipamentos::Equipamentos, flags::Flags};
+use crate::data::{flags::Flags, weapons::Weapons};
 use crate::jogo::{des_criptografar, TipoFlag};
 use crate::structs::personagem::Personagem;
 use crate::utils::random::{RandomTrait, RandomValue};
@@ -15,7 +15,7 @@ pub struct Save {
     item_ataque: u8,
     item_defesa: u8,
     item_experiencia: u8,
-    pub equipamento: Equipamentos,
+    pub equipamento: Weapons,
     flags: TipoFlag,
     pub tempo: u64,
 }
@@ -30,7 +30,7 @@ impl Save {
             item_ataque: 5,
             item_defesa: 5,
             item_experiencia: 5,
-            equipamento: Equipamentos::Nenhum,
+            equipamento: Weapons::None,
             flags: des_criptografar(&0, &chave),
             tempo: 0,
         }

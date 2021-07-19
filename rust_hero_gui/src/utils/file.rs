@@ -5,7 +5,7 @@ use std::{
     path::Path,
 };
 
-use rust_hero_dados::{
+use rust_hero_data::{
     structs::save::Save,
     utils::save_system::{generate_save_data, load_save, new_save},
 };

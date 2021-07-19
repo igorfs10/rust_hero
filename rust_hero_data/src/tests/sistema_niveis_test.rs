@@ -2,7 +2,7 @@
 
 #[cfg(test)]
 pub mod tests {
-    use crate::dados::niveis::Nivel;
+    use crate::data::niveis::Nivel;
     use crate::structs::personagem::Personagem;
 
     #[test]
