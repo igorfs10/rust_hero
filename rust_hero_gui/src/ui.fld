@@ -1,0 +1,114 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0306
+header_name {.h}
+code_name {.cxx}
+class RustHeroUI {open
+} {
+  Function {make_window()} {open
+  } {
+    Fl_Window {} {
+      label {Rust Hero} open
+      xywh {510 69 500 600} type Double color 52 visible
+    } {
+      Fl_Group menu_group {open
+        xywh {0 0 535 55}
+      } {
+        Fl_Button new_button {
+          label New
+          xywh {0 0 125 55} box FLAT_BOX color 60 labelfont 1
+        }
+        Fl_Button save_button {
+          label Save
+          xywh {125 0 125 55} box FLAT_BOX color 180 labelfont 1
+        }
+        Fl_Button load_button {
+          label Load
+          xywh {250 0 125 55} box FLAT_BOX color 80 labelfont 1
+        }
+        Fl_Button load_button {
+          label Help selected
+          xywh {375 0 125 55} box FLAT_BOX color 94 labelfont 1
+        }
+      }
+      Fl_Group top_stat_group {open
+        xywh {0 55 505 95}
+      } {
+        Fl_Box character_class {
+          xywh {25 75 115 30} box FLAT_BOX
+        }
+        Fl_Output game_time {
+          label Time
+          xywh {49 110 110 25} box FLAT_BOX color 49
+        }
+        Fl_Box location {
+          xywh {181 75 115 65} box FLAT_BOX
+        }
+        Fl_Value_Output level {
+          label Level
+          xywh {390 75 70 30} box FLAT_BOX
+        }
+        Fl_Output xp {
+          label Experience
+          xywh {390 110 75 25} box FLAT_BOX color 49
+        }
+      }
+      Fl_Box image_box {
+        xywh {0 150 500 310} box FLAT_BOX color 24
+      }
+      Fl_Group stat_group {open
+        xywh {250 462 253 109}
+      } {
+        Fl_Value_Output m_def {
+          label {Mana Defense}
+          xywh {365 475 30 30} box FLAT_BOX
+        }
+        Fl_Value_Output m_atk {
+          label {Mana Attack}
+          xywh {365 507 30 30} box FLAT_BOX
+        }
+        Fl_Value_Output mp {
+          label {Mana }
+          xywh {365 540 30 30} box FLAT_BOX
+        }
+        Fl_Value_Output atk {
+          label Attack
+          xywh {466 475 30 30} box FLAT_BOX
+        }
+        Fl_Value_Output hp {
+          label Health
+          xywh {466 508 30 30} box FLAT_BOX
+        }
+        Fl_Value_Output def {
+          label Defense
+          xywh {466 541 30 30} box FLAT_BOX
+        }
+      }
+      Fl_Group item_group {open
+        xywh {0 380 250 195}
+      } {
+        Fl_Button item_0 {
+          xywh {5 480 45 40} box FLAT_BOX
+        }
+        Fl_Button item_1 {
+          xywh {55 480 45 40} box FLAT_BOX
+        }
+        Fl_Button item_2 {
+          xywh {105 480 45 40} box FLAT_BOX
+        }
+        Fl_Button item_3 {
+          xywh {5 525 45 40} box FLAT_BOX
+        }
+        Fl_Button item_4 {
+          xywh {55 525 45 40} box FLAT_BOX
+        }
+        Fl_Button item_5 {
+          xywh {105 525 45 40} box FLAT_BOX
+        }
+        Fl_Text_Display info_display {
+          label Attack
+          xywh {155 490 95 75} box FLAT_BOX
+        }
+      }
+    }
+  }
+}
