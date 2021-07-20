@@ -1,5 +1,7 @@
 //! Weapons - Data and structs related to weapons.
 
+use std::str::FromStr;
+
 use crate::traits::dados_trait::DadosTrait;
 use serde::{Deserialize, Serialize};
 
@@ -10,6 +12,20 @@ pub enum Weapons {
     Sword,
     Shield,
     Spear,
+}
+
+impl FromStr for Weapons {
+    type Err = ();
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        match s {
+            "None" => Ok(Weapons::None),
+            "Sword" => Ok(Weapons::Sword),
+            "Shield" => Ok(Weapons::Shield),
+            "Spear" => Ok(Weapons::Spear),
+            _ => Ok(Weapons::None),
+        }
+    }
 }
 
 /// Weapon's struct.
@@ -61,10 +77,3 @@ impl DadosTrait for Weapon {
         )
     }
 }
-
-pub const WEAPONS: &[Weapon] = &[
-    Weapon::get_weapon(&Weapons::None),
-    Weapon::get_weapon(&Weapons::Sword),
-    Weapon::get_weapon(&Weapons::Shield),
-    Weapon::get_weapon(&Weapons::Spear),
-];

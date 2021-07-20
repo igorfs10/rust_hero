@@ -6,6 +6,7 @@ use std::{
 };
 
 use rust_hero_data::{
+    data::weapons::Weapons,
     structs::save::Save,
     utils::save_system::{generate_save_data, load_save, new_save},
 };
@@ -17,8 +18,9 @@ pub fn get_save_location() -> String {
     format!("{}/{}.sav", path, save_name)
 }
 
-pub fn new_game(save: &mut Save, seed: &u64) -> String {
+pub fn new_game(save: &mut Save, seed: &u64, weapon: &Weapons) -> String {
     *save = new_save(seed);
+    save.equipamento = weapon.clone();
     let save_path = get_save_location();
 
     match File::create(save_path) {

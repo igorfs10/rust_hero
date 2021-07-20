@@ -25,7 +25,7 @@ class RustHeroUI {open
           label Load
           xywh {250 0 125 55} box FLAT_BOX color 80 labelfont 1
         }
-        Fl_Button load_button {
+        Fl_Button help_button {
           label Help selected
           xywh {375 0 125 55} box FLAT_BOX color 94 labelfont 1
         }

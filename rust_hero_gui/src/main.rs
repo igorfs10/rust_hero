@@ -1,72 +1,61 @@
 //Remove tela de linha de comando
 //#![windows_subsystem = "windows"]
 
+mod ui;
 pub mod utils;
 
-// Biblioteca interface
-use fltk::{
-    app::*,
-    button::*,
-    enums::{Color, FrameType},
-    frame::*,
-    menu::*,
-    prelude::{GroupExt, WidgetExt, WindowExt},
-    window::*,
+use std::str::FromStr;
+use std::{cell::RefCell, rc::Rc};
+
+// GUI
+use fltk::{app::*, menu::*, prelude::WidgetExt};
+
+use rust_hero_data::{
+    data::weapons::{Weapon, Weapons},
+    structs::save::Save,
+    utils::random::Seed,
 };
-use rust_hero_data::data::weapons::WEAPONS;
+use utils::file::load_game;
+
+use crate::utils::file::new_game;
 
 pub fn main() {
-    // let mut seed = Seed::generate_seed();
-    // let mut save:Save;
-    let app = App::default().with_scheme(AppScheme::Gtk);
-    let mut janela = Window::default()
-        .with_size(300, 500)
-        .center_screen()
-        .with_label("Rust Hero");
+    let seed = Seed::generate_seed();
+    let save = Rc::new(RefCell::new(Save::new(&seed)));
+    let save_clone = save.clone();
+    let app = App::default();
+    let mut ui = ui::RustHeroUI::make_window();
+    let mut character_class = ui.character_class.clone();
+    let mut character_class_clone = character_class.clone();
 
-    let mut frame = Frame::default().with_size(300, 50).with_label("Rust Hero");
+    ui.new_button.set_label("Test");
 
-    frame.set_color(Color::from_u32(0xaaaaaa));
-    frame.set_label_size(30);
-    frame.set_frame(FrameType::DownBox);
-
-    let mut botao_novo = Button::default()
-        .with_size(100, 50)
-        .below_of(&frame, 0)
-        .with_label("Novo jogo");
-
-    botao_novo.set_color(Color::from_u32(0xbbbbbb));
-
-    let mut botao_salvar = Button::default()
-        .size_of(&botao_novo)
-        .right_of(&botao_novo, 0)
-        .with_label("Salvar");
-
-    botao_salvar.set_color(Color::from_u32(0x2e7d32));
-
-    let mut botao_carregar = Button::default()
-        .size_of(&botao_salvar)
-        .right_of(&botao_salvar, 0)
-        .with_label("Carregar");
-
-    botao_carregar.set_color(Color::from_u32(0x1565c032));
-
-    botao_novo.set_callback(|_| {
+    ui.new_button.set_callback(move |this| {
         let options = vec![
-            WEAPONS[0].name,
-            WEAPONS[1].name,
-            WEAPONS[2].name,
-            WEAPONS[3].name,
+            Weapon::get_weapon(&Weapons::None).name,
+            Weapon::get_weapon(&Weapons::Sword).name,
+            Weapon::get_weapon(&Weapons::Shield).name,
+            Weapon::get_weapon(&Weapons::Spear).name,
         ];
         let menu = MenuItem::new(&options);
-        match menu.popup(100, 100) {
+        match menu.popup(this.x() + this.width(), this.y() + this.height()) {
             None => println!("No value was chosen!"),
-            Some(val) => println!("{}", val.label().unwrap()),
+            Some(selection) => {
+                let selected_weapon = Weapons::from_str(&selection.label().unwrap()).unwrap();
+                new_game(&mut save.borrow_mut(), &seed, &selected_weapon);
+                println!(
+                    "{}",
+                    Weapon::get_weapon(&save.borrow_mut().equipamento).name
+                );
+                character_class.set_label(&Weapon::get_weapon(&save.borrow_mut().equipamento).name);
+            }
         }
     });
 
-    janela.make_resizable(false);
-    janela.end();
-    janela.show();
+    ui.load_button.set_callback(move|_| {
+        load_game(&mut save_clone.borrow_mut());
+        character_class_clone.set_label(&Weapon::get_weapon(&save_clone.borrow_mut().equipamento).name);
+    });
+
     app.run().unwrap();
 }
