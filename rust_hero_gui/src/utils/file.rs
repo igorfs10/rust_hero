@@ -20,7 +20,7 @@ pub fn get_save_location() -> String {
 
 pub fn new_game(save: &mut Save, seed: &u64, weapon: &Weapons) -> String {
     *save = new_save(seed);
-    save.equipamento = weapon.clone();
+    save.weapon = weapon.clone();
     let save_path = get_save_location();
 
     match File::create(save_path) {

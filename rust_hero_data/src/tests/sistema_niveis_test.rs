@@ -2,7 +2,7 @@
 
 #[cfg(test)]
 pub mod tests {
-    use crate::data::niveis::Nivel;
+    use crate::data::levels::Level;
     use crate::structs::personagem::Personagem;
 
     #[test]
@@ -10,7 +10,7 @@ pub mod tests {
         let mut personagem = Personagem::default();
         personagem.experiencia = 39;
         let nivel = 2;
-        assert_eq!(Nivel::pegar_nivel(&personagem.experiencia), nivel);
+        assert_eq!(Level::get_level(&personagem.experiencia), nivel);
     }
 
     #[test]
@@ -18,6 +18,6 @@ pub mod tests {
         let mut personagem = Personagem::default();
         personagem.experiencia = 0;
         let nivel = 1;
-        assert_eq!(Nivel::pegar_nivel(&personagem.experiencia), nivel);
+        assert_eq!(Level::get_level(&personagem.experiencia), nivel);
     }
 }

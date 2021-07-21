@@ -2,12 +2,12 @@
 
 #[cfg(test)]
 pub mod tests {
-    use crate::data::lugares::{Lugar, LUGARES};
+    use crate::data::locations::{Location, Locations};
     use crate::jogo::*;
     use crate::structs::personagem::Personagem;
 
     struct SortearInimigo {
-        lugar: Option<Lugar>,
+        lugar: Option<Location>,
         seed: u64,
         esperado: Option<Personagem>,
     }
@@ -21,7 +21,7 @@ pub mod tests {
             }
         }
 
-        fn definir_lugar(mut self, lugar: Lugar) -> Self {
+        fn definir_lugar(mut self, lugar: Location) -> Self {
             self.lugar = Some(lugar);
             self
         }
@@ -53,7 +53,7 @@ pub mod tests {
         //1 inimigo 3
         //4 inimigo 4
         SortearInimigo::novo()
-            .definir_lugar(Lugar::get_lugar(&LUGARES[0]))
+            .definir_lugar(Location::get_location(&Locations::Town))
             .definir_seed(0)
             .espera(Personagem::default())
             .testar();

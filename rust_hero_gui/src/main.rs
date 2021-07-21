@@ -43,18 +43,15 @@ pub fn main() {
             Some(selection) => {
                 let selected_weapon = Weapons::from_str(&selection.label().unwrap()).unwrap();
                 new_game(&mut save.borrow_mut(), &seed, &selected_weapon);
-                println!(
-                    "{}",
-                    Weapon::get_weapon(&save.borrow_mut().equipamento).name
-                );
-                character_class.set_label(&Weapon::get_weapon(&save.borrow_mut().equipamento).name);
+                println!("{}", Weapon::get_weapon(&save.borrow_mut().weapon).name);
+                character_class.set_label(&Weapon::get_weapon(&save.borrow_mut().weapon).name);
             }
         }
     });
 
-    ui.load_button.set_callback(move|_| {
+    ui.load_button.set_callback(move |_| {
         load_game(&mut save_clone.borrow_mut());
-        character_class_clone.set_label(&Weapon::get_weapon(&save_clone.borrow_mut().equipamento).name);
+        character_class_clone.set_label(&Weapon::get_weapon(&save_clone.borrow_mut().weapon).name);
     });
 
     app.run().unwrap();

@@ -1,8 +1,8 @@
 //! Dados - Módulo que contém as structs, enums e os dados do jogo.
 
+pub mod enemys;
 pub mod flags;
-pub mod inimigos;
-pub mod itens;
-pub mod lugares;
-pub mod niveis;
+pub mod items;
+pub mod levels;
+pub mod locations;
 pub mod weapons;

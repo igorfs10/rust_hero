@@ -15,7 +15,7 @@ pub struct Save {
     item_ataque: u8,
     item_defesa: u8,
     item_experiencia: u8,
-    pub equipamento: Weapons,
+    pub weapon: Weapons,
     flags: TipoFlag,
     pub tempo: u64,
 }
@@ -30,7 +30,7 @@ impl Save {
             item_ataque: 5,
             item_defesa: 5,
             item_experiencia: 5,
-            equipamento: Weapons::None,
+            weapon: Weapons::None,
             flags: des_criptografar(&0, &chave),
             tempo: 0,
         }

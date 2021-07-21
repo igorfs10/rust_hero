@@ -2,7 +2,6 @@
 
 use std::str::FromStr;
 
-use crate::traits::dados_trait::DadosTrait;
 use serde::{Deserialize, Serialize};
 
 #[doc(hidden)]
@@ -19,7 +18,6 @@ impl FromStr for Weapons {
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         match s {
-            "None" => Ok(Weapons::None),
             "Sword" => Ok(Weapons::Sword),
             "Shield" => Ok(Weapons::Shield),
             "Spear" => Ok(Weapons::Spear),
@@ -64,16 +62,5 @@ impl Weapon {
                 defense: 2,
             },
         }
-    }
-}
-
-impl DadosTrait for Weapon {
-    fn get_dados(&self) -> String {
-        format!(
-            "{}\
-            \nAttack: {}\
-            \nDefense: {}",
-            self.name, self.attack, self.defense
-        )
     }
 }
