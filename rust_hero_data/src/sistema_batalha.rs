@@ -2,9 +2,9 @@
 
 use crate::data::locations::{Location, Locations};
 use crate::jogo::*;
-use crate::structs::personagem::Personagem;
+use crate::structs::character::Character;
 
-fn _start_battle(enemy: &mut Personagem, flag: &mut bool) {
+fn _start_battle(enemy: &mut Character, flag: &mut bool) {
     *flag = true;
     definir_inimigo(
         enemy,

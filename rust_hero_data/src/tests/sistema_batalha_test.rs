@@ -2,19 +2,19 @@
 
 #[cfg(test)]
 pub mod tests {
-    use crate::structs::personagem::Personagem;
+    use crate::structs::character::Character;
 
     #[must_use]
     struct Atacar {
-        atacante: Personagem,
-        defensor: Personagem,
+        atacante: Character,
+        defensor: Character,
         seed: u64,
         esperado: (bool, u8, bool),
     }
 
     impl Atacar {
         fn novo() -> Self {
-            let personagem_padrao = Personagem::default();
+            let personagem_padrao = Character::default();
             let seed: u64 = 0;
             let esperado = (false, 0, false);
             Self {
@@ -26,17 +26,17 @@ pub mod tests {
         }
 
         fn definir_ataque(mut self, ataque: u8) -> Self {
-            self.atacante.ataque = ataque;
+            self.atacante.attack = ataque;
             self
         }
 
         fn definir_defesa(mut self, defesa: u8) -> Self {
-            self.defensor.defesa = defesa;
+            self.defensor.defense = defesa;
             self
         }
 
         fn definir_vida(mut self, vida: u8) -> Self {
-            self.defensor.vida_atual = vida;
+            self.defensor.health = vida;
             self
         }
 
@@ -53,7 +53,7 @@ pub mod tests {
         fn testar(mut self) {
             assert_eq!(
                 self.esperado,
-                self.atacante.atacar(&mut self.defensor, &self.seed)
+                self.atacante.attack(&mut self.defensor, &self.seed)
             );
         }
     }

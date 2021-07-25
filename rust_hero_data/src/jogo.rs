@@ -2,7 +2,7 @@
 
 use crate::data::enemys::Enemy;
 use crate::data::locations::Location;
-use crate::structs::personagem::Personagem;
+use crate::structs::character::Character;
 use crate::utils::random::{RandomTrait, RandomValue};
 
 pub type TipoFlag = u32;
@@ -32,11 +32,11 @@ pub fn sortear_inimigo_lugar(location: &Location, seed: &u64) -> Option<Enemy> {
     }
 }
 
-pub fn definir_inimigo(personagem: &mut Personagem, inimigo: Enemy) {
-    personagem.nome = inimigo.name.to_owned();
-    personagem.ataque = inimigo.attack;
-    personagem.defesa = inimigo.defense;
-    personagem.vida_total = inimigo.health;
-    personagem.vida_atual = inimigo.health;
-    personagem.experiencia = inimigo.experience;
+pub fn definir_inimigo(character: &mut Character, enemy: Enemy) {
+    character.name = enemy.name.to_owned();
+    character.attack = enemy.attack;
+    character.defense = enemy.defense;
+    character.max_health = enemy.health;
+    character.health = enemy.health;
+    character.experience = enemy.experience;
 }

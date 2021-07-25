@@ -4,12 +4,12 @@
 pub mod tests {
     use crate::data::locations::{Location, Locations};
     use crate::jogo::*;
-    use crate::structs::personagem::Personagem;
+    use crate::structs::character::Character;
 
     struct SortearInimigo {
         lugar: Option<Location>,
         seed: u64,
-        esperado: Option<Personagem>,
+        esperado: Option<Character>,
     }
 
     impl SortearInimigo {
@@ -31,13 +31,13 @@ pub mod tests {
             self
         }
 
-        fn espera(mut self, esperado: Personagem) -> Self {
+        fn espera(mut self, esperado: Character) -> Self {
             self.esperado = Some(esperado);
             self
         }
 
         fn testar(self) {
-            let mut oponente = Personagem::default();
+            let mut oponente = Character::default();
             let inimigo_possivel = sortear_inimigo_lugar(&self.lugar.unwrap(), &0);
             if let Some(inimigo) = inimigo_possivel {
                 definir_inimigo(&mut oponente, inimigo);
@@ -55,7 +55,7 @@ pub mod tests {
         SortearInimigo::novo()
             .definir_lugar(Location::get_location(&Locations::Town))
             .definir_seed(0)
-            .espera(Personagem::default())
+            .espera(Character::default())
             .testar();
     }
 }

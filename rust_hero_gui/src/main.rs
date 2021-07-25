@@ -5,10 +5,12 @@ mod ui;
 pub mod utils;
 
 use std::str::FromStr;
+use std::time::Instant;
 use std::{cell::RefCell, rc::Rc};
 
+use fltk::output::Output;
 // GUI
-use fltk::{app::*, menu::*, prelude::WidgetExt};
+use fltk::{app::*, menu::*, prelude::*, *};
 
 use rust_hero_data::{
     data::weapons::{Weapon, Weapons},
@@ -20,13 +22,22 @@ use utils::file::load_game;
 use crate::utils::file::new_game;
 
 pub fn main() {
+    let time = Instant::now();
+
     let seed = Seed::generate_seed();
     let save = Rc::new(RefCell::new(Save::new(&seed)));
     let save_clone = save.clone();
-    let app = App::default();
+
     let mut ui = ui::RustHeroUI::make_window();
     let mut character_class = ui.character_class.clone();
     let mut character_class_clone = character_class.clone();
+
+    let game_time = ui.game_time;
+
+    let app = App::default();
+    app::add_timeout(1.0, move || {
+        show_time(game_time.clone(), time);
+    });
 
     ui.new_button.set_label("Test");
 
@@ -54,5 +65,10 @@ pub fn main() {
         character_class_clone.set_label(&Weapon::get_weapon(&save_clone.borrow_mut().weapon).name);
     });
 
-    app.run().unwrap();
+    while app.wait() {}
+}
+
+fn show_time(mut element: Output, time: Instant) {
+    element.set_value(&time.elapsed().as_secs().to_string());
+    app::add_timeout(1.0, move || show_time(element.clone(), time));
 }
