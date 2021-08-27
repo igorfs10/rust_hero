@@ -1,4 +1,4 @@
-//! Personagem - Struct used to store player and enemy data and use in battle
+//! Character - Struct used to store player and enemy data and use in battle
 
 use crate::jogo::MULTIPLICADOR_CRITICO;
 use crate::utils::random::{RandomTrait, RandomValue};
@@ -9,20 +9,30 @@ pub struct Character {
     pub name: String,
     pub max_health: u8,
     pub health: u8,
+    pub mana: u8,
+    pub max_mana: u8,
     pub attack: u8,
     pub defense: u8,
+    pub mana_attack: u8,
+    pub mana_defense: u8,
     pub experience: u16,
+    pub level: u8,
 }
 
 impl Character {
-    const fn new(name: String, health: u8, attack: u8, defense: u8, experience: u16) -> Self {
+    const fn new(name: String, health: u8, mana:u8, attack: u8, defense: u8, mana_attack:u8, mana_defense:u8, experience: u16, level:u8) -> Self {
         Self {
             name,
             health,
             max_health: health,
+            mana,
+            max_mana:mana,
             attack,
             defense,
+            mana_attack,
+            mana_defense,
             experience,
+            level,
         }
     }
 
@@ -55,6 +65,6 @@ impl Character {
 
 impl Default for Character {
     fn default() -> Self {
-        Self::new("".to_owned(), 10, 1, 1, 0)
+        Self::new("".to_owned(), 10, 5, 1, 1, 1, 1, 0, 0) // is level 1 better to start than 0?
     }
 }
