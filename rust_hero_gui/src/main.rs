@@ -14,6 +14,7 @@ use fltk::{app::*, menu::*, prelude::*, *};
 
 use rust_hero_data::{
     data::weapons::{Weapon, Weapons},
+    structs::character::Character,
     structs::save::Save,
     utils::random::Seed,
 };
@@ -31,6 +32,7 @@ pub fn main() {
     let mut ui = ui::RustHeroUI::make_window();
     let mut character_class = ui.character_class.clone();
     let mut character_class_clone = character_class.clone();
+    let character:Character = Character::default();
 
     let game_time = ui.game_time;
 
@@ -65,7 +67,20 @@ pub fn main() {
         character_class_clone.set_label(&Weapon::get_weapon(&save_clone.borrow_mut().weapon).name);
     });
 
-    while app.wait() {}
+    // Character stats
+    ui.atk.set_value(character.attack as f64);
+    ui.def.set_value(character.defense as f64);
+    ui.mp.set_value(character.mana as f64);
+    ui.hp.set_value(character.health as f64);
+    ui.m_def.set_value(character.mana_defense as f64);
+    ui.m_atk.set_value(character.mana_attack as f64);
+    ui.xp.set_value(character.experience as f64);
+    ui.level.set_value(character.level as f64);
+    ui.character_class.set_label(character.name.as_str());
+
+    while app.wait() {
+        // update the current state
+    }
 }
 
 fn show_time(mut element: Output, time: Instant) {
