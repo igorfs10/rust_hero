@@ -49,7 +49,7 @@ pub struct Character {
 }
 
 impl Character {
-    const fn new(name: String, health: u8, mana:u8, attack: u8, defense: u8, mana_attack:u8, mana_defense:u8, experience: u16, level:u8, class:Class) -> Self {
+    const fn _new(name: String, health: u8, mana:u8, attack: u8, defense: u8, mana_attack:u8, mana_defense:u8, experience: u16, level:u8, class:Class) -> Self {
         Self {
             name,
             health,
@@ -66,13 +66,13 @@ impl Character {
         }
     }
     pub fn from_class(name:String, class:Class) -> Self {
-        let mut hp = 10;
-        let mut mp = 10;
-        let mut atk = 1;
-        let mut def = 1;
-        let mut m_attack = 1;
-        let mut m_def = 1;
-        /// 150 total points based off of https://www.soulraver.net/sukie/AKS2/old/
+        let hp;
+        let mp;
+        let atk;
+        let def;
+        let m_attack;
+        let m_def;
+        // 150 total points based off of https://www.soulraver.net/sukie/AKS2/old/
         match class {
             Class::Adept => {
                 hp = 40;

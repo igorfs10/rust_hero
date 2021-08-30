@@ -1,6 +1,8 @@
 //! Locations - Data and structs related to locations.
 use crate::data::enemys::Enemys;
 
+use super::items::Items;
+
 pub enum Locations {
     Town,
     Forest,
@@ -9,6 +11,7 @@ pub enum Locations {
 pub struct Location {
     pub name: &'static str,
     pub enemys: Option<[Enemys; 4]>,
+    pub item: Option<Items>
 }
 
 impl Location {
@@ -17,10 +20,12 @@ impl Location {
             Locations::Town => Self {
                 name: "Town",
                 enemys: None,
+                item: None
             },
             Locations::Forest => Self {
                 name: "Forest",
                 enemys: Some([Enemys::Rat, Enemys::Rabbit, Enemys::Snake, Enemys::Wolf]),
+                item: Some(Items::HealthPotion)
             },
         }
     }
