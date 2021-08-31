@@ -92,7 +92,7 @@ fn show_time(mut element: Output, time: Instant) {
 #[cfg(test)]
 mod tests {
     use rust_hero_data::{
-        data::weapons::{Weapon, Weapons},
+        //data::weapons::{Weapon, Weapons},
         structs::character::Character,
         data::enemies::{Enemy, Enemies},
         data::locations::{Location, Locations},
@@ -103,11 +103,11 @@ mod tests {
     // Ok lets do a basic location test
     fn test_locations() {
         // can we make a character
-        let character:Character = Character::default();
+        let _character:Character = Character::default();
         // can we make a loation?
         let location:Location = Location::get_location(&Locations::Forest);
         // get or make an enemy
-        let enemy:Enemy = match location.enemies {
+        let _enemy:Enemy = match location.enemies {
             Some(enemy) => Enemy::get_enemy(&enemy[0]),
             None => Enemy::get_enemy(&Enemies::Rat),
         };

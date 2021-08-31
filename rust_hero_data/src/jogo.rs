@@ -7,12 +7,14 @@ use crate::utils::random::{RandomTrait, RandomValue};
 
 pub type TipoFlag = u32;
 
-pub const MULTIPLICADOR_CRITICO: u8 = 2;
+/// The critical hit multiplier
+pub const CRITICAL_MULTIPLIER: u8 = 2;
 
 pub fn des_criptografar(valor: &u32, chave: &u32) -> u32 {
     *valor ^ *chave
 }
 
+/// Pick an enemy based on the location
 pub fn pick_location_enemy(location: &Location, seed: &u64) -> Option<Enemy> {
     match &location.enemies {
         Some(enemies) => {
@@ -32,6 +34,7 @@ pub fn pick_location_enemy(location: &Location, seed: &u64) -> Option<Enemy> {
     }
 }
 
+/// Define a character based on an enemy
 pub fn define_enemy(character: &mut Character, enemy: Enemy) {
     character.name = enemy.name.to_owned();
     character.attack = enemy.attack;

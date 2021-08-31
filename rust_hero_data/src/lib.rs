@@ -5,7 +5,7 @@
 pub mod data;
 pub mod erros;
 pub mod jogo;
-pub mod sistema_batalha;
+pub mod battle_system;
 pub mod structs;
 pub mod tests;
 pub mod utils;

@@ -1,25 +1,39 @@
-//! Enemies - Data and structs related to enemys.
+//! Enemies - Data and structs related to enemies.
 
 use super::items::ItemType;
 
 pub enum Enemies {
+    /// The very prevalent rodent
     Rat,
+    /// The fairly common forest creature
     Rabbit,
+    /// The hard to find forest snake
     Snake,
+    /// The ultra rare Forest creature
     Wolf,
+    /// These are rare to find in a swamp, thankfully
+    Crocodile,
 }
 
+/// Our basic enemy
 pub struct Enemy {
+    /// The enemy name (for display)
     pub name: &'static str,
+    /// The enemy's health
     pub health: u8,
+    /// The enemy's attack
     pub attack: u8,
+    /// The enemy's defense
     pub defense: u8,
+    /// The experience you get
     pub experience: u16,
+    /// The item the enemy carries
     pub item: ItemType,
 }
 //TODO move stats to struct?
 //TODO enemy will need an image filename
 impl Enemy {
+    /// Get the enemy from an `Enemies` enum
     pub const fn get_enemy(enemy: &Enemies) -> Self {
         match enemy {
             Enemies::Rat => Enemy {
@@ -48,6 +62,14 @@ impl Enemy {
             },
             Enemies::Wolf => Enemy {
                 name: "Wolf",
+                health: 12,
+                attack: 4,
+                defense: 3,
+                experience: 8,
+                item: ItemType::Experience,
+            },
+            Enemies::Crocodile => Enemy {
+                name: "Crocodile",
                 health: 12,
                 attack: 4,
                 defense: 3,

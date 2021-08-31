@@ -1,6 +1,6 @@
 //! Character - Struct used to store player and enemy data and use in battle
 
-use crate::jogo::MULTIPLICADOR_CRITICO;
+use crate::jogo::CRITICAL_MULTIPLIER;
 use crate::utils::random::{RandomTrait, RandomValue};
 use serde::{Deserialize, Serialize};
 #[derive(Clone, PartialEq, Copy, Debug, Serialize, Deserialize)]
@@ -49,6 +49,7 @@ pub struct Character {
 }
 
 impl Character {
+    /// Manually create a new `Character`
     const fn new(name: String, health: u8, mana:u8, attack: u8, defense: u8, mana_attack:u8, mana_defense:u8, experience: u16, level:u8, class:Class) -> Self {
         Self {
             name,
@@ -65,13 +66,14 @@ impl Character {
             class:class,
         }
     }
+    /// Create a `Character` from a `Class`
     pub fn from_class(name:String, class:Class) -> Self {
-        let mut hp = 10;
-        let mut mp = 10;
-        let mut atk = 1;
-        let mut def = 1;
-        let mut m_attack = 1;
-        let mut m_def = 1;
+        let hp;
+        let mp;
+        let atk;
+        let def;
+        let m_attack;
+        let m_def;
         // 150 total points based off of https://www.soulraver.net/sukie/AKS2/old/
         match class {
             Class::Adept => {
@@ -179,7 +181,7 @@ impl Character {
 
         // Multiply our damage by our critical muliplier
         if critical_hit {
-            damage *= MULTIPLICADOR_CRITICO;
+            damage *= CRITICAL_MULTIPLIER;
         }
 
         // if they have more health than our attack, damage them
@@ -196,6 +198,7 @@ impl Character {
 }
 
 impl Default for Character {
+    /// Default to Rusty the Knight for our hero
     fn default() -> Self {
         Self::from_class(String::from("Rusty"), Class::Knight)
     }

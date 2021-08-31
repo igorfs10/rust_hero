@@ -1,21 +1,29 @@
-//! Enemys - Data and structs related to items.
+//! Items - Data and structs related to items.
 
+/// The type of item
 pub enum ItemType {
+    /// No item
     None,
+    /// An Item to boost health
     Health,
+    /// An Item to boost attack
     Attack,
+    /// An Item to boost defense
     Defense,
+    /// An Item to boost experience
     Experience,
 }
 
 pub struct Item {
+    /// The name of the item
     pub name: &'static str,
+    /// The human-readable description
     pub description: &'static str,
+    /// The effect the item has see: `data::flags::Flags` for more info
     pub effect: u8,
 }
 
 impl Item {
-    // do we need to send in a character to apply it to, or is this for UI
     pub const fn get_item(item: &ItemType) -> Self {
         match item {
             ItemType::None => Self {

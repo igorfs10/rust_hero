@@ -6,10 +6,15 @@ use serde::{Deserialize, Serialize};
 
 #[doc(hidden)]
 #[derive(Clone, Serialize, Deserialize)]
+/// The enumeration of the different Weapons we have in the game
 pub enum Weapons {
+    /// No Weapon
     None,
+    /// A basic Sword
     Sword,
+    /// A basic Shield
     Shield,
+    /// A basic Spear
     Spear,
 }
 
@@ -39,6 +44,7 @@ pub struct Weapon {
 }
 
 impl Weapon {
+    /// The function to get the weapon details from a `Weapons` enum
     pub const fn get_weapon(weapon: &Weapons) -> Self {
         match weapon {
             Weapons::None => Self {
