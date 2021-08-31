@@ -1,6 +1,6 @@
-//! Dados - Módulo que contém as structs, enums e os dados do jogo.
+//! Data - Module containing structs, enums and game data
 
-pub mod enemys;
+pub mod enemies;
 pub mod flags;
 pub mod items;
 pub mod levels;

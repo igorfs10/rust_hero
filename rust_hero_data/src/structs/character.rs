@@ -72,7 +72,7 @@ impl Character {
         let mut def = 1;
         let mut m_attack = 1;
         let mut m_def = 1;
-        /// 150 total points based off of https://www.soulraver.net/sukie/AKS2/old/
+        // 150 total points based off of https://www.soulraver.net/sukie/AKS2/old/
         match class {
             Class::Adept => {
                 hp = 40;
@@ -164,6 +164,7 @@ impl Character {
     }
 
     /// The basic attack formula for our characters
+    //TODO send in a stat struct from the enemy?
     pub fn attack(&self, defending_character: &mut Self, seed: &u64) -> (bool, u8, bool) {
         let mut damage;
         let mut defeated:bool = false;

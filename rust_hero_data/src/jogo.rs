@@ -1,6 +1,6 @@
-//! Jogo - Módulo que contém funções e dados para funcionamento do jogo.
+//! Jogo - Module containing functions and data for a the game play
 
-use crate::data::enemys::Enemy;
+use crate::data::enemies::Enemy;
 use crate::data::locations::Location;
 use crate::structs::character::Character;
 use crate::utils::random::{RandomTrait, RandomValue};
@@ -13,26 +13,26 @@ pub fn des_criptografar(valor: &u32, chave: &u32) -> u32 {
     *valor ^ *chave
 }
 
-pub fn sortear_inimigo_lugar(location: &Location, seed: &u64) -> Option<Enemy> {
-    match &location.enemys {
-        Some(inimigos) => {
-            let rng_inimigo = RandomValue::<u8>::get_random_value(seed, 1..=10);
+pub fn pick_location_enemy(location: &Location, seed: &u64) -> Option<Enemy> {
+    match &location.enemies {
+        Some(enemies) => {
+            let enemy_range = RandomValue::<u8>::get_random_value(seed, 1..=10);
 
-            if rng_inimigo <= 4 {
-                Some(Enemy::get_enemy(&inimigos[0]))
-            } else if rng_inimigo <= 7 {
-                Some(Enemy::get_enemy(&inimigos[1]))
-            } else if rng_inimigo <= 9 {
-                Some(Enemy::get_enemy(&inimigos[2]))
+            if enemy_range <= 4 {
+                Some(Enemy::get_enemy(&enemies[0]))
+            } else if enemy_range <= 7 {
+                Some(Enemy::get_enemy(&enemies[1]))
+            } else if enemy_range <= 9 {
+                Some(Enemy::get_enemy(&enemies[2]))
             } else {
-                Some(Enemy::get_enemy(&inimigos[3]))
+                Some(Enemy::get_enemy(&enemies[3]))
             }
         }
         None => None,
     }
 }
 
-pub fn definir_inimigo(character: &mut Character, enemy: Enemy) {
+pub fn define_enemy(character: &mut Character, enemy: Enemy) {
     character.name = enemy.name.to_owned();
     character.attack = enemy.attack;
     character.defense = enemy.defense;

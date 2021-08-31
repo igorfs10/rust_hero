@@ -1,11 +1,11 @@
 //! Enemys - Data and structs related to items.
 
-pub enum Items {
+pub enum ItemType {
     None,
-    HealthPotion,
-    AttackPotion,
-    DefensePotion,
-    ExperiencePotion,
+    Health,
+    Attack,
+    Defense,
+    Experience,
 }
 
 pub struct Item {
@@ -15,29 +15,30 @@ pub struct Item {
 }
 
 impl Item {
-    pub const fn get_item(item: &Items) -> Self {
+    // do we need to send in a character to apply it to, or is this for UI
+    pub const fn get_item(item: &ItemType) -> Self {
         match item {
-            Items::None => Self {
+            ItemType::None => Self {
                 name: "None",
                 description: "No effect",
                 effect: 0,
             },
-            Items::HealthPotion => Self {
+            ItemType::Health => Self {
                 name: "Health Potion",
                 description: "Recover 30% HP.",
                 effect: 0,
             },
-            Items::AttackPotion => Self {
+            ItemType::Attack => Self {
                 name: "Attack Potion",
                 description: "Increase attack for a minute.",
                 effect: 0,
             },
-            Items::DefensePotion => Self {
+            ItemType::Defense => Self {
                 name: "Defense Potion",
                 description: "Increase defense for a minute.",
                 effect: 0,
             },
-            Items::ExperiencePotion => Self {
+            ItemType::Experience => Self {
                 name: "Experience Potion",
                 description: "Double received experience for a minute.",
                 effect: 0,

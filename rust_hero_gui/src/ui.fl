@@ -8,7 +8,7 @@ class RustHeroUI {open
   } {
     Fl_Window {} {
       label {Rust Hero} open
-      xywh {253 250 500 600} type Double color 52 visible
+      xywh {339 92 500 600} type Double color 52 visible
     } {
       Fl_Group menu_group {open
         xywh {0 0 535 55}
@@ -38,13 +38,13 @@ class RustHeroUI {open
         }
         Fl_Output game_time {
           label Time
-          xywh {49 110 110 25} box FLAT_BOX color 49
+          xywh {48 116 110 25} box FLAT_BOX color 49
         }
         Fl_Box location {
           xywh {181 75 115 65} box FLAT_BOX
         }
         Fl_Value_Output level {
-          label Level selected
+          label Level
           xywh {390 75 70 30} box FLAT_BOX
         }
         Fl_Value_Output xp {
@@ -108,6 +108,14 @@ class RustHeroUI {open
           label Attack
           xywh {155 490 95 75} box FLAT_BOX
         }
+      }
+      Fl_Button forward {
+        label {@>}
+        xywh {465 255 30 65} box NO_BOX labelsize 34
+      }
+      Fl_Button backward {
+        label {@<} selected
+        xywh {10 255 30 65} box NO_BOX labelsize 34
       }
     }
   }

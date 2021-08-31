@@ -1,8 +1,8 @@
-//! Enemys - Data and structs related to enemys.
+//! Enemies - Data and structs related to enemys.
 
-use super::items::Items;
+use super::items::ItemType;
 
-pub enum Enemys {
+pub enum Enemies {
     Rat,
     Rabbit,
     Snake,
@@ -15,43 +15,44 @@ pub struct Enemy {
     pub attack: u8,
     pub defense: u8,
     pub experience: u16,
-    pub item: Items,
+    pub item: ItemType,
 }
-
+//TODO move stats to struct?
+//TODO enemy will need an image filename
 impl Enemy {
-    pub const fn get_enemy(enemy: &Enemys) -> Self {
+    pub const fn get_enemy(enemy: &Enemies) -> Self {
         match enemy {
-            Enemys::Rat => Enemy {
+            Enemies::Rat => Enemy {
                 name: "Rat",
                 health: 5,
                 attack: 1,
                 defense: 1,
                 experience: 2,
-                item: Items::DefensePotion,
+                item: ItemType::Defense,
             },
-            Enemys::Rabbit => Enemy {
+            Enemies::Rabbit => Enemy {
                 name: "Rabbit",
                 health: 8,
                 attack: 2,
                 defense: 2,
                 experience: 4,
-                item: Items::AttackPotion,
+                item: ItemType::Attack,
             },
-            Enemys::Snake => Enemy {
+            Enemies::Snake => Enemy {
                 name: "Snake",
                 health: 12,
                 attack: 3,
                 defense: 4,
                 experience: 8,
-                item: Items::HealthPotion,
+                item: ItemType::Health,
             },
-            Enemys::Wolf => Enemy {
+            Enemies::Wolf => Enemy {
                 name: "Wolf",
                 health: 12,
                 attack: 4,
                 defense: 3,
                 experience: 8,
-                item: Items::ExperiencePotion,
+                item: ItemType::Experience,
             },
         }
     }
