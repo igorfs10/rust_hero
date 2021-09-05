@@ -32,7 +32,7 @@ pub fn main() {
     let mut ui = ui::RustHeroUI::make_window();
     let mut character_class = ui.character_class.clone();
     let mut character_class_clone = character_class.clone();
-    let character:Character = Character::default();
+    let character: Character = Character::default();
 
     let game_time = ui.game_time;
 
@@ -57,14 +57,14 @@ pub fn main() {
                 let selected_weapon = Weapons::from_str(&selection.label().unwrap()).unwrap();
                 new_game(&mut save.borrow_mut(), &seed, &selected_weapon);
                 println!("{}", Weapon::get_weapon(&save.borrow_mut().weapon).name);
-                character_class.set_label(&Weapon::get_weapon(&save.borrow_mut().weapon).name);
+                character_class.set_label(Weapon::get_weapon(&save.borrow_mut().weapon).name);
             }
         }
     });
 
     ui.load_button.set_callback(move |_| {
         load_game(&mut save_clone.borrow_mut());
-        character_class_clone.set_label(&Weapon::get_weapon(&save_clone.borrow_mut().weapon).name);
+        character_class_clone.set_label(Weapon::get_weapon(&save_clone.borrow_mut().weapon).name);
     });
 
     // Character stats
@@ -88,29 +88,27 @@ fn show_time(mut element: Output, time: Instant) {
     app::add_timeout(1.0, move || show_time(element.clone(), time));
 }
 
-
 #[cfg(test)]
 mod tests {
     use rust_hero_data::{
-        //data::weapons::{Weapon, Weapons},
-        structs::character::Character,
-        data::enemies::{Enemy, Enemies},
+        data::enemies::{Enemies, Enemy},
         data::locations::{Location, Locations},
         //structs::save::Save,
         //utils::random::Seed,
+        //data::weapons::{Weapon, Weapons},
+        structs::character::Character,
     };
     #[test]
     // Ok lets do a basic location test
     fn test_locations() {
         // can we make a character
-        let _character:Character = Character::default();
+        let _character: Character = Character::default();
         // can we make a loation?
-        let location:Location = Location::get_location(&Locations::Forest);
+        let location: Location = Location::get_location(&Locations::Forest);
         // get or make an enemy
-        let _enemy:Enemy = match location.enemies {
+        let _enemy: Enemy = match location.enemies {
             Some(enemy) => Enemy::get_enemy(&enemy[0]),
             None => Enemy::get_enemy(&Enemies::Rat),
         };
-        
     }
 }

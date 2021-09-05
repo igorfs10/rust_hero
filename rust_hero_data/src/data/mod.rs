@@ -1,5 +1,6 @@
 //! Data - Module containing structs, enums and game data
 
+pub mod classes;
 pub mod enemies;
 pub mod flags;
 pub mod items;
