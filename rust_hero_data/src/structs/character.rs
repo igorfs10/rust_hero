@@ -1,6 +1,6 @@
 //! Character - Struct used to store player and enemy data and use in battle
 
-use crate::jogo::MULTIPLICADOR_CRITICO;
+use crate::jogo::CRITICAL_MULTIPLIER;
 use crate::utils::random::{RandomTrait, RandomValue};
 use serde::{Deserialize, Serialize};
 #[derive(Clone, PartialEq, Copy, Debug, Serialize, Deserialize)]
@@ -49,7 +49,8 @@ pub struct Character {
 }
 
 impl Character {
-    const fn _new(name: String, health: u8, mana:u8, attack: u8, defense: u8, mana_attack:u8, mana_defense:u8, experience: u16, level:u8, class:Class) -> Self {
+    /// Manually create a new `Character`
+    const fn new(name: String, health: u8, mana:u8, attack: u8, defense: u8, mana_attack:u8, mana_defense:u8, experience: u16, level:u8, class:Class) -> Self {
         Self {
             name,
             health,
@@ -65,6 +66,7 @@ impl Character {
             class:class,
         }
     }
+    /// Create a `Character` from a `Class`
     pub fn from_class(name:String, class:Class) -> Self {
         let hp;
         let mp;
@@ -164,6 +166,7 @@ impl Character {
     }
 
     /// The basic attack formula for our characters
+    //TODO send in a stat struct from the enemy?
     pub fn attack(&self, defending_character: &mut Self, seed: &u64) -> (bool, u8, bool) {
         let mut damage;
         let mut defeated:bool = false;
@@ -178,7 +181,7 @@ impl Character {
 
         // Multiply our damage by our critical muliplier
         if critical_hit {
-            damage *= MULTIPLICADOR_CRITICO;
+            damage *= CRITICAL_MULTIPLIER;
         }
 
         // if they have more health than our attack, damage them
@@ -195,6 +198,7 @@ impl Character {
 }
 
 impl Default for Character {
+    /// Default to Rusty the Knight for our hero
     fn default() -> Self {
         Self::from_class(String::from("Rusty"), Class::Knight)
     }

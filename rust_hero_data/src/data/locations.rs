@@ -1,31 +1,55 @@
 //! Locations - Data and structs related to locations.
-use crate::data::enemys::Enemys;
+use crate::data::enemies::Enemies;
+use super::items::ItemType;
 
-use super::items::Items;
-
+/// The locations we can travel to in a region
 pub enum Locations {
+    /// The place to rest and purchase things
     Town,
+    /// Dense undergrowth has lead to many creatures living here
     Forest,
+    /// Inaccessable to many, the cave is full of lurking monsters
+    Cave,
+    /// 
+    Swamp,
+    /// 
+    Desert,
 }
 
 pub struct Location {
     pub name: &'static str,
-    pub enemys: Option<[Enemys; 4]>,
-    pub item: Option<Items>
+    pub enemies: Option<[Enemies; 4]>,
+    pub item: Option<ItemType>
 }
 
 impl Location {
+    /// Get a `Location` struct from a `Locations` enum
     pub const fn get_location(location: &Locations) -> Self {
         match location {
             Locations::Town => Self {
                 name: "Town",
-                enemys: None,
+                enemies: None,
                 item: None
             },
             Locations::Forest => Self {
                 name: "Forest",
-                enemys: Some([Enemys::Rat, Enemys::Rabbit, Enemys::Snake, Enemys::Wolf]),
-                item: Some(Items::HealthPotion)
+                enemies: Some([Enemies::Rat, Enemies::Rabbit, Enemies::Snake, Enemies::Wolf]),
+                item: Some(ItemType::Health)
+            },
+            Locations::Cave => Self {
+                name: "Cave",
+                enemies: Some([Enemies::Rat, Enemies::Rabbit, Enemies::Snake, Enemies::Wolf]),
+                item: None
+            },
+            Locations::Swamp => Self {
+                name: "Swamp",
+                enemies: Some([Enemies::Rat, Enemies::Rabbit, Enemies::Snake, Enemies::Crocodile]),
+                item: None
+            },
+            Locations::Desert => Self {
+                name: "Desert",
+                enemies: Some([Enemies::Rat, Enemies::Rabbit, Enemies::Snake, Enemies::Wolf]),
+                item: None
             },
         }
     }

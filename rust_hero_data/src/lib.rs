@@ -1,11 +1,11 @@
-//! # Rust-Hero Dados
+//! # Rust-Hero Data
 //!
-//! Biblioteca que contém a lógica e os dados do jogo como inimigos e equipamentos.
+//! Library containing the logic for game data, enemies, and equipment
 
 pub mod data;
 pub mod erros;
 pub mod jogo;
-pub mod sistema_batalha;
+pub mod battle_system;
 pub mod structs;
 pub mod tests;
 pub mod utils;

@@ -1,43 +1,52 @@
-//! Enemys - Data and structs related to items.
+//! Items - Data and structs related to items.
 
-pub enum Items {
+/// The type of item
+pub enum ItemType {
+    /// No item
     None,
-    HealthPotion,
-    AttackPotion,
-    DefensePotion,
-    ExperiencePotion,
+    /// An Item to boost health
+    Health,
+    /// An Item to boost attack
+    Attack,
+    /// An Item to boost defense
+    Defense,
+    /// An Item to boost experience
+    Experience,
 }
 
 pub struct Item {
+    /// The name of the item
     pub name: &'static str,
+    /// The human-readable description
     pub description: &'static str,
+    /// The effect the item has see: `data::flags::Flags` for more info
     pub effect: u8,
 }
 
 impl Item {
-    pub const fn get_item(item: &Items) -> Self {
+    pub const fn get_item(item: &ItemType) -> Self {
         match item {
-            Items::None => Self {
+            ItemType::None => Self {
                 name: "None",
                 description: "No effect",
                 effect: 0,
             },
-            Items::HealthPotion => Self {
+            ItemType::Health => Self {
                 name: "Health Potion",
                 description: "Recover 30% HP.",
                 effect: 0,
             },
-            Items::AttackPotion => Self {
+            ItemType::Attack => Self {
                 name: "Attack Potion",
                 description: "Increase attack for a minute.",
                 effect: 0,
             },
-            Items::DefensePotion => Self {
+            ItemType::Defense => Self {
                 name: "Defense Potion",
                 description: "Increase defense for a minute.",
                 effect: 0,
             },
-            Items::ExperiencePotion => Self {
+            ItemType::Experience => Self {
                 name: "Experience Potion",
                 description: "Double received experience for a minute.",
                 effect: 0,
