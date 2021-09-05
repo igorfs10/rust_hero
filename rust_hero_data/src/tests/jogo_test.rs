@@ -38,9 +38,9 @@ pub mod tests {
 
         fn testar(self) {
             let mut oponente = Character::default();
-            let inimigo_possivel = sortear_inimigo_lugar(&self.lugar.unwrap(), &0);
+            let inimigo_possivel = pick_location_enemy(&self.lugar.unwrap(), &0);
             if let Some(inimigo) = inimigo_possivel {
-                definir_inimigo(&mut oponente, inimigo);
+                define_enemy(&mut oponente, inimigo);
             }
             assert_eq!(self.esperado.unwrap(), oponente);
         }
