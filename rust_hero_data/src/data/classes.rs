@@ -16,17 +16,27 @@ pub enum Classes {
     Valkyrie,
 }
 
+/// The basic class and statistics for characters
 pub struct Class {
+    /// The character's name
     pub name: &'static str,
+    /// Health points
     pub hp: u8,
+    /// Mana points
     pub mp: u8,
+    /// Physical attack
     pub atk: u8,
+    /// Physical defense
     pub def: u8,
+    /// Mana attack
     pub m_atk: u8,
+    /// Mana defense
     pub m_def: u8,
 }
 
 impl Class {
+    //TODO should this be `from_class` to be more Rust-like?
+    /// Create a set of stats based on the Class type
     pub const fn get_class(class: &Classes) -> Self {
         match class {
             Classes::Adept => Class {

@@ -10,15 +10,18 @@ pub enum Locations {
     Forest,
     /// Inaccessable to many, the cave is full of lurking monsters
     Cave,
-    ///
+    /// The long hard treks through the swampy muck are greeted with plentiful creatures.
     Swamp,
-    ///
+    /// Dry sands prevade the deserts, with many hardy monsters around
     Desert,
 }
-
+/// The Location the character is currently in
 pub struct Location {
+    /// The name of the location
     pub name: &'static str,
+    /// The enemies that live in the location
     pub enemies: Option<[Enemies; 4]>,
+    /// The item in this location
     pub item: Option<ItemType>,
 }
 

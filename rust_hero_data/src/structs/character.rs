@@ -67,7 +67,6 @@ impl Character {
     }
 
     /// The basic attack formula for our characters
-    //TODO send in a stat struct from the enemy?
     pub fn attack(&self, defending_character: &mut Self, seed: &u64) -> (bool, u8, bool) {
         let mut damage;
         let mut defeated: bool = false;
