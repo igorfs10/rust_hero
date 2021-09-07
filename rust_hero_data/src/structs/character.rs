@@ -50,7 +50,7 @@ pub struct Character {
 
 impl Character {
     /// Manually create a new `Character`
-    const fn new(name: String, health: u8, mana:u8, attack: u8, defense: u8, mana_attack:u8, mana_defense:u8, experience: u16, level:u8, class:Class) -> Self {
+    const fn _new(name: String, health: u8, mana:u8, attack: u8, defense: u8, mana_attack:u8, mana_defense:u8, experience: u16, level:u8, class:Class) -> Self {
         Self {
             name,
             health,
@@ -67,7 +67,7 @@ impl Character {
         }
     }
     /// Create a `Character` from a `Class`
-    pub fn from_class(name:String, class:Class) -> Self {
+    pub const fn from_class(name:String, class:Class) -> Self {
         let hp;
         let mp;
         let atk;
