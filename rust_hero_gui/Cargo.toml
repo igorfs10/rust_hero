@@ -8,8 +8,8 @@ license-file = "LICENSE"
 readme = "README.md"
 
 [dependencies]
-fltk = { version = "1.1.2", features = ["fltk-bundled"] }
+fltk = { version = "1.1.16", features = ["fltk-bundled"] }
 rust_hero_data = { path = "../rust_hero_data" }
 
 [build-dependencies]
-fl2rust = "0.4"
+fl2rust = "0.4.7"
