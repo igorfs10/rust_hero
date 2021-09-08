@@ -3,6 +3,7 @@ use super::items::ItemType;
 use crate::data::enemies::Enemies;
 
 /// The locations we can travel to in a region
+#[derive(Debug, Copy, Clone)]
 pub enum Locations {
     /// The place to rest and purchase things
     Town,

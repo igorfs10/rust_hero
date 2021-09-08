@@ -3,6 +3,7 @@
 
 mod ui;
 pub mod utils;
+pub mod data;
 
 use std::str::FromStr;
 use std::time::Instant;
@@ -22,6 +23,8 @@ use rust_hero_data::{
 };
 use crate::utils::file::load_game;
 use crate::utils::file::new_game;
+use crate::data::enums::Action;
+
 
 pub fn main() {
     let time = Instant::now();
@@ -37,6 +40,7 @@ pub fn main() {
 
     let game_time = ui.game_time;
 
+    let (send_action, receive_action) = app::channel::<Action>();
     let app = App::default();
     app::add_timeout(1.0, move || {
         show_time(game_time.clone(), time);
@@ -103,9 +107,22 @@ pub fn main() {
             ui.image_box.set_image(Some(image.to_owned()));
         }
     }
+    // change location
+    ui.forward.emit(send_action, Action::Forward);
+    ui.backward.emit(send_action, Action::Backward);
 
     while app.wait() {
         // update the current state
+        if let Some(button_action) = receive_action.recv() {
+            match button_action {
+                Action::Forward => {
+                    println!("Forward");
+                },
+                Action::Backward => {
+                    println!("Backward");
+                },
+            }
+        }
     }
 }
 
