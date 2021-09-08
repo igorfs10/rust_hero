@@ -23,7 +23,7 @@ use rust_hero_data::{
 };
 use crate::utils::file::load_game;
 use crate::utils::file::new_game;
-use crate::data::enums::Action;
+use crate::data::enums::{Action, Direction};
 
 
 pub fn main() {
@@ -84,7 +84,7 @@ pub fn main() {
     ui.character_class.set_label(character.name.as_str());
 
     // location
-    let location: Location = Location::get_location(&Locations::Forest);
+    let mut location: Location = Location::get_location(&Locations::Desert);
     ui.location.set_label(location.name);
 
     // background image
@@ -108,21 +108,64 @@ pub fn main() {
         }
     }
     // change location
-    ui.forward.emit(send_action, Action::Forward);
-    ui.backward.emit(send_action, Action::Backward);
-
+    ui.forward.emit(send_action, Action::Move(Direction::Forward));
+    ui.backward.emit(send_action, Action::Move(Direction::Backward));
+    let map = [Locations::Forest, Locations::Forest, Locations::Forest, Locations::Forest, Locations::Forest, Locations::Forest, 
+               Locations::Town, 
+               Locations::Cave, Locations::Cave, Locations::Cave, Locations::Cave, Locations::Cave, Locations::Cave,
+               Locations::Town,
+               Locations::Desert,  Locations::Desert,  Locations::Desert,  Locations::Desert,
+               Locations::Town,
+               Locations::Forest, Locations::Swamp, Locations::Swamp, Locations::Forest];
+    let mut current_place:usize = 0;
     while app.wait() {
         // update the current state
         if let Some(button_action) = receive_action.recv() {
             match button_action {
-                Action::Forward => {
-                    println!("Forward");
-                },
-                Action::Backward => {
-                    println!("Backward");
+                Action::Move(direction) => {
+                    match direction {
+                        Direction::Forward => {
+                            current_place += 1;
+                            if current_place >= map.len() {
+                                // restart?
+                                current_place = 0;
+                            }
+                        },
+                        Direction::Backward => {
+                            if current_place > 0 {
+                                current_place -= 1;
+                            }
+                        },
+                    }
+                    location = Location::get_location(&map[current_place]);
+                    
+                    // background image
+                    let image_loaded:bool;
+                    let bg_image_filename:String = match fs::canonicalize(location.image) {
+                        Ok(image_filename) => {
+                            image_loaded = true;
+                            image_filename.to_str().unwrap().to_owned()
+                        },
+                        Err(e) => {
+                            println!("ERROR: {:?}",e);
+                            image_loaded = false;
+                            String::from("")
+                        },
+                    };
+                    if image_loaded {
+                        let bg_image = SharedImage::load(bg_image_filename.as_str());
+                        if bg_image.is_ok() {
+                            let image = bg_image.ok()
+                                                .unwrap();
+                            ui.image_box.set_image(
+                                              Some(image
+                                              .to_owned()));
+                        }
+                    }
                 },
             }
         }
+        ui.win.redraw();
     }
 }
 
