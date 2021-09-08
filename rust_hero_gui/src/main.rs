@@ -20,6 +20,7 @@ use rust_hero_data::{
     structs::save::Save,
     utils::random::Seed,
     data::locations::{Locations, Location},
+    jogo::pick_location_enemy,
 };
 use crate::utils::file::load_game;
 use crate::utils::file::new_game;
@@ -90,7 +91,8 @@ pub fn main() {
                Locations::Town,
                Locations::Desert,  Locations::Desert,  Locations::Desert,  Locations::Desert,
                Locations::Town,
-               Locations::Forest, Locations::Swamp, Locations::Swamp, Locations::Forest];
+               Locations::Forest, Locations::Swamp, Locations::Swamp, Locations::Forest,
+               Locations::Town];
     // location
     let mut location: Location = Location::get_location(&map[0]);
     ui.location.set_label(location.name);
@@ -125,6 +127,7 @@ pub fn main() {
         if let Some(button_action) = receive_action.recv() {
             match button_action {
                 Action::Move(direction) => {
+                    ui.enemy.hide();
                     match direction {
                         Direction::Forward => {
                             current_place += 1;
@@ -140,21 +143,50 @@ pub fn main() {
                         },
                     }
                     location = Location::get_location(&map[current_place]);
+                    if map[current_place] == Locations::Town {
+                        // heal or whatever
+                    } else {
+                        // Get the enemy
+                        let enemy = pick_location_enemy(&location, &seed);
+                        if enemy.is_some() {
+                            let enemy = enemy.unwrap();
+                            // get the image filename
+                            let enemy_image_filename:String = match fs::canonicalize(enemy.image) {
+                                Ok(enemy_image_filename) => {
+                                    enemy_image_filename.to_str().unwrap().to_owned()
+                                },
+                                Err(e) => {
+                                    println!("ERROR: {:?}",e);
+                                    String::from("")
+                                },
+                            };
+                            if !enemy_image_filename.is_empty() {
+                                let enemy_image = SharedImage::load(enemy_image_filename.as_str());
+                                // put the image on the box
+                                if enemy_image.is_ok() {
+                                    let image = enemy_image.ok()
+                                                .unwrap();
+                                    ui.enemy.show();
+                                    ui.enemy.set_image(
+                                              Some(image
+                                              .to_owned()));
+                                }
+                            }
+                        }
+                    }
+                    
                     ui.location.set_label(location.name);
                     // background image
-                    let image_loaded:bool;
                     let bg_image_filename:String = match fs::canonicalize(location.image) {
                         Ok(image_filename) => {
-                            image_loaded = true;
                             image_filename.to_str().unwrap().to_owned()
                         },
                         Err(e) => {
                             println!("ERROR: {:?}",e);
-                            image_loaded = false;
                             String::from("")
                         },
                     };
-                    if image_loaded {
+                    if !bg_image_filename.is_empty() {
                         let bg_image = SharedImage::load(bg_image_filename.as_str());
                         if bg_image.is_ok() {
                             let image = bg_image.ok()

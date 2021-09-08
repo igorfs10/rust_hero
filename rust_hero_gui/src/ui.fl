@@ -7,7 +7,7 @@ class RustHeroUI {open
   Function {make_window()} {open
   } {
     Fl_Window win {
-      label {Rust Hero} open selected
+      label {Rust Hero} open
       xywh {755 85 500 600} type Double color 52 visible
     } {
       Fl_Group menu_group {open
@@ -116,6 +116,12 @@ class RustHeroUI {open
       Fl_Button backward {
         label {@<}
         xywh {10 255 30 65} box NO_BOX labelsize 34
+      }
+      Fl_Box enemy {selected
+        xywh {310 230 64 128} color 183
+      }
+      Fl_Box hero {
+        xywh {95 230 64 128} box FLAT_BOX color 183
       }
     }
   }

@@ -29,6 +29,8 @@ pub struct Enemy {
     pub experience: u16,
     /// The item the enemy carries
     pub item: ItemType,
+    /// The image filename
+    pub image: &'static str,
 }
 //TODO move stats to struct?
 //TODO enemy will need an image filename
@@ -43,6 +45,7 @@ impl Enemy {
                 defense: 1,
                 experience: 2,
                 item: ItemType::Defense,
+                image: "assets/enemies/rat.png",
             },
             Enemies::Rabbit => Enemy {
                 name: "Rabbit",
@@ -51,6 +54,7 @@ impl Enemy {
                 defense: 2,
                 experience: 4,
                 item: ItemType::Attack,
+                image: "assets/enemies/rabbit.png",
             },
             Enemies::Snake => Enemy {
                 name: "Snake",
@@ -59,6 +63,7 @@ impl Enemy {
                 defense: 4,
                 experience: 8,
                 item: ItemType::Health,
+                image: "assets/enemies/snake.png",
             },
             Enemies::Wolf => Enemy {
                 name: "Wolf",
@@ -67,6 +72,7 @@ impl Enemy {
                 defense: 3,
                 experience: 8,
                 item: ItemType::Experience,
+                image: "assets/enemies/wolf.png",
             },
             Enemies::Crocodile => Enemy {
                 name: "Crocodile",
@@ -75,6 +81,7 @@ impl Enemy {
                 defense: 3,
                 experience: 8,
                 item: ItemType::Experience,
+                image: "assets/enemies/crocodile.png",
             },
         }
     }
