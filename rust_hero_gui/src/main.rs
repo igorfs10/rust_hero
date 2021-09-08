@@ -7,19 +7,20 @@ pub mod utils;
 use std::str::FromStr;
 use std::time::Instant;
 use std::{cell::RefCell, rc::Rc};
+use std::fs;
 
 use fltk::output::Output;
 // GUI
-use fltk::{app::*, menu::*, prelude::*, *};
+use fltk::{app::*, menu::*, prelude::*, image::*, *};
 
 use rust_hero_data::{
     data::weapons::{Weapon, Weapons},
     structs::character::Character,
     structs::save::Save,
     utils::random::Seed,
+    data::locations::{Locations, Location},
 };
-use utils::file::load_game;
-
+use crate::utils::file::load_game;
 use crate::utils::file::new_game;
 
 pub fn main() {
@@ -77,6 +78,31 @@ pub fn main() {
     ui.xp.set_value(character.experience as f64);
     ui.level.set_value(character.level as f64);
     ui.character_class.set_label(character.name.as_str());
+
+    // location
+    let location: Location = Location::get_location(&Locations::Forest);
+    ui.location.set_label(location.name);
+
+    // background image
+    let image_loaded:bool;
+    let bg_image_filename:String = match fs::canonicalize(location.image) {
+        Ok(image_filename) => {
+            image_loaded = true;
+            image_filename.to_str().unwrap().to_owned()
+        },
+        Err(e) => {
+            println!("ERROR: {:?}",e);
+            image_loaded = false;
+            String::from("")
+        },
+    };
+    if image_loaded {
+        let bg_image = SharedImage::load(bg_image_filename.as_str());
+        if bg_image.is_ok() {
+            let image = bg_image.ok().unwrap();
+            ui.image_box.set_image(Some(image.to_owned()));
+        }
+    }
 
     while app.wait() {
         // update the current state

@@ -15,6 +15,28 @@ pub enum Locations {
     /// Dry sands prevade the deserts, with many hardy monsters around
     Desert,
 }
+impl Locations {
+    /// convert a string into a Location
+    pub fn from_string(location:String) -> Locations {
+        if location == "Town" {
+            return Locations::Town
+        } else if location == "Forest" {
+            return Locations::Forest
+        } else if location == "Cave" {
+            return Locations::Cave
+        } else if location == "Swamp" {
+            return Locations::Swamp
+        } else if location == "Desert" {
+            return Locations::Desert
+        }
+        else {
+            // Default to a safe place
+            return Locations::Town
+        }
+    
+    }
+}
+
 /// The Location the character is currently in
 pub struct Location {
     /// The name of the location
@@ -23,9 +45,12 @@ pub struct Location {
     pub enemies: Option<[Enemies; 4]>,
     /// The item in this location
     pub item: Option<ItemType>,
+    /// The image filename
+    pub image: &'static str,
 }
 
 impl Location {
+
     /// Get a `Location` struct from a `Locations` enum
     pub const fn get_location(location: &Locations) -> Self {
         match location {
@@ -33,16 +58,19 @@ impl Location {
                 name: "Town",
                 enemies: None,
                 item: None,
+                image: "assets/backgrounds/town.png",
             },
             Locations::Forest => Self {
                 name: "Forest",
                 enemies: Some([Enemies::Rat, Enemies::Rabbit, Enemies::Snake, Enemies::Wolf]),
                 item: Some(ItemType::Health),
+                image: "assets/backgrounds/forest.png",
             },
             Locations::Cave => Self {
                 name: "Cave",
                 enemies: Some([Enemies::Rat, Enemies::Rabbit, Enemies::Snake, Enemies::Wolf]),
                 item: None,
+                image: "assets/backgrounds/cave.png",
             },
             Locations::Swamp => Self {
                 name: "Swamp",
@@ -53,11 +81,13 @@ impl Location {
                     Enemies::Crocodile,
                 ]),
                 item: None,
+                image: "assets/backgrounds/swamp.png",
             },
             Locations::Desert => Self {
                 name: "Desert",
                 enemies: Some([Enemies::Rat, Enemies::Rabbit, Enemies::Snake, Enemies::Wolf]),
                 item: None,
+                image: "assets/backgrounds/desert.png",
             },
         }
     }

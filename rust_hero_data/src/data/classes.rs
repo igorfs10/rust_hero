@@ -18,7 +18,7 @@ pub enum Classes {
 
 /// The basic class and statistics for characters
 pub struct Class {
-    /// The character's name
+    /// The character's class
     pub name: &'static str,
     /// Health points
     pub hp: u8,
