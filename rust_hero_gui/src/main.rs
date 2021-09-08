@@ -83,8 +83,16 @@ pub fn main() {
     ui.level.set_value(character.level as f64);
     ui.character_class.set_label(character.name.as_str());
 
+    // map
+    let map = [Locations::Forest, Locations::Forest, Locations::Forest, Locations::Forest, Locations::Forest, Locations::Forest, 
+               Locations::Town, 
+               Locations::Cave, Locations::Cave, Locations::Cave, Locations::Cave, Locations::Cave, Locations::Cave,
+               Locations::Town,
+               Locations::Desert,  Locations::Desert,  Locations::Desert,  Locations::Desert,
+               Locations::Town,
+               Locations::Forest, Locations::Swamp, Locations::Swamp, Locations::Forest];
     // location
-    let mut location: Location = Location::get_location(&Locations::Desert);
+    let mut location: Location = Location::get_location(&map[0]);
     ui.location.set_label(location.name);
 
     // background image
@@ -110,13 +118,7 @@ pub fn main() {
     // change location
     ui.forward.emit(send_action, Action::Move(Direction::Forward));
     ui.backward.emit(send_action, Action::Move(Direction::Backward));
-    let map = [Locations::Forest, Locations::Forest, Locations::Forest, Locations::Forest, Locations::Forest, Locations::Forest, 
-               Locations::Town, 
-               Locations::Cave, Locations::Cave, Locations::Cave, Locations::Cave, Locations::Cave, Locations::Cave,
-               Locations::Town,
-               Locations::Desert,  Locations::Desert,  Locations::Desert,  Locations::Desert,
-               Locations::Town,
-               Locations::Forest, Locations::Swamp, Locations::Swamp, Locations::Forest];
+
     let mut current_place:usize = 0;
     while app.wait() {
         // update the current state
@@ -138,7 +140,7 @@ pub fn main() {
                         },
                     }
                     location = Location::get_location(&map[current_place]);
-                    
+                    ui.location.set_label(location.name);
                     // background image
                     let image_loaded:bool;
                     let bg_image_filename:String = match fs::canonicalize(location.image) {
