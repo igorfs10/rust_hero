@@ -83,6 +83,24 @@ pub fn main() {
     ui.xp.set_value(character.experience as f64);
     ui.level.set_value(character.level as f64);
     ui.character_class.set_label(character.name.as_str());
+    // Character image
+    // background image
+    let hero_image_filename:String = match fs::canonicalize(character.image.as_str()) {
+        Ok(image_filename) => {
+            image_filename.to_str().unwrap().to_owned()
+        },
+        Err(e) => {
+            println!("ERROR: {:?}",e);
+            String::from("")
+        },
+    };
+    if !hero_image_filename.is_empty() {
+        let image = SharedImage::load(hero_image_filename.as_str());
+        if image.is_ok() {
+            let image = image.ok().unwrap();
+            ui.hero.set_image(Some(image.to_owned()));
+        }
+    }
 
     // map
     let map = [Locations::Forest, Locations::Forest, Locations::Forest, Locations::Forest, Locations::Forest, Locations::Forest, 
@@ -98,19 +116,16 @@ pub fn main() {
     ui.location.set_label(location.name);
 
     // background image
-    let image_loaded:bool;
     let bg_image_filename:String = match fs::canonicalize(location.image) {
         Ok(image_filename) => {
-            image_loaded = true;
             image_filename.to_str().unwrap().to_owned()
         },
         Err(e) => {
             println!("ERROR: {:?}",e);
-            image_loaded = false;
             String::from("")
         },
     };
-    if image_loaded {
+    if !bg_image_filename.is_empty() {
         let bg_image = SharedImage::load(bg_image_filename.as_str());
         if bg_image.is_ok() {
             let image = bg_image.ok().unwrap();
@@ -147,7 +162,7 @@ pub fn main() {
                         // heal or whatever
                     } else {
                         // Get the enemy
-                        let enemy = pick_location_enemy(&location, &seed);
+                        let enemy = pick_location_enemy(&location, &Seed::generate_seed());
                         if enemy.is_some() {
                             let enemy = enemy.unwrap();
                             // get the image filename

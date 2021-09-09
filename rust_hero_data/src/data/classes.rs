@@ -32,6 +32,8 @@ pub struct Class {
     pub m_atk: u8,
     /// Mana defense
     pub m_def: u8,
+    /// The image filename
+    pub image: &'static str,
 }
 
 impl Class {
@@ -47,6 +49,7 @@ impl Class {
                 def: 30,
                 m_atk: 20,
                 m_def: 30,
+                image: "assets/heros/adept.png",
             },
             Classes::Archer => Class {
                 name: "Archer",
@@ -56,6 +59,7 @@ impl Class {
                 def: 10,
                 m_atk: 15,
                 m_def: 35,
+                image: "assets/heros/archer.png",
             },
             Classes::Knight => Class {
                 name: "Knight",
@@ -65,6 +69,7 @@ impl Class {
                 def: 20,
                 m_atk: 20,
                 m_def: 20,
+                image: "assets/heros/knight.png",
             },
             Classes::Monk => Class {
                 name: "Monk",
@@ -74,6 +79,7 @@ impl Class {
                 def: 15,
                 m_atk: 5,
                 m_def: 40,
+                image: "assets/heros/monk.png",
             },
             Classes::Necromancer => Class {
                 name: "Necromancer",
@@ -83,6 +89,7 @@ impl Class {
                 def: 8,
                 m_atk: 30,
                 m_def: 1,
+                image: "assets/heros/necromancer.png",
             },
             Classes::Priest => Class {
                 name: "Priest",
@@ -92,6 +99,7 @@ impl Class {
                 def: 10,
                 m_atk: 10,
                 m_def: 40,
+                image: "assets/heros/priest.png",
             },
             Classes::Soldier => Class {
                 name: "Soldier",
@@ -101,6 +109,7 @@ impl Class {
                 def: 12,
                 m_atk: 0,
                 m_def: 18,
+                image: "assets/heros/soldier.png",
             },
             Classes::Thief => Class {
                 name: "Thief",
@@ -110,6 +119,7 @@ impl Class {
                 def: 9,
                 m_atk: 11,
                 m_def: 30,
+                image: "assets/heros/thief.png",
             },
             Classes::Valkyrie => Class {
                 name: "Valkyrie",
@@ -119,6 +129,7 @@ impl Class {
                 def: 20,
                 m_atk: 20,
                 m_def: 30,
+                image: "assets/heros/valkyrie.png",
             },
         }
     }

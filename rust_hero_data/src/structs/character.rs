@@ -34,6 +34,8 @@ pub struct Character {
     pub level: u8,
     /// The specific type of character we have.
     pub class: Classes,
+    /// The image filename
+    pub image: String,
 }
 
 impl Character {
@@ -46,12 +48,13 @@ impl Character {
             def,
             m_atk,
             m_def,
+            image,
             ..
         } = Class::get_class(&class);
         // 150 total points based off of https://www.soulraver.net/sukie/AKS2/old/
 
         Character {
-            name,
+            name:name,
             health: hp,
             max_health: hp,
             mana: mp,
@@ -62,7 +65,8 @@ impl Character {
             mana_defense: m_def,
             experience: 0,
             level: 0,
-            class,
+            class:class,
+            image:String::from(image),
         }
     }
 

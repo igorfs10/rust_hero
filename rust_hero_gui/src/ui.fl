@@ -117,11 +117,11 @@ class RustHeroUI {open
         label {@<}
         xywh {10 255 30 65} box NO_BOX labelsize 34
       }
-      Fl_Box enemy {selected
-        xywh {310 230 64 128} color 183
+      Fl_Box enemy {
+        xywh {335 232 64 128} color 183
       }
-      Fl_Box hero {
-        xywh {95 230 64 128} box FLAT_BOX color 183
+      Fl_Box hero {selected
+        xywh {207 317 64 128} color 183
       }
     }
   }
