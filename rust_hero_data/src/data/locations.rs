@@ -93,3 +93,8 @@ impl Location {
         }
     }
 }
+
+pub struct EnemyData {
+    pub character: u8, //Character id
+    pub level: u8,
+}

@@ -7,3 +7,4 @@ pub mod items;
 pub mod levels;
 pub mod locations;
 pub mod weapons;
+pub mod base_character;
