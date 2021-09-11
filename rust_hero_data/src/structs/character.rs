@@ -54,7 +54,7 @@ impl Character {
         // 150 total points based off of https://www.soulraver.net/sukie/AKS2/old/
 
         Character {
-            name: name,
+            name,
             health: hp,
             max_health: hp,
             mana: mp,
@@ -65,7 +65,7 @@ impl Character {
             mana_defense: m_def,
             experience: 0,
             level: 0,
-            class: class,
+            class,
             image: String::from(image),
         }
     }

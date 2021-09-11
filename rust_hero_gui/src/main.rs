@@ -98,7 +98,7 @@ pub fn main() {
         let image = SharedImage::load(hero_image_filename.as_str());
         if image.is_ok() {
             let image = image.ok().unwrap();
-            ui.hero.set_image(Some(image.to_owned()));
+            ui.hero.set_image(Some(image));
         }
     }
 
@@ -145,7 +145,7 @@ pub fn main() {
         let bg_image = SharedImage::load(bg_image_filename.as_str());
         if bg_image.is_ok() {
             let image = bg_image.ok().unwrap();
-            ui.image_box.set_image(Some(image.to_owned()));
+            ui.image_box.set_image(Some(image));
         }
     }
     // change location
@@ -181,8 +181,7 @@ pub fn main() {
                     } else {
                         // Get the enemy
                         let enemy = pick_location_enemy(&location, &Seed::generate_seed());
-                        if enemy.is_some() {
-                            let enemy = enemy.unwrap();
+                        if let Some(enemy) = enemy {
                             // get the image filename
                             let enemy_image_filename: String = match fs::canonicalize(enemy.image) {
                                 Ok(enemy_image_filename) => {

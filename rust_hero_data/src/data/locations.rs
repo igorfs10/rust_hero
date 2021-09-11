@@ -18,20 +18,14 @@ pub enum Locations {
 }
 impl Locations {
     /// convert a string into a Location
-    pub fn from_string(location: String) -> Locations {
-        if location == "Town" {
-            return Locations::Town;
-        } else if location == "Forest" {
-            return Locations::Forest;
-        } else if location == "Cave" {
-            return Locations::Cave;
-        } else if location == "Swamp" {
-            return Locations::Swamp;
-        } else if location == "Desert" {
-            return Locations::Desert;
-        } else {
-            // Default to a safe place
-            return Locations::Town;
+    pub fn from_string(location: &str) -> Locations {
+        match location {
+            "Town" => Locations::Town,
+            "Forest" => Locations::Forest,
+            "Cave" => Locations::Cave,
+            "Swamp" => Locations::Swamp,
+            "Desert" => Locations::Desert,
+            _ => Locations::Town, // Default to a safe place
         }
     }
 }
