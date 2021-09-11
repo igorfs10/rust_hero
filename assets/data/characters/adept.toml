@@ -1,0 +1,12 @@
+name = "Adept"
+hp = 40
+mp = 16
+atk = 14
+def = 30
+m_atk = 20
+m_def = 30
+exp = 0
+img_idle = ""
+img_walking = ""
+img_attacking = ""
+playable = true

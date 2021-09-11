@@ -1,33 +1,35 @@
 //Remove tela de linha de comando
 //#![windows_subsystem = "windows"]
 
+pub mod data;
 mod ui;
 pub mod utils;
-pub mod data;
 
+use std::fs;
 use std::str::FromStr;
 use std::time::Instant;
 use std::{cell::RefCell, rc::Rc};
-use std::fs;
 
 use fltk::output::Output;
 // GUI
-use fltk::{app::*, menu::*, prelude::*, image::*, *};
+use fltk::{app::*, image::*, menu::*, prelude::*, *};
+use rust_hero_data::data::base_character::BaseCharacter;
 
+use crate::data::enums::{Action, Direction};
+use crate::utils::file::load_game;
+use crate::utils::file::new_game;
 use rust_hero_data::{
+    data::locations::{Location, Locations},
     data::weapons::{Weapon, Weapons},
+    jogo::pick_location_enemy,
     structs::character::Character,
     structs::save::Save,
     utils::random::Seed,
-    data::locations::{Locations, Location},
-    jogo::pick_location_enemy,
 };
-use crate::utils::file::load_game;
-use crate::utils::file::new_game;
-use crate::data::enums::{Action, Direction};
-
 
 pub fn main() {
+    let enemy = BaseCharacter::get_character(1);
+    println!("{}", enemy.name);
     let time = Instant::now();
 
     let seed = Seed::generate_seed();
@@ -85,14 +87,12 @@ pub fn main() {
     ui.character_class.set_label(character.name.as_str());
     // Character image
     // background image
-    let hero_image_filename:String = match fs::canonicalize(character.image.as_str()) {
-        Ok(image_filename) => {
-            image_filename.to_str().unwrap().to_owned()
-        },
+    let hero_image_filename: String = match fs::canonicalize(character.image.as_str()) {
+        Ok(image_filename) => image_filename.to_str().unwrap().to_owned(),
         Err(e) => {
-            println!("ERROR: {:?}",e);
+            println!("ERROR: {:?}", e);
             String::from("")
-        },
+        }
     };
     if !hero_image_filename.is_empty() {
         let image = SharedImage::load(hero_image_filename.as_str());
@@ -103,27 +103,43 @@ pub fn main() {
     }
 
     // map
-    let map = [Locations::Forest, Locations::Forest, Locations::Forest, Locations::Forest, Locations::Forest, Locations::Forest, 
-               Locations::Town, 
-               Locations::Cave, Locations::Cave, Locations::Cave, Locations::Cave, Locations::Cave, Locations::Cave,
-               Locations::Town,
-               Locations::Desert,  Locations::Desert,  Locations::Desert,  Locations::Desert,
-               Locations::Town,
-               Locations::Forest, Locations::Swamp, Locations::Swamp, Locations::Forest,
-               Locations::Town];
+    let map = [
+        Locations::Forest,
+        Locations::Forest,
+        Locations::Forest,
+        Locations::Forest,
+        Locations::Forest,
+        Locations::Forest,
+        Locations::Town,
+        Locations::Cave,
+        Locations::Cave,
+        Locations::Cave,
+        Locations::Cave,
+        Locations::Cave,
+        Locations::Cave,
+        Locations::Town,
+        Locations::Desert,
+        Locations::Desert,
+        Locations::Desert,
+        Locations::Desert,
+        Locations::Town,
+        Locations::Forest,
+        Locations::Swamp,
+        Locations::Swamp,
+        Locations::Forest,
+        Locations::Town,
+    ];
     // location
     let mut location: Location = Location::get_location(&map[0]);
     ui.location.set_label(location.name);
 
     // background image
-    let bg_image_filename:String = match fs::canonicalize(location.image) {
-        Ok(image_filename) => {
-            image_filename.to_str().unwrap().to_owned()
-        },
+    let bg_image_filename: String = match fs::canonicalize(location.image) {
+        Ok(image_filename) => image_filename.to_str().unwrap().to_owned(),
         Err(e) => {
-            println!("ERROR: {:?}",e);
+            println!("ERROR: {:?}", e);
             String::from("")
-        },
+        }
     };
     if !bg_image_filename.is_empty() {
         let bg_image = SharedImage::load(bg_image_filename.as_str());
@@ -133,10 +149,12 @@ pub fn main() {
         }
     }
     // change location
-    ui.forward.emit(send_action, Action::Move(Direction::Forward));
-    ui.backward.emit(send_action, Action::Move(Direction::Backward));
+    ui.forward
+        .emit(send_action, Action::Move(Direction::Forward));
+    ui.backward
+        .emit(send_action, Action::Move(Direction::Backward));
 
-    let mut current_place:usize = 0;
+    let mut current_place: usize = 0;
     while app.wait() {
         // update the current state
         if let Some(button_action) = receive_action.recv() {
@@ -150,12 +168,12 @@ pub fn main() {
                                 // restart?
                                 current_place = 0;
                             }
-                        },
+                        }
                         Direction::Backward => {
                             if current_place > 0 {
                                 current_place -= 1;
                             }
-                        },
+                        }
                     }
                     location = Location::get_location(&map[current_place]);
                     if map[current_place] == Locations::Town {
@@ -166,52 +184,44 @@ pub fn main() {
                         if enemy.is_some() {
                             let enemy = enemy.unwrap();
                             // get the image filename
-                            let enemy_image_filename:String = match fs::canonicalize(enemy.image) {
+                            let enemy_image_filename: String = match fs::canonicalize(enemy.image) {
                                 Ok(enemy_image_filename) => {
                                     enemy_image_filename.to_str().unwrap().to_owned()
-                                },
+                                }
                                 Err(e) => {
-                                    println!("ERROR: {:?}",e);
+                                    println!("ERROR: {:?}", e);
                                     String::from("")
-                                },
+                                }
                             };
                             if !enemy_image_filename.is_empty() {
                                 let enemy_image = SharedImage::load(enemy_image_filename.as_str());
                                 // put the image on the box
                                 if enemy_image.is_ok() {
-                                    let image = enemy_image.ok()
-                                                .unwrap();
+                                    let image = enemy_image.ok().unwrap();
                                     ui.enemy.show();
-                                    ui.enemy.set_image(
-                                              Some(image
-                                              .to_owned()));
+                                    ui.enemy.set_image(Some(image.to_owned()));
                                 }
                             }
                         }
                     }
-                    
+
                     ui.location.set_label(location.name);
                     // background image
-                    let bg_image_filename:String = match fs::canonicalize(location.image) {
-                        Ok(image_filename) => {
-                            image_filename.to_str().unwrap().to_owned()
-                        },
+                    let bg_image_filename: String = match fs::canonicalize(location.image) {
+                        Ok(image_filename) => image_filename.to_str().unwrap().to_owned(),
                         Err(e) => {
-                            println!("ERROR: {:?}",e);
+                            println!("ERROR: {:?}", e);
                             String::from("")
-                        },
+                        }
                     };
                     if !bg_image_filename.is_empty() {
                         let bg_image = SharedImage::load(bg_image_filename.as_str());
                         if bg_image.is_ok() {
-                            let image = bg_image.ok()
-                                                .unwrap();
-                            ui.image_box.set_image(
-                                              Some(image
-                                              .to_owned()));
+                            let image = bg_image.ok().unwrap();
+                            ui.image_box.set_image(Some(image.to_owned()));
                         }
                     }
-                },
+                }
             }
         }
         ui.win.redraw();

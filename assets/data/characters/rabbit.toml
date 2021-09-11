@@ -1,0 +1,12 @@
+name = "Rabbit"
+hp = 12
+mp = 8
+atk = 4
+def = 5
+m_atk = 7
+m_def = 4
+exp = 0
+img_idle = "rabbid.png"
+img_walking = ""
+img_attacking = ""
+playable = false

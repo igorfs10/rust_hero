@@ -1,0 +1,12 @@
+name = "Snake"
+hp = 13
+mp = 9
+atk = 6
+def = 6
+m_atk = 8
+m_def = 5
+exp = 0
+img_idle = "snake.png"
+img_walking = ""
+img_attacking = ""
+playable = false

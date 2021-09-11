@@ -1,0 +1,12 @@
+name = "Valkyrie"
+hp = 50
+mp = 10
+atk = 20
+def = 20
+m_atk = 20
+m_def = 30
+exp = 0
+img_idle = ""
+img_walking = ""
+img_attacking = ""
+playable = true

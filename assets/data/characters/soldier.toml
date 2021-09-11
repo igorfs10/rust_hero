@@ -1,0 +1,12 @@
+name = "Soldier"
+hp = 90
+mp = 0
+atk = 30
+def = 12
+m_atk = 0
+m_def = 18
+exp = 0
+img_idle = ""
+img_walking = ""
+img_attacking = ""
+playable = true

@@ -1,0 +1,12 @@
+name = "Archer"
+hp = 50
+mp = 25
+atk = 15
+def = 10
+m_atk = 15
+m_def = 35
+exp = 0
+img_idle = "archer.png"
+img_walking = ""
+img_attacking = ""
+playable = true

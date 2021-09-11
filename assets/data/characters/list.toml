@@ -1,0 +1,63 @@
+[[list]]
+id = 0
+file_name = "adept.toml"
+
+[[list]]
+id = 1
+file_name = "archer.toml"
+
+[[list]]
+id = 2
+file_name = "knight.toml"
+
+[[list]]
+id = 3
+file_name = "monk.toml"
+
+[[list]]
+id = 4
+file_name = "necromancer.toml"
+
+[[list]]
+id = 5
+file_name = "priest.toml"
+
+[[list]]
+id = 6
+file_name = "soldier.toml"
+
+[[list]]
+id = 7
+file_name = "thief.toml"
+
+[[list]]
+id = 8
+file_name = "valkyrie.toml"
+
+[[list]]
+id = 9
+file_name = "crocodile.toml"
+
+[[list]]
+id = 10
+file_name = "rabbit.toml"
+
+[[list]]
+id = 11
+file_name = "rat.toml"
+
+[[list]]
+id = 12
+file_name = "snake.toml"
+
+[[list]]
+id = 13
+file_name = "wolf.toml"
+
+[[list]]
+id = 14
+file_name = ""
+
+[[list]]
+id = 15
+file_name = ""

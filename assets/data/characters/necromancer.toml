@@ -1,0 +1,12 @@
+name = "Necromancer"
+hp = 70
+mp = 40
+atk = 1
+def = 8
+m_atk = 30
+m_def = 1
+exp = 0
+img_idle = ""
+img_walking = ""
+img_attacking = ""
+playable = true

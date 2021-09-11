@@ -1,20 +1,29 @@
 use std::{fs, path::Path};
 
-const COPY_DIR: &'static str = "../assets";
+const COPY_DIR: &str = "../assets";
 
 fn main() {
     use std::env;
     use std::path::PathBuf;
     println!("cargo:rerun-if-changed=src/ui.fl");
+    println!("cargo:rerun-if-changed=assets/");
     let g = fl2rust::Generator::default();
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
     g.in_out("src/ui.fl", out_path.join("ui.rs").to_str().unwrap())
         .expect("Failed to generate rust from fl file!");
 
     // Request the output directory
-    let out = PathBuf::from(format!("{}/{}", &out_path.parent().unwrap().parent().unwrap().to_str().unwrap(), COPY_DIR));
-    
-
+    let out = PathBuf::from(format!(
+        "{}/{}",
+        &out_path
+            .parent()
+            .unwrap()
+            .parent()
+            .unwrap()
+            .to_str()
+            .unwrap(),
+        COPY_DIR
+    ));
 
     // If it is already in the output directory, delete it and start over
     if out.exists() {
@@ -47,7 +56,6 @@ where
             }
 
             copy_dir(&path, to);
-        } else { /* Skip other content */
         }
     }
 }

@@ -1,0 +1,12 @@
+name = "Monk"
+hp = 40
+mp = 40
+atk = 10
+def = 15
+m_atk = 5
+m_def = 40
+exp = 0
+img_idle = ""
+img_walking = ""
+img_attacking = ""
+playable = true

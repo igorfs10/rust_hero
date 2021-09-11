@@ -18,23 +18,21 @@ pub enum Locations {
 }
 impl Locations {
     /// convert a string into a Location
-    pub fn from_string(location:String) -> Locations {
+    pub fn from_string(location: String) -> Locations {
         if location == "Town" {
-            return Locations::Town
+            return Locations::Town;
         } else if location == "Forest" {
-            return Locations::Forest
+            return Locations::Forest;
         } else if location == "Cave" {
-            return Locations::Cave
+            return Locations::Cave;
         } else if location == "Swamp" {
-            return Locations::Swamp
+            return Locations::Swamp;
         } else if location == "Desert" {
-            return Locations::Desert
-        }
-        else {
+            return Locations::Desert;
+        } else {
             // Default to a safe place
-            return Locations::Town
+            return Locations::Town;
         }
-    
     }
 }
 
@@ -51,7 +49,6 @@ pub struct Location {
 }
 
 impl Location {
-
     /// Get a `Location` struct from a `Locations` enum
     pub const fn get_location(location: &Locations) -> Self {
         match location {

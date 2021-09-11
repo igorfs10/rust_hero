@@ -1,0 +1,12 @@
+name = "Priest"
+hp = 60
+mp = 10
+atk = 20
+def = 10
+m_atk = 10
+m_def = 40
+exp = 0
+img_idle = ""
+img_walking = ""
+img_attacking = ""
+playable = true

@@ -1,0 +1,12 @@
+name = "Thief"
+hp = 40
+mp = 70
+atk = 15
+def = 9
+m_atk = 11
+m_def = 30
+exp = 0
+img_idle = ""
+img_walking = ""
+img_attacking = ""
+playable = true
