@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="15.345833mm"
+   height="26.385187mm"
+   viewBox="0 0 15.345833 26.385187"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="knight.svg"
+   inkscape:export-filename="/home/israel/programming/rs/rust_hero/assets/heros/alchemist.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="16.21903"
+     inkscape:cx="24.785699"
+     inkscape:cy="29.379068"
+     inkscape:window-width="1366"
+     inkscape:window-height="699"
+     inkscape:window-x="0"
+     inkscape:window-y="40"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     inkscape:snap-global="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-14.945456,-23.692045)">
+    <path
+       style="fill:#3d211b;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 21.405948,28.214389 c 0,0 -0.736598,0.618751 -0.966505,1.029473 -0.07539,0.134672 -0.127634,0.353545 -0.12205,0.44663 0.0056,0.09309 -0.35746,1.605622 -0.35746,1.605622 l -0.477994,0.356026 0.431972,0.05674 c 0,0 0.03724,-0.09845 -0.03405,0.177387 -0.07128,0.275837 -0.428716,1.271132 -0.456561,1.43733 -0.02785,0.166198 1.02553,-0.813567 1.02553,-0.813567 l -0.09458,1.520077 0.911921,-0.744457 0.651795,0.897059 0.645911,-1.20594 1.316005,1.329243 0.08366,-1.385221 0.986103,0.726679 -0.342505,-1.66129 1.071425,0.491866 -1.037025,-0.951217 0.731903,-0.203989 -0.740963,-0.245777 c 0,0 -0.167256,-0.388438 -0.210945,-0.593942 -0.128983,-0.606715 0.179092,-0.970495 -0.133593,-1.506189 -0.146855,-0.251592 -0.736148,-0.836545 -0.736148,-0.836545 z"
+       id="path1316"
+       sodipodi:nodetypes="cssccccccccccccccccccsscc" />
+    <g
+       id="g1969">
+      <ellipse
+         style="opacity:1;fill:#a3907c;stroke:none;stroke-width:3.175;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke"
+         id="path979"
+         cx="22.454334"
+         cy="30.401932"
+         rx="1.6840814"
+         ry="2.224839" />
+      <ellipse
+         style="opacity:1;fill:#a3907c;stroke:none;stroke-width:3.175;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke"
+         id="path1838"
+         cx="20.472559"
+         cy="30.578056"
+         rx="0.22691484"
+         ry="0.59416533" />
+      <ellipse
+         style="opacity:1;fill:#a3907c;stroke:none;stroke-width:3.175;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke"
+         id="ellipse1964"
+         cx="24.43611"
+         cy="30.528671"
+         rx="0.22691484"
+         ry="0.59416533" />
+    </g>
+    <path
+       style="opacity:1;fill:#4d4d4d;stroke:none;stroke-width:3.175;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke"
+       id="ellipse1179"
+       sodipodi:type="arc"
+       sodipodi:cx="-22.454334"
+       sodipodi:cy="-29.963242"
+       sodipodi:rx="1.8514673"
+       sodipodi:ry="2.224839"
+       sodipodi:start="0"
+       sodipodi:end="3.1495457"
+       sodipodi:open="true"
+       sodipodi:arc-type="arc"
+       d="m -20.602867,-29.963242 a 1.8514673,2.224839 0 0 1 -0.929988,1.92971 1.8514673,2.224839 0 0 1 -1.855701,-0.0089 1.8514673,2.224839 0 0 1 -0.917187,-1.938536"
+       transform="scale(-1)" />
+  </g>
+</svg>
