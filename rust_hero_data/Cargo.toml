@@ -1,7 +1,7 @@
 [package]
 name    = "rust_hero_data"
 version = "0.0.1"
-edition = "2018"
+edition = "2021"
 authors = ["igorfs10 <igorfs10@gmail.com>"]
 repository = "https://github.com/igorfs10/rust_hero"
 license-file = "LICENSE"
