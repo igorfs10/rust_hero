@@ -1,0 +1,10 @@
+name = 'Forest'
+description = ''
+enemies_id = [
+    0,
+    0,
+    0,
+    0,
+]
+item_id = 0
+background_img = 'assets/backgrounds/forest.png'

@@ -1,0 +1,19 @@
+[[list]]
+id = 0
+file_name = "town.toml"
+
+[[list]]
+id = 1
+file_name = "forest.toml"
+
+[[list]]
+id = 2
+file_name = "cave.toml"
+
+[[list]]
+id = 3
+file_name = "swamp.toml"
+
+[[list]]
+id = 4
+file_name = "desert.toml"

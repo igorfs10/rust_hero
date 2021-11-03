@@ -1,7 +1,8 @@
 //! Enemies - Data and structs related to enemies.
-
 use super::items::ItemType;
+use serde::{Deserialize, Serialize};
 
+#[derive(Serialize, Deserialize)]
 pub enum Enemies {
     /// The very prevalent rodent
     Rat,
