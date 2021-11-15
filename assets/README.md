@@ -22,4 +22,6 @@ I tried to use standard things everywhere, but use a very specific set of sounfo
 
 The `Desert` song uses the built-in NESCaline , and the `Cave` song uses the built in Kicker for the drums and ZynSubAddFX for everything else.
 
+**All songs are 120 Beats Per Minute**
 
+This allows seamless switching between songs.
