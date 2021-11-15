@@ -14,6 +14,7 @@ use fltk::output::Output;
 // GUI
 use fltk::{app::*, image::*, menu::*, prelude::*, *};
 use rust_hero_data::data::base_character::BaseCharacter;
+use rust_hero_data::data::locations::BaseLocation;
 
 use crate::data::enums::{Action, Direction};
 use crate::utils::file::load_game;
@@ -28,8 +29,11 @@ use rust_hero_data::{
 };
 
 pub fn main() {
+    let loc_test = BaseLocation::get_location(0);
+    println!("{}", loc_test.name);
     let enemy = BaseCharacter::get_character(1);
     println!("{}", enemy.name);
+
     let time = Instant::now();
 
     let seed = Seed::generate_seed();

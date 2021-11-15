@@ -1,6 +1,8 @@
 //! Items - Data and structs related to items.
+use serde::{Deserialize, Serialize};
 
 /// The type of item
+#[derive(Serialize, Deserialize)]
 pub enum ItemType {
     /// No item
     None,

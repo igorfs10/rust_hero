@@ -1,6 +1,10 @@
 //! Locations - Data and structs related to locations.
 use super::items::ItemType;
-use crate::data::enemies::Enemies;
+use crate::{
+    data::enemies::Enemies,
+    utils::files::{get_exe_folder_path, get_file_content, BaseFileDataList, ListType},
+};
+use serde::{Deserialize, Serialize};
 
 /// The locations we can travel to in a region
 #[derive(Debug, Copy, Clone, PartialEq)]
@@ -88,4 +92,35 @@ impl Location {
 pub struct EnemyData {
     pub character: u8, //Character id
     pub level: u8,
+}
+
+/// The Location the character is currently in
+#[derive(Serialize, Deserialize)]
+pub struct BaseLocation {
+    /// The name of the location
+    pub name: String,
+    /// Location description
+    pub description: String,
+    /// The enemies that live in the location
+    pub enemies_id: Option<[u8; 4]>,
+    /// The item in this location
+    pub item_id: Option<u8>,
+    /// The image filename
+    pub background_img: String,
+}
+
+impl BaseLocation {
+    pub fn get_location(id: usize) -> Self {
+        let files = BaseFileDataList::get_file_list(ListType::Locations);
+        if id > files.list.len() - 1 {
+            panic!("Location id doesn't exist.");
+        } else {
+            let full_path = format!(
+                "{}/assets/data/locations/{}",
+                &get_exe_folder_path(),
+                files.list[id].file_name
+            );
+            toml::from_slice(&get_file_content(full_path)).unwrap()
+        }
+    }
 }

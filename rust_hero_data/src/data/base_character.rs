@@ -1,28 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use crate::utils::files::{get_exe_folder_path, get_file_content};
-
-#[derive(Serialize, Deserialize, Default)]
-pub struct BaseCharacterFile {
-    pub id: u8,
-    pub file_name: String,
-}
-
-#[derive(Serialize, Deserialize, Default)]
-pub struct BaseCharacterFileList {
-    pub list: Vec<BaseCharacterFile>,
-}
-
-impl BaseCharacterFileList {
-    pub fn get_characters_list() -> Self {
-        let full_path = format!(
-            "{}/assets/data/characters/list.toml",
-            &get_exe_folder_path()
-        );
-
-        toml::from_slice(&get_file_content(full_path)).unwrap()
-    }
-}
+use crate::utils::files::{get_exe_folder_path, get_file_content, BaseFileDataList, ListType};
 
 /// Struct to be used to load the base stat for a character and calculate its stats and given experience
 #[derive(Serialize, Deserialize, Default)]
@@ -44,7 +22,7 @@ pub struct BaseCharacter {
 
 impl BaseCharacter {
     pub fn get_character(id: usize) -> Self {
-        let files = BaseCharacterFileList::get_characters_list();
+        let files = BaseFileDataList::get_file_list(ListType::Characters);
         if id > files.list.len() - 1 {
             panic!("Character id doesn't exist.");
         } else {
