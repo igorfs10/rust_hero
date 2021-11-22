@@ -1,0 +1,349 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0307
+header_name {.h}
+code_name {.cxx}
+class UserInterface {open
+} {
+  Function {make_window()} {open
+  } {
+    Fl_Window {} {open
+      xywh {363 173 720 480} type Double visible
+    } {
+      Fl_Box {} {
+        label Rock
+        xywh {75 26 66 34} box FLAT_BOX color 94 labelcolor 39
+      }
+      Fl_Box {} {
+        label Plant
+        xywh {145 25 65 35} box FLAT_BOX color 94 labelcolor 39
+      }
+      Fl_Box {} {
+        label Water
+        xywh {215 25 65 35} box FLAT_BOX color 94 labelcolor 39
+      }
+      Fl_Box {} {
+        label Fire
+        xywh {285 25 65 35} box FLAT_BOX color 94 labelcolor 39
+      }
+      Fl_Box {} {
+        label Electric
+        xywh {355 25 65 35} box FLAT_BOX color 94 labelcolor 39
+      }
+      Fl_Box {} {
+        label Spirit
+        xywh {425 25 65 35} box FLAT_BOX color 94 labelcolor 39
+      }
+      Fl_Box {} {
+        label Light
+        xywh {495 25 65 35} box FLAT_BOX color 94 labelcolor 39
+      }
+      Fl_Box {} {
+        label Wind
+        xywh {565 25 65 35} box FLAT_BOX color 94 labelcolor 39
+      }
+      Fl_Box {} {
+        label None
+        xywh {635 25 65 35} box FLAT_BOX color 94 labelcolor 39
+      }
+      Fl_Box {} {
+        xywh {215 65 65 35} box FLAT_BOX color 112
+      }
+      Fl_Box {} {
+        xywh {215 105 65 35} box FLAT_BOX color 80
+      }
+      Fl_Box {} {
+        xywh {215 145 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {215 185 65 35} box FLAT_BOX color 112
+      }
+      Fl_Box {} {
+        xywh {215 225 65 35} box FLAT_BOX color 143
+      }
+      Fl_Box {} {
+        xywh {215 265 65 35} box FLAT_BOX color 56
+      }
+      Fl_Box {} {
+        xywh {215 305 65 35} box FLAT_BOX color 143
+      }
+      Fl_Box {} {
+        xywh {215 345 65 35} box FLAT_BOX color 143
+      }
+      Fl_Box {} {
+        xywh {285 65 65 35} box FLAT_BOX color 143
+      }
+      Fl_Box {} {
+        xywh {285 105 65 35} box FLAT_BOX color 56
+      }
+      Fl_Box {} {
+        xywh {285 145 65 35} box FLAT_BOX color 143
+      }
+      Fl_Box {} {
+        xywh {285 185 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {285 225 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {285 265 65 35} box FLAT_BOX color 143
+      }
+      Fl_Box {} {
+        xywh {285 305 65 35} box FLAT_BOX color 56
+      }
+      Fl_Box {} {
+        xywh {285 345 65 35} box FLAT_BOX color 56
+      }
+      Fl_Box {} {
+        xywh {75 65 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {75 105 65 35} box FLAT_BOX color 112
+      }
+      Fl_Box {} {
+        xywh {75 145 65 35} box FLAT_BOX color 143
+      }
+      Fl_Box {} {
+        xywh {75 185 65 35} box FLAT_BOX color 80
+      }
+      Fl_Box {} {
+        xywh {75 225 65 35} box FLAT_BOX color 80
+      }
+      Fl_Box {} {
+        xywh {75 265 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {75 305 65 35} box FLAT_BOX color 143
+      }
+      Fl_Box {} {
+        xywh {75 345 65 35} box FLAT_BOX color 143
+      }
+      Fl_Box {} {
+        xywh {145 65 65 35} box FLAT_BOX color 80
+      }
+      Fl_Box {} {
+        xywh {145 105 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {145 145 65 35} box FLAT_BOX color 112
+      }
+      Fl_Box {} {
+        xywh {145 185 65 35} box FLAT_BOX color 143
+      }
+      Fl_Box {} {
+        xywh {145 225 65 35} box FLAT_BOX color 112
+      }
+      Fl_Box {} {
+        xywh {145 265 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {145 305 65 35} box FLAT_BOX color 56
+      }
+      Fl_Box {} {
+        xywh {145 345 65 35} box FLAT_BOX color 80
+      }
+      Fl_Box {} {selected
+        xywh {495 65 65 35} box FLAT_BOX color 80
+      }
+      Fl_Box {} {
+        xywh {495 105 65 35} box FLAT_BOX color 143
+      }
+      Fl_Box {} {
+        xywh {495 145 65 35} box FLAT_BOX color 56
+      }
+      Fl_Box {} {
+        xywh {495 185 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {495 225 65 35} box FLAT_BOX color 56
+      }
+      Fl_Box {} {
+        xywh {495 265 65 35} box FLAT_BOX color 80
+      }
+      Fl_Box {} {
+        xywh {495 305 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {495 345 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {565 65 65 35} box FLAT_BOX color 56
+      }
+      Fl_Box {} {
+        xywh {565 105 65 35} box FLAT_BOX color 80
+      }
+      Fl_Box {} {
+        xywh {565 145 65 35} box FLAT_BOX color 80
+      }
+      Fl_Box {} {
+        xywh {565 185 65 35} box FLAT_BOX color 80
+      }
+      Fl_Box {} {
+        xywh {565 225 65 35} box FLAT_BOX color 80
+      }
+      Fl_Box {} {
+        xywh {565 265 65 35} box FLAT_BOX color 143
+      }
+      Fl_Box {} {
+        xywh {565 305 65 35} box FLAT_BOX color 112
+      }
+      Fl_Box {} {
+        xywh {565 345 65 35} box FLAT_BOX color 112
+      }
+      Fl_Box {} {
+        xywh {355 65 65 35} box FLAT_BOX color 143
+      }
+      Fl_Box {} {
+        xywh {355 105 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {355 145 65 35} box FLAT_BOX color 80
+      }
+      Fl_Box {} {
+        xywh {355 185 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {355 225 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {355 265 65 35} box FLAT_BOX color 80
+      }
+      Fl_Box {} {
+        xywh {355 305 65 35} box FLAT_BOX color 80
+      }
+      Fl_Box {} {
+        xywh {355 345 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {425 65 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {425 105 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {425 145 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {425 185 65 35} box FLAT_BOX color 56
+      }
+      Fl_Box {} {
+        xywh {425 225 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {425 265 65 35} box FLAT_BOX color 112
+      }
+      Fl_Box {} {
+        xywh {425 305 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {425 345 65 35} box FLAT_BOX color 80
+      }
+      Fl_Box {} {
+        label Rock
+        xywh {5 65 66 34} box FLAT_BOX color 94 labelcolor 39
+      }
+      Fl_Box {} {
+        label Plant
+        xywh {5 104 65 35} box FLAT_BOX color 94 labelcolor 39
+      }
+      Fl_Box {} {
+        label Water
+        xywh {5 144 65 35} box FLAT_BOX color 94 labelcolor 39
+      }
+      Fl_Box {} {
+        label Fire
+        xywh {5 184 65 35} box FLAT_BOX color 94 labelcolor 39
+      }
+      Fl_Box {} {
+        label Electric
+        xywh {5 224 65 35} box FLAT_BOX color 94 labelcolor 39
+      }
+      Fl_Box {} {
+        label Spirit
+        xywh {5 264 65 35} box FLAT_BOX color 94 labelcolor 39
+      }
+      Fl_Box {} {
+        label Light
+        xywh {5 304 65 35} box FLAT_BOX color 94 labelcolor 39
+      }
+      Fl_Box {} {
+        label Wind
+        xywh {5 345 65 35} box FLAT_BOX color 94 labelcolor 39
+      }
+      Fl_Box {} {
+        label None
+        xywh {5 385 65 35} box FLAT_BOX color 94 labelcolor 39
+      }
+      Fl_Box {} {
+        label {150%}
+        xywh {500 435 65 35} box FLAT_BOX color 112 align 128
+      }
+      Fl_Box {} {
+        label {200%}
+        xywh {640 430 65 35} box FLAT_BOX color 143 labelcolor 37 align 128
+      }
+      Fl_Box {} {
+        label {50%}
+        xywh {215 430 65 35} box FLAT_BOX color 80 align 128
+      }
+      Fl_Box {} {
+        xywh {635 65 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {635 105 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {635 145 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {635 185 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {635 225 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {635 265 65 35} box FLAT_BOX color 56
+      }
+      Fl_Box {} {
+        xywh {635 305 65 35} box FLAT_BOX color 80
+      }
+      Fl_Box {} {
+        xywh {635 345 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {215 385 65 35} box FLAT_BOX color 80
+      }
+      Fl_Box {} {
+        xywh {285 385 65 35} box FLAT_BOX color 80
+      }
+      Fl_Box {} {
+        xywh {75 385 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {145 385 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        xywh {495 385 65 35} box FLAT_BOX color 56
+      }
+      Fl_Box {} {
+        xywh {565 385 65 35} box FLAT_BOX color 80
+      }
+      Fl_Box {} {
+        xywh {355 385 65 35} box FLAT_BOX color 80
+      }
+      Fl_Box {} {
+        xywh {425 385 65 35} box FLAT_BOX color 56
+      }
+      Fl_Box {} {
+        xywh {635 385 65 35} box FLAT_BOX color 60
+      }
+      Fl_Box {} {
+        label {100%}
+        xywh {360 430 65 35} box FLAT_BOX color 60 align 128
+      }
+      Fl_Box {} {
+        label {0%}
+        xywh {75 430 65 35} box FLAT_BOX color 56 align 128
+      }
+    }
+  }
+}
